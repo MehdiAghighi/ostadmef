@@ -229,7 +229,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        "iranyekan",
+        "shabnam",
         "system-ui",
         "-apple-system",
         "BlinkMacSystemFont",
