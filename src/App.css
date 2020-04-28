@@ -6,3 +6,7 @@
     stroke: currentColor;
     fill: currentColor;
 }
+
+.z--10 {
+    z-index: -10;
+}
