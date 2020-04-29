@@ -29,7 +29,7 @@ function PartnersSlider(props) {
          <span
             className="slider-button-prev absolute p-2 text-white bg-purple-800 z-10 font-bold text-2xl"
             style={{
-               top: "25%",
+               top: "28%",
                right: 50,
             }}
          >
@@ -40,7 +40,7 @@ function PartnersSlider(props) {
          <span
             className="slider-button-next absolute p-2 text-white bg-purple-800 z-10 font-bold text-2xl"
             style={{
-               top: "25%",
+               top: "28%",
                left: 50,
             }}
          >

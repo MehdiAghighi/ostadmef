@@ -9,7 +9,7 @@ function Partners() {
                دانشگاه‌های همکار <span className="font-bold">لــــینوم</span>
             </h2>
          </div>
-         <div className="w-full mb-64">
+         <div className="w-full">
             <PartnersSlider />
          </div>
       </div>
