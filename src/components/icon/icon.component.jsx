@@ -86,3 +86,21 @@ export const ArrowLeft = (props) => (
       <use xlinkHref="#icon-arrow-left2"></use>
    </svg>
 );
+
+export const SliderBack = (props) => (
+   <svg class="icon icon-keyboard_arrow_right">
+      <symbol id="icon-keyboard_arrow_right" viewBox="0 0 24 24">
+         <path d="M8.578 16.594l4.594-4.594-4.594-4.594 1.406-1.406 6 6-6 6z"></path>
+      </symbol>
+      <use xlinkHref="#icon-keyboard_arrow_right"></use>
+   </svg>
+);
+
+export const SliderFor = (props) => (
+   <svg class="icon icon-keyboard_arrow_left">
+      <symbol id="icon-keyboard_arrow_left" viewBox="0 0 24 24">
+         <path d="M15.422 16.594l-1.406 1.406-6-6 6-6 1.406 1.406-4.594 4.594z"></path>
+      </symbol>
+      <use xlinkHref="#icon-keyboard_arrow_left"></use>
+   </svg>
+);

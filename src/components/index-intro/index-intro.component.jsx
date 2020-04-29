@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 function IndexIntro() {
    return (
-      <div className="py-10 container mx-auto flex flex-row justify-between">
+      <div className="pt-10 container mx-auto flex flex-row justify-between">
          <div
             className="py-20"
             style={{

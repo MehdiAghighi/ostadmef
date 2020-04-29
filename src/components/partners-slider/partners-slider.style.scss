@@ -1,0 +1,31 @@
+.partners-slider {
+   height: 300px;
+   img {
+      width: 100px;
+      -webkit-filter: grayscale(1); /* Webkit */
+      filter: gray; /* IE6-9 */
+      filter: grayscale(1); /* W3C */
+   }
+   .swiper-slide-active > div {
+      transition: all 0.3s;
+      box-shadow: 4px 11px 40px rgba(74, 60, 152, 0.18);
+      border-radius: 8px;
+      margin-top: -20px;
+      img {
+         transition: all 0.3s;
+         width: 136px;
+         -webkit-filter: grayscale(0); /* Webkit */
+         filter: gray; /* IE6-9 */
+         filter: grayscale(0); /* W3C */
+      }
+      > span {
+         display: block;
+      }
+   }
+   .slider-button-next {
+      border-radius: 50%;
+   }
+   .slider-button-prev {
+      border-radius: 50%;
+   }
+}
