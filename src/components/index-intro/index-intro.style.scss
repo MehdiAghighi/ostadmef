@@ -1,0 +1,28 @@
+.index-intro {
+   .purp-rec {
+      bottom: -35px;
+      left: 0;
+   }
+   .or-rec {
+      top: -24px;
+      right: 0;
+   }
+   .blueprint {
+      top: -24px;
+      left: 0;
+   }
+   @media (min-width: 992px) {
+      .purp-rec {
+         bottom: -29px;
+         left: 0;
+      }
+      .or-rec {
+         top: -22px;
+         right: 0;
+      }
+      .blueprint {
+         top: -18px;
+         left: 0;
+      }
+   }
+}

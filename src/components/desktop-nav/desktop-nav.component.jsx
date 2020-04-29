@@ -3,6 +3,7 @@ import React from "react";
 import "./desktop-nav.style.scss";
 
 import { NavLink } from "react-router-dom";
+import Button from "../button/button.component";
 
 function DesktopNav(props) {
    return (
@@ -67,9 +68,16 @@ function DesktopNav(props) {
             </NavLink>
          </div>
          <div>
-            <button className="px-6 py-1 text-white bg-orange-500 rounded-lg font-blod leading-loose">
+            {/* <button className="px-6 py-1 text-white bg-orange-500 rounded-lg font-blod leading-loose">
                ورود/ثبت‌نام
-            </button>
+            </button> */}
+            <Button
+               btnBgClass="bg-orange-500"
+               btnTextClass="text-white"
+               className="font-blod leading-loose px-6 py-1"
+            >
+               ورود/ثبت‌نام
+            </Button>
          </div>
       </nav>
    );

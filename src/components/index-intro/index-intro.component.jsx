@@ -1,49 +1,49 @@
 import React from "react";
 
+import "./index-intro.style.scss";
+
 import Main from "../../assets/images/Main.png";
 import Blueprint from "../../assets/images/Blueprint.svg";
 import OrRec from "../../assets/images/or-rec.svg";
 import PurpRec from "../../assets/images/purp-rec.svg";
 
 import Title from "../title/title.component";
-import { ArrowLeft } from "../icon/icon.component";
 import { Link } from "react-router-dom";
+import Button from "../button/button.component";
 
 function IndexIntro() {
    return (
-      <div className="pt-10 container mx-auto flex flex-row justify-between">
+      <div className="pt-10 container mx-auto flex flex-row justify-between index-intro">
          <div
-            className="py-20"
+            className="xl:py-20 py-16"
             style={{
                flexBasis: "45%",
             }}
          >
-            <div className="mb-16" style={{ width: 335 }}>
+            <div className="xl:mb-16 mb-8" style={{ width: 335 }}>
                <Title>آشنایی با لــــینوم</Title>
             </div>
-            <p className="font-light text-2xl leading-10">
+            <p className="xl:font-light font-normal xl:text-2xl text-xl leading-10">
                لینوم یک پلتفرم آموزشی است که با تکیه بر ویدئو های کوتاه و فشرده
                بستری را برای دانشجویان ایجاد میکند که در آن بتوانند در کوتاه
                ترین زمان ممکن یک کورس را به طور کامل یاد بگیرند.
             </p>
             <Link to="/">
-               <button className="rounded-lg py-2 px-5 bg-purple-800 text-white flex flex-row justify-between items-center mt-12 text-sm leading-8">
+               <Button
+                  btnBgClass="bg-purple-800"
+                  bgnTextClass="text-white"
+                  className="xl:mt-12 mt-5 text-sm leading-8 py-2 px-5"
+                  arrow
+               >
                   آشنایی بیشتر
-                  <div className="py-1 px-3 bg-white rounded-lg text-orange-700 mr-4">
-                     <ArrowLeft className="text-orange-500 font-light text-xs" />
-                  </div>
-               </button>
+               </Button>
             </Link>
          </div>
          <div className="pt-8">
-            <div className="relative w-full">
+            <div className="relative mx-auto w-full">
                <img
                   src={Blueprint}
-                  className="absolute"
-                  style={{
-                     top: -16.5,
-                     left: 0,
-                  }}
+                  className="absolute xl:w-auto w-32 blueprint"
                   alt=""
                />
                <img
@@ -53,20 +53,12 @@ function IndexIntro() {
                />
                <img
                   src={OrRec}
-                  className="absolute"
-                  style={{
-                     top: -24,
-                     right: 0,
-                  }}
+                  className="absolute xl:w-auto w-48 or-rec"
                   alt=""
                />
                <img
                   src={PurpRec}
-                  className="absolute"
-                  style={{
-                     bottom: -39,
-                     left: 0,
-                  }}
+                  className="absolute xl:w-auto w-48 purp-rec"
                   alt=""
                />
             </div>
