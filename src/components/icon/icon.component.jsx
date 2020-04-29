@@ -79,7 +79,7 @@ export const Search = (props) => (
 );
 
 export const ArrowLeft = (props) => (
-   <svg class={`icon icon-arrow-left2 ${props.className}`}>
+   <svg class={`icon ${props.className}`}>
       <symbol id="icon-arrow-left2" viewBox="0 0 32 32">
          <path d="M12.586 27.414l-10-10c-0.781-0.781-0.781-2.047 0-2.828l10-10c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-6.586 6.586h19.172c1.105 0 2 0.895 2 2s-0.895 2-2 2h-19.172l6.586 6.586c0.39 0.39 0.586 0.902 0.586 1.414s-0.195 1.024-0.586 1.414c-0.781 0.781-2.047 0.781-2.828 0z"></path>
       </symbol>
@@ -88,7 +88,7 @@ export const ArrowLeft = (props) => (
 );
 
 export const SliderBack = (props) => (
-   <svg class="icon icon-keyboard_arrow_right">
+   <svg class={`icon ${props.className}`}>
       <symbol id="icon-keyboard_arrow_right" viewBox="0 0 24 24">
          <path d="M8.578 16.594l4.594-4.594-4.594-4.594 1.406-1.406 6 6-6 6z"></path>
       </symbol>
@@ -97,10 +97,19 @@ export const SliderBack = (props) => (
 );
 
 export const SliderFor = (props) => (
-   <svg class="icon icon-keyboard_arrow_left">
+   <svg class={`icon ${props.className}`}>
       <symbol id="icon-keyboard_arrow_left" viewBox="0 0 24 24">
          <path d="M15.422 16.594l-1.406 1.406-6-6 6-6 1.406 1.406-4.594 4.594z"></path>
       </symbol>
       <use xlinkHref="#icon-keyboard_arrow_left"></use>
+   </svg>
+);
+
+export const Code = (props) => (
+   <svg class={`icon ${props.className}`}>
+      <symbol id="icon-code" viewBox="0 0 30 28">
+         <path d="M9.641 21.859l-0.781 0.781c-0.203 0.203-0.516 0.203-0.719 0l-7.281-7.281c-0.203-0.203-0.203-0.516 0-0.719l7.281-7.281c0.203-0.203 0.516-0.203 0.719 0l0.781 0.781c0.203 0.203 0.203 0.516 0 0.719l-6.141 6.141 6.141 6.141c0.203 0.203 0.203 0.516 0 0.719zM18.875 5.187l-5.828 20.172c-0.078 0.266-0.359 0.422-0.609 0.344l-0.969-0.266c-0.266-0.078-0.422-0.359-0.344-0.625l5.828-20.172c0.078-0.266 0.359-0.422 0.609-0.344l0.969 0.266c0.266 0.078 0.422 0.359 0.344 0.625zM29.141 15.359l-7.281 7.281c-0.203 0.203-0.516 0.203-0.719 0l-0.781-0.781c-0.203-0.203-0.203-0.516 0-0.719l6.141-6.141-6.141-6.141c-0.203-0.203-0.203-0.516 0-0.719l0.781-0.781c0.203-0.203 0.516-0.203 0.719 0l7.281 7.281c0.203 0.203 0.203 0.516 0 0.719z"></path>
+      </symbol>
+      <use xlinkHref="#icon-code"></use>
    </svg>
 );

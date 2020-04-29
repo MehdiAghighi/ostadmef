@@ -6,6 +6,7 @@ function Button(props) {
    return (
       <button
          className={`rounded-lg ${props.btnBgClass} ${props.btnTextClass} flex flex-row justify-between items-center ${props.className}`}
+         style={props.style}
       >
          {props.children}
          {props.arrow && (
@@ -24,6 +25,7 @@ Button.defaultProps = {
    btnTextClass: "text-white",
    arrowBgClass: "bg-white",
    arrowTextClass: "text-orange-700",
+   style: {},
    className: "",
    arrow: false,
 };
