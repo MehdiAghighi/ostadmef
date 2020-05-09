@@ -10,7 +10,7 @@ function Index(props) {
       <div>
          <IndexIntro />
          <Partners />
-         <TopCategories />
+         {/* <TopCategories /> */}
       </div>
    );
 }

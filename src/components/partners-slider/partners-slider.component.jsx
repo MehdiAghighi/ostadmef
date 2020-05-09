@@ -14,8 +14,26 @@ import Swiper from "react-id-swiper";
 
 function PartnersSlider(props) {
    const params = {
-      slidesPerView: 6.1,
-      slidesPerGroup: 1,
+      // slidesPerView: 6.1,
+      // slidesPerGroup: 1,
+      breakpoints: {
+         1090: {
+            slidesPerView: 5.9,
+            slidesPerGroup: 1,
+         },
+         768: {
+            slidesPerView: 4,
+            slidesPerGroup: 1,
+         },
+         640: {
+            slidesPerView: 3,
+            slidesPerGroup: 1,
+         },
+         320: {
+            slidesPerView: 2,
+            slidesPerGroup: 1,
+         },
+      },
       spaceBetween: 30,
       centeredSlides: true,
       grabCursor: true,
@@ -26,24 +44,12 @@ function PartnersSlider(props) {
       },
       containerClass: "swiper-container partners-slider py-10",
       renderPrevButton: () => (
-         <span
-            className="slider-button-prev absolute p-2 text-white bg-purple-800 z-10 font-bold text-2xl"
-            style={{
-               top: "28%",
-               right: 50,
-            }}
-         >
+         <span className="slider-button-prev absolute lg:p-2 p-2 text-white bg-purple-800 z-10 font-bold text-2xl">
             <SliderBack />
          </span>
       ),
       renderNextButton: () => (
-         <span
-            className="slider-button-next absolute p-2 text-white bg-purple-800 z-10 font-bold text-2xl"
-            style={{
-               top: "28%",
-               left: 50,
-            }}
-         >
+         <span className="slider-button-next absolute lg:p-2 p-2 text-white bg-purple-800 z-10 font-bold text-2xl">
             <SliderFor />
          </span>
       ),

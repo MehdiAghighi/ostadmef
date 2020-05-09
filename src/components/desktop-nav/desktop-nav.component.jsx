@@ -7,7 +7,7 @@ import Button from "../button/button.component";
 
 function DesktopNav(props) {
    return (
-      <nav className="flex flex-row justify-between items-center">
+      <nav className="hidden md:flex md:flex-row justify-between items-center">
          <div>
             <NavLink to="/">
                <h1 className="font-bold text-4xl leading-loose">لــــینوم</h1>

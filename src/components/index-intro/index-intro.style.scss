@@ -1,15 +1,29 @@
 .index-intro {
    .purp-rec {
-      bottom: -35px;
+      bottom: -16px;
       left: 0;
    }
    .or-rec {
-      top: -24px;
+      top: -16px;
       right: 0;
    }
    .blueprint {
-      top: -24px;
+      top: -13px;
       left: 0;
+   }
+   @media (min-width: 640px) {
+      .purp-rec {
+         bottom: -25px;
+         left: 0;
+      }
+      .or-rec {
+         top: -22px;
+         right: 0;
+      }
+      .blueprint {
+         top: -15px;
+         left: 0;
+      }
    }
    @media (min-width: 992px) {
       .purp-rec {
@@ -21,8 +35,22 @@
          right: 0;
       }
       .blueprint {
-         top: -18px;
+         top: -20px;
          left: 0;
       }
    }
+   // @media (min-width: 992px) {
+   //    .purp-rec {
+   //       bottom: -29px;
+   //       left: 0;
+   //    }
+   //    .or-rec {
+   //       top: -22px;
+   //       right: 0;
+   //    }
+   //    .blueprint {
+   //       top: -20px;
+   //       left: 0;
+   //    }
+   // }
 }

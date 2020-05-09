@@ -24,8 +24,20 @@
    }
    .slider-button-next {
       border-radius: 50%;
+      top: 31%;
+      left: 30px;
    }
    .slider-button-prev {
       border-radius: 50%;
+      top: 31%;
+      right: 30px;
+   }
+   @media (min-width: 640px) {
+      .slider-button-next {
+         top: 28%;
+      }
+      .slider-button-prev {
+         top: 28%;
+      }
    }
 }
