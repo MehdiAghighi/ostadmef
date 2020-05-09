@@ -2,6 +2,7 @@ import React from "react";
 
 export const Hamburger = (props) => (
    <svg
+      {...props}
       className={`icon icon-menu1 text-teal-900 m-1 ${props.className}`}
       style={props.style}
    >
@@ -58,6 +59,7 @@ export const Mail = (props) => (
 
 export const Close = (props) => (
    <svg
+      {...props}
       className={`icon icon-cancel-circle text-teal-900 m-1 ${props.className}`}
    >
       <symbol id="icon-cancel-circle" viewBox="0 0 32 32">
@@ -111,5 +113,14 @@ export const Code = (props) => (
          <path d="M9.641 21.859l-0.781 0.781c-0.203 0.203-0.516 0.203-0.719 0l-7.281-7.281c-0.203-0.203-0.203-0.516 0-0.719l7.281-7.281c0.203-0.203 0.516-0.203 0.719 0l0.781 0.781c0.203 0.203 0.203 0.516 0 0.719l-6.141 6.141 6.141 6.141c0.203 0.203 0.203 0.516 0 0.719zM18.875 5.187l-5.828 20.172c-0.078 0.266-0.359 0.422-0.609 0.344l-0.969-0.266c-0.266-0.078-0.422-0.359-0.344-0.625l5.828-20.172c0.078-0.266 0.359-0.422 0.609-0.344l0.969 0.266c0.266 0.078 0.422 0.359 0.344 0.625zM29.141 15.359l-7.281 7.281c-0.203 0.203-0.516 0.203-0.719 0l-0.781-0.781c-0.203-0.203-0.203-0.516 0-0.719l6.141-6.141-6.141-6.141c-0.203-0.203-0.203-0.516 0-0.719l0.781-0.781c0.203-0.203 0.516-0.203 0.719 0l7.281 7.281c0.203 0.203 0.203 0.516 0 0.719z"></path>
       </symbol>
       <use xlinkHref="#icon-code"></use>
+   </svg>
+);
+
+export const Cross = (props) => (
+   <svg {...props} class={`icon icon-close ${props.className}`}>
+      <symbol id="icon-close" viewBox="0 0 20 20">
+         <path d="M10 8.586l-7.071-7.071-1.414 1.414 7.071 7.071-7.071 7.071 1.414 1.414 7.071-7.071 7.071 7.071 1.414-1.414-7.071-7.071 7.071-7.071-1.414-1.414-7.071 7.071z"></path>
+      </symbol>
+      <use xlinkHref="#icon-close"></use>
    </svg>
 );
