@@ -6,7 +6,9 @@ function Title(props) {
    return (
       <div className="title-wrapper relative inline-flex">
          <div className="z-10 text-blue-800 relative">
-            <h2 className={`title text-blue-1000 text-5xl ${props.className}`}>
+            <h2
+               className={`title text-blue-1000 text-3xl sm:text-5xl ${props.className}`}
+            >
                {props.children}
             </h2>
          </div>
