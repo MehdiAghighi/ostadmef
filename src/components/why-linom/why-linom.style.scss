@@ -1,0 +1,100 @@
+.why-linom {
+   .purp-rec {
+      top: -20px;
+      right: -20px;
+      width: auto;
+   }
+   .or-rec {
+      bottom: -15px;
+      left: -15px;
+      width: 100px;
+   }
+   .blueprint {
+      bottom: -8px;
+      width: 100px;
+      right: 20px;
+   }
+   .features-ic > div {
+      flex-basis: 100%;
+   }
+   @media (min-width: 640px) {
+      .purp-rec {
+         top: -30px;
+         right: -30px;
+      }
+      .or-rec {
+         bottom: -20px;
+         left: -20px;
+         width: 120px;
+      }
+      .blueprint {
+         bottom: -10px;
+         right: 10px;
+         width: 150px;
+      }
+      .features-ic > div {
+         flex-basis: 47%;
+      }
+   }
+   @media (min-width: 768px) {
+      .purp-rec {
+         top: -30px;
+         right: -30px;
+         width: auto;
+      }
+      .or-rec {
+         bottom: -30px;
+         left: -30px;
+         width: 180px;
+         width: auto;
+      }
+      .blueprint {
+         bottom: -20px;
+         right: 20px;
+         width: auto;
+      }
+      .features-ic > div {
+         flex-basis: 46%;
+      }
+   }
+   @media (min-width: 992px) {
+      .purp-rec {
+         top: -30px;
+         right: -30px;
+         width: auto;
+      }
+      .or-rec {
+         bottom: 0px;
+         left: -35px;
+         width: 150px;
+      }
+      .blueprint {
+         bottom: 0px;
+         right: 20px;
+         width: auto;
+      }
+      .features-ic > div {
+         flex-basis: 46%;
+      }
+   }
+   @media (min-width: 1200px) {
+      .purp-rec {
+         top: -30px;
+         right: -30px;
+         width: auto;
+      }
+      .or-rec {
+         bottom: -35px;
+         left: -35px;
+         width: auto;
+      }
+      .blueprint {
+         bottom: -20px;
+         right: 20px;
+         width: auto;
+      }
+      .features-ic > div {
+         flex-basis: 46%;
+      }
+   }
+}
