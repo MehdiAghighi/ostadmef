@@ -1,7 +1,7 @@
 import React from "react";
 import Swiper from "react-id-swiper";
 
-import "./new-posts.style.scss";
+import "./hot-posts-slider.style.scss";
 
 import courseImage from "../../assets/images/course.png";
 
@@ -18,7 +18,7 @@ import CardBody from "../card/card-body/card-body.component";
 import CardFooter from "../card/card-footer/card-footer.component";
 import PostTag from "../post-tag/post-tag.component";
 
-function NewPostsSlider() {
+function HotPostsSlider() {
    const params = {
       // slidesPerView: 6.1,
       // slidesPerGroup: 1,
@@ -52,7 +52,7 @@ function NewPostsSlider() {
          nextEl: ".slider-button-next",
          prevEl: ".slider-button-prev",
       },
-      containerClass: "swiper-container container new-posts-slider py-10",
+      containerClass: "swiper-container container hot-posts-slider py-10",
       renderPrevButton: () => (
          <span className="md:hidden slider-button-prev absolute lg:p-2 p-2 text-white bg-purple-800 z-10 font-bold text-2xl">
             <SliderBack />
@@ -68,7 +68,7 @@ function NewPostsSlider() {
    return (
       <div className="mr-1 md:mr-5">
          <Swiper {...params}>
-            {arr.map((it) => (
+            {arr.map((item, index) => (
                <div className="">
                   <Card>
                      <CardImage to="/">
@@ -107,4 +107,4 @@ function NewPostsSlider() {
    );
 }
 
-export default NewPostsSlider;
+export default HotPostsSlider;
