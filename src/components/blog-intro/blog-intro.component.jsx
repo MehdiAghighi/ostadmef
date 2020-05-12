@@ -29,7 +29,7 @@ function BlogIntro(props) {
             <div className="flex flex-row justify-between">
                <div className="w-1/2">
                   <Card full>
-                     <CardImage>
+                     <CardImage to="/">
                         <img
                            src={courseImage}
                            className=""
@@ -38,11 +38,11 @@ function BlogIntro(props) {
                            }}
                         />
                      </CardImage>
-                     <CardTitle className="text-2xl text-blue-1000 my-2">
+                     <CardTitle className="text-2xl text-blue-1000 my-2" to="/">
                         دانستنی‌های هک با پایتون
                      </CardTitle>
                      <CardBody>
-                        <PostTag>آموزشی</PostTag>
+                        <PostTag to="/">آموزشی</PostTag>
                         <p className="text-lg leading-10 text-justify px-1">
                            لینوم یک پلتفرم آموزشی است که با تکیه بر ویدئو های
                            کوتاه و فشرده بستری را برای دانشجویان ایجاد میکند که

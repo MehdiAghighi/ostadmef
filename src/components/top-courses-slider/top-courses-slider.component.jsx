@@ -70,10 +70,10 @@ function TopCoursesSlider() {
             {arr.map((it) => (
                <div>
                   <Card>
-                     <CardImage>
+                     <CardImage to="/">
                         <img src={courseImage} className="" />
                      </CardImage>
-                     <CardTitle>آموزش فتوشاپ مقدماتی</CardTitle>
+                     <CardTitle to="/">آموزش فتوشاپ مقدماتی</CardTitle>
                      <CardBody>
                         <div className="flex flex-row items-center mx-auto text-center justify-center">
                            <span>مهران احمدی</span>
