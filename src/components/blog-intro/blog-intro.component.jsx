@@ -24,10 +24,10 @@ import PostTag from "../post-tag/post-tag.component";
 
 function BlogIntro(props) {
    return (
-      <div>
-         <div className="container mx-auto mt-5">
-            <div className="flex flex-row justify-between">
-               <div className="w-1/2">
+      <div className="my-5">
+         <div className="container mx-auto">
+            <div className="flex lg:flex-row flex-col lg:justify-between justify-center items-center">
+               <div className="xl:w-1/2 lg:w-5/12 sm:w-8/12 xs:w-full">
                   <Card full>
                      <CardImage to="/">
                         <img
@@ -43,7 +43,7 @@ function BlogIntro(props) {
                      </CardTitle>
                      <CardBody>
                         <PostTag to="/">آموزشی</PostTag>
-                        <p className="text-lg leading-10 text-justify px-1">
+                        <p className="text-lg text-base leading-10 text-justify px-1">
                            لینوم یک پلتفرم آموزشی است که با تکیه بر ویدئو های
                            کوتاه و فشرده بستری را برای دانشجویان ایجاد میکند که
                            در آن بتوانند در کوتاه ترین زمان ممکن یک کورس را به
@@ -73,8 +73,8 @@ function BlogIntro(props) {
                      </CardFooter>
                   </Card>
                </div>
-               <div className="w-1/2">
-                  <div className="px-6 mx-auto w-full flex items-end justify-end">
+               <div className="lg:w-1/2 xs:w-full">
+                  <div className="md:px-6 mx-auto w-full flex flex-col items-center justify-center">
                      <div>
                         <HCard className="my-6">
                            <HCardData>
@@ -87,7 +87,7 @@ function BlogIntro(props) {
                                  </HCardBody>
                               </HCardTitleGroup>
                               <HCardFooter>
-                                 <span className="text-gray-600">
+                                 <span className="text-gray-600 sm:text-base text-xs">
                                     9 روز پیش &nbsp;
                                     <Clock className="text-gray-600 text-xs" />
                                  </span>
@@ -97,7 +97,7 @@ function BlogIntro(props) {
                                        width: 2,
                                     }}
                                  ></div>
-                                 <span className="text-gray-600">
+                                 <span className="text-gray-600 sm:text-base text-xs">
                                     ساعت 14 &nbsp;
                                     <Clock className="text-gray-600 text-xs" />
                                  </span>
@@ -118,7 +118,7 @@ function BlogIntro(props) {
                                  </HCardBody>
                               </HCardTitleGroup>
                               <HCardFooter>
-                                 <span className="text-gray-600">
+                                 <span className="text-gray-600 sm:text-base text-xs">
                                     9 روز پیش &nbsp;
                                     <Clock className="text-gray-600 text-xs" />
                                  </span>
@@ -128,7 +128,7 @@ function BlogIntro(props) {
                                        width: 2,
                                     }}
                                  ></div>
-                                 <span className="text-gray-600">
+                                 <span className="text-gray-600 sm:text-base text-xs">
                                     ساعت 14 &nbsp;
                                     <Clock className="text-gray-600 text-xs" />
                                  </span>
@@ -149,7 +149,7 @@ function BlogIntro(props) {
                                  </HCardBody>
                               </HCardTitleGroup>
                               <HCardFooter>
-                                 <span className="text-gray-600">
+                                 <span className="text-gray-600 sm:text-base text-xs">
                                     9 روز پیش &nbsp;
                                     <Clock className="text-gray-600 text-xs" />
                                  </span>
@@ -159,7 +159,7 @@ function BlogIntro(props) {
                                        width: 2,
                                     }}
                                  ></div>
-                                 <span className="text-gray-600">
+                                 <span className="text-gray-600 sm:text-base text-xs">
                                     ساعت 14 &nbsp;
                                     <Clock className="text-gray-600 text-xs" />
                                  </span>
@@ -180,7 +180,7 @@ function BlogIntro(props) {
                                  </HCardBody>
                               </HCardTitleGroup>
                               <HCardFooter>
-                                 <span className="text-gray-600">
+                                 <span className="text-gray-600 sm:text-base text-xs">
                                     9 روز پیش &nbsp;
                                     <Clock className="text-gray-600 text-xs" />
                                  </span>
@@ -190,7 +190,7 @@ function BlogIntro(props) {
                                        width: 2,
                                     }}
                                  ></div>
-                                 <span className="text-gray-600">
+                                 <span className="text-gray-600 sm:text-base text-xs">
                                     ساعت 14 &nbsp;
                                     <Clock className="text-gray-600 text-xs" />
                                  </span>

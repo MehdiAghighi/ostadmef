@@ -1,0 +1,20 @@
+.cards-slider {
+   .slider-button-next {
+      border-radius: 50%;
+      top: 40%;
+      left: 30px;
+   }
+   .slider-button-prev {
+      border-radius: 50%;
+      top: 40%;
+      right: 30px;
+   }
+   @media (min-width: 640px) {
+      .slider-button-next {
+         top: 41%;
+      }
+      .slider-button-prev {
+         top: 41%;
+      }
+   }
+}
