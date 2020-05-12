@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import routes from "./routes";
 
 import TopNav from "./components/top-nav/top-nav.component";
+import Footer from "./components/footer/footer.component";
 
 function App() {
    return (
@@ -15,6 +16,7 @@ function App() {
                <Route {...route} />
             ))}
          </Switch>
+         <Footer />
       </div>
    );
 }
