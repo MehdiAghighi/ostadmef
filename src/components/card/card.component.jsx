@@ -2,12 +2,20 @@ import React from "react";
 
 function Card(props) {
    return (
-      <div className="inline-flex">
-         <div className="py-2 px-2 rounded-lg bg-orange-100 w-auto">
+      <div {...props} className={`inline-flex ${props.full && "w-full"}`}>
+         <div
+            className={`py-2 px-2 rounded-lg bg-orange-100 ${
+               props.full && "w-full"
+            }`}
+         >
             {props.children}
          </div>
       </div>
    );
 }
+
+Card.defaultProps = {
+   full: false,
+};
 
 export default Card;
