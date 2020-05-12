@@ -71,7 +71,7 @@ function TopCoursesSlider() {
                <div>
                   <Card>
                      <CardImage>
-                        <img src={courseImage} className="w-full" />
+                        <img src={courseImage} className="" />
                      </CardImage>
                      <CardTitle>آموزش فتوشاپ مقدماتی</CardTitle>
                      <CardBody>
