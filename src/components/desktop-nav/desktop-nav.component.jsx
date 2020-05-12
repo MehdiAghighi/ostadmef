@@ -4,6 +4,7 @@ import "./desktop-nav.style.scss";
 
 import { NavLink } from "react-router-dom";
 import Button from "../button/button.component";
+import DesktopNavLink from "../desktop-nav-link/desktop-nav-link.component";
 
 function DesktopNav(props) {
    return (
@@ -17,63 +18,12 @@ function DesktopNav(props) {
                </NavLink>
             </div>
             <div className="flex flex-row justify-center items-center">
-               <NavLink
-                  to="/"
-                  activeClassName="text-xl text-blue-500 active-link"
-                  className="px-8 nav-link hover:text-blue-500"
-               >
-                  <div className="relative">
-                     <h1 className="leading-loose relative m-1">خانه</h1>
-                     <div
-                        className="link-bottom-border bg-blue-500 absolute w-full rounded-full hidden"
-                        style={{ bottom: "4px", height: "3px" }}
-                     ></div>
-                  </div>
-               </NavLink>
-               <NavLink
-                  to="/course"
-                  activeClassName="text-xl text-blue-500 active-link"
-                  className="px-8 nav-link hover:text-blue-500"
-               >
-                  <div className="relative">
-                     <h1 className="leading-loose relative m-1">دوره‌ها</h1>
-                     <div
-                        className="link-bottom-border bg-blue-500 absolute w-full rounded-full hidden"
-                        style={{ bottom: "4px", height: "3px" }}
-                     ></div>
-                  </div>
-               </NavLink>
-               <NavLink
-                  to="/about"
-                  activeClassName="text-xl text-blue-500 active-link"
-                  className="px-8 nav-link hover:text-blue-500"
-               >
-                  <div className="relative">
-                     <h1 className="leading-loose relative m-1">درباره‌ما</h1>
-                     <div
-                        className="link-bottom-border bg-blue-500 absolute w-full rounded-full hidden"
-                        style={{ bottom: "4px", height: "3px" }}
-                     ></div>
-                  </div>
-               </NavLink>
-               <NavLink
-                  to="/blog"
-                  activeClassName="text-xl text-blue-500 active-link"
-                  className="px-8 nav-link hover:text-blue-500"
-               >
-                  <div className="relative">
-                     <h1 className="leading-loose relative m-1">بلاگ</h1>
-                     <div
-                        className="link-bottom-border bg-blue-500 absolute w-full rounded-full hidden"
-                        style={{ bottom: "4px", height: "3px" }}
-                     ></div>
-                  </div>
-               </NavLink>
+               <DesktopNavLink to="/">خانه</DesktopNavLink>
+               <DesktopNavLink to="/courses">دوره‌ها</DesktopNavLink>
+               <DesktopNavLink to="/about-us">درباره‌ما</DesktopNavLink>
+               <DesktopNavLink to="/blog">بلاگ</DesktopNavLink>
             </div>
             <div>
-               {/* <button className="px-6 py-1 text-white bg-orange-500 rounded-lg font-blod leading-loose">
-               ورود/ثبت‌نام
-            </button> */}
                <Button
                   btnBgClass="bg-orange-500"
                   btnTextClass="text-white"
