@@ -1,5 +1,6 @@
 import Index from "./pages/index";
 import Blog from "./pages/blog/blog.component";
+import Post from "./pages/post/post.component";
 
 const routes = [
    {
@@ -11,6 +12,10 @@ const routes = [
       path: "/blog",
       component: Blog,
       exact: true,
+   },
+   {
+      path: "/blog/:slug",
+      component: Post,
    },
 ];
 
