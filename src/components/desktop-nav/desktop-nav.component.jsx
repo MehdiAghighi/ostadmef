@@ -6,7 +6,10 @@ import { NavLink } from "react-router-dom";
 import Button from "../button/button.component";
 import DesktopNavLink from "../desktop-nav-link/desktop-nav-link.component";
 
+import { useAuthDispatch } from "../../contexts/auth-context";
+
 function DesktopNav(props) {
+   const setAuthModalOpen = useAuthDispatch();
    return (
       <div className="container mx-auto">
          <nav className="hidden md:flex md:flex-row justify-between items-center">
@@ -28,6 +31,7 @@ function DesktopNav(props) {
                   btnBgClass="bg-orange-500"
                   btnTextClass="text-white"
                   className="font-blod leading-loose px-6 py-1"
+                  onClick={() => setAuthModalOpen({ type: "TOGGLE_MODAL" })}
                >
                   ورود/ثبت‌نام
                </Button>

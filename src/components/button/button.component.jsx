@@ -4,11 +4,35 @@ import { ArrowLeft } from "../icon/icon.component";
 import { Link } from "react-router-dom";
 
 function Button(props) {
-   return (
-      <Link to={props.to}>
+   const classes = `${props.btnBgClass} ${props.btnTextClass} ${props.className}`;
+   if (props.to) {
+      return (
+         <Link to={props.to}>
+            <button
+               {...props}
+               className={`rounded-lg flex flex-row justify-between items-center ${classes}`}
+               style={props.style}
+               onClick={props.onClick}
+               disabled={props.disabled}
+            >
+               {props.children}
+               {props.arrow && (
+                  <div
+                     className={`py-1 px-3 ${props.arrowBgClass} rounded-lg ${props.arrowTextClass} mr-4`}
+                  >
+                     <ArrowLeft className="text-orange-500 font-light text-xs" />
+                  </div>
+               )}
+            </button>
+         </Link>
+      );
+   } else {
+      return (
          <button
-            className={`rounded-lg ${props.btnBgClass} ${props.btnTextClass} flex flex-row justify-between items-center ${props.className}`}
+            {...props}
+            className={`rounded-lg flex flex-row justify-between items-center ${classes}`}
             style={props.style}
+            onClick={props.onClick}
          >
             {props.children}
             {props.arrow && (
@@ -19,8 +43,8 @@ function Button(props) {
                </div>
             )}
          </button>
-      </Link>
-   );
+      );
+   }
 }
 
 Button.defaultProps = {
@@ -31,7 +55,8 @@ Button.defaultProps = {
    style: {},
    className: "",
    arrow: false,
-   to: "/",
+   to: null,
+   onClick: null,
 };
 
 export default Button;
