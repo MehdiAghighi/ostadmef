@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 
 import "./desktop-nav.style.scss";
 
@@ -6,10 +6,11 @@ import { NavLink } from "react-router-dom";
 import Button from "../button/button.component";
 import DesktopNavLink from "../desktop-nav-link/desktop-nav-link.component";
 
-import { useAuthDispatch } from "../../contexts/auth-context";
+import { useAuthDispatch, useAuthState } from "../../contexts/auth-context";
 
 function DesktopNav(props) {
    const setAuthModalOpen = useAuthDispatch();
+   const { isLoggedIn, user } = useAuthState();
    return (
       <div className="container mx-auto">
          <nav className="hidden md:flex md:flex-row justify-between items-center">
@@ -27,14 +28,22 @@ function DesktopNav(props) {
                <DesktopNavLink to="/blog">بلاگ</DesktopNavLink>
             </div>
             <div>
-               <Button
-                  btnBgClass="bg-orange-500"
-                  btnTextClass="text-white"
-                  className="font-blod leading-loose px-6 py-1"
-                  onClick={() => setAuthModalOpen({ type: "TOGGLE_MODAL" })}
-               >
-                  ورود/ثبت‌نام
-               </Button>
+               {!isLoggedIn ? (
+                  <Button
+                     btnBgClass="bg-orange-500"
+                     btnTextClass="text-white"
+                     className="font-bold leading-loose px-6 py-1"
+                     onClick={() => setAuthModalOpen({ type: "TOGGLE_MODAL" })}
+                  >
+                     ورود/ثبت‌نام
+                  </Button>
+               ) : (
+                  <>
+                     <span className="text-blue-1000">
+                        سلام، <span className="font-bold">{user.phone}</span>
+                     </span>
+                  </>
+               )}
             </div>
          </nav>
       </div>

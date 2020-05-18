@@ -1,4 +1,7 @@
 import React from "react";
+import API from "../helpers/api";
+import { toast } from "react-toastify";
+
 const AuthStateContext = React.createContext();
 const AuthDispatchContext = React.createContext();
 
@@ -15,6 +18,19 @@ function authReducer(state, action) {
             authModalOpen: !state.authModalOpen,
          };
       }
+      case "LOGIN": {
+         return {
+            ...state,
+            user: action.payload,
+            isLoggedIn: true,
+         };
+      }
+      // case "LOGIN": {
+      //    return {
+      //       ...state,
+      //       isLoggedIn: true
+      //    }
+      // }
       default: {
          throw new Error(`Unhandled action type: ${action.type}`);
       }
@@ -23,6 +39,8 @@ function authReducer(state, action) {
 function AuthProvider({ children }) {
    const [state, dispatch] = React.useReducer(authReducer, {
       authModalOpen: false,
+      user: {},
+      isLoggedIn: false,
    });
    return (
       <AuthStateContext.Provider value={state}>
@@ -46,4 +64,23 @@ function useAuthDispatch() {
    }
    return context;
 }
-export { AuthProvider, useAuthState, useAuthDispatch };
+
+async function fetchUser(dispatch) {
+   if (!localStorage.getItem("token")) {
+      console.log("توکن موجود نیست");
+      return;
+   }
+   const data = await API.post("/auth/me", null, {
+      headers: {
+         Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+   }).catch((err) => {
+      toast.error("دریافت اطلاعات کاربر موفقیت‌آمیز نبود");
+      return;
+   });
+   if (data) {
+      dispatch({ type: "LOGIN", payload: data.data });
+   }
+}
+
+export { AuthProvider, useAuthState, useAuthDispatch, fetchUser };
