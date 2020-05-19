@@ -16,6 +16,7 @@ import { NavLink } from "react-router-dom";
 
 import Title from "../../components/title/title.component";
 import LoginForm from "../../components/login-form/login-form.component";
+import DecoratedImage from "../../components/decorated-image/decorated-image.component";
 
 function Login(props) {
    const { authModalOpen } = useAuthState();
@@ -56,28 +57,7 @@ function Login(props) {
                         </div>
                         <div className="hidden lg:block">
                            <div className="pt-8 w-full sm:w-10/12 lg:w-auto mx-auto">
-                              <div className="relative mx-auto w-full">
-                                 <img
-                                    src={Blueprint}
-                                    className="absolute w-24 xl:w-auto sm:w-32 blueprint"
-                                    alt=""
-                                 />
-                                 <img
-                                    src={Main}
-                                    className="inset-0 relative w-11/12 mx-auto z-10"
-                                    alt="Linom Courses"
-                                 />
-                                 <img
-                                    src={OrRec}
-                                    className="absolute w-32 xl:w-56 sm:w-48 or-rec"
-                                    alt=""
-                                 />
-                                 <img
-                                    src={PurpRec}
-                                    className="absolute w-32 xl:w-56 sm:w-48 purp-rec"
-                                    alt=""
-                                 />
-                              </div>
+                              <DecoratedImage mainImg={Main} />
                            </div>
                         </div>
                      </div>

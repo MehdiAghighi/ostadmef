@@ -10,6 +10,7 @@ import PurpRec from "../../assets/images/purp-rec.svg";
 import Title from "../title/title.component";
 import { Link } from "react-router-dom";
 import Button from "../button/button.component";
+import DecoratedImage from "../decorated-image/decorated-image.component";
 
 function IndexIntro() {
    return (
@@ -42,28 +43,7 @@ function IndexIntro() {
             </div>
          </div>
          <div className="pt-8 w-full sm:w-10/12 lg:w-auto mx-auto">
-            <div className="relative mx-auto w-full">
-               <img
-                  src={Blueprint}
-                  className="absolute w-24 xl:w-auto sm:w-32 blueprint"
-                  alt=""
-               />
-               <img
-                  src={Main}
-                  className="inset-0 relative w-11/12 mx-auto z-10"
-                  alt="Linom Courses"
-               />
-               <img
-                  src={OrRec}
-                  className="absolute w-32 xl:w-56 sm:w-48 or-rec"
-                  alt=""
-               />
-               <img
-                  src={PurpRec}
-                  className="absolute w-32 xl:w-56 sm:w-48 purp-rec"
-                  alt=""
-               />
-            </div>
+            <DecoratedImage mainImg={Main} />
          </div>
       </div>
    );
