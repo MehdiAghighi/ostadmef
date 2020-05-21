@@ -1,16 +1,30 @@
 import React from "react";
+import Card from "../card/card.component";
+import CardImage from "../card/card-image/card-image.component";
+import CardTitle from "../card/card-title/card-title.component";
+import CardBody from "../card/card-body/card-body.component";
+import CardFooter from "../card/card-footer/card-footer.component";
+import { ArrowLeft, Clock } from "../icon/icon.component";
+import { Link } from "react-router-dom";
 
 function CourseCard({ course }) {
     return (
         <div>
             <Card>
-                <CardImage to="/">
-                    <img src={course.img} className="" />
+                <CardImage to={`/course/${course.id}`}>
+                    <img
+                        src={`http://localhost:8000/storage/${course.pic}`}
+                        className=""
+                    />
                 </CardImage>
-                <CardTitle to="/">{course.title}</CardTitle>
+                <CardTitle to={`/course/${course.id}`}>
+                    {course.title}
+                </CardTitle>
                 <CardBody>
                     <div className="flex flex-row items-center mx-auto text-center justify-center">
-                        <span>{course.teachername}</span>
+                        <span>
+                            {course.user.first_name} {course.user.last_name}
+                        </span>
                         <div
                             className="h-6 bg-gray-400 mx-3"
                             style={{
@@ -18,7 +32,7 @@ function CourseCard({ course }) {
                             }}
                         ></div>
                         <span className="text-gray-600">
-                            {course.length} ساعت &nbsp;
+                            {course.hour_length} ساعت &nbsp;
                             <Clock className="text-gray-600 text-xs" />
                         </span>
                     </div>
@@ -26,9 +40,12 @@ function CourseCard({ course }) {
                 <CardFooter>
                     <div className="flex flex-row justify-between items-center">
                         <span className="text-xl text-green-500 leading-tight">
-                            {course.amount} تومان
+                            {course.price} تومان
                         </span>
-                        <ArrowLeft className="text-xs font-light text-orange-500" />
+                        <ArrowLeft
+                            to={`/course/${course.id}`}
+                            className="text-xs font-light text-orange-500"
+                        />
                     </div>
                 </CardFooter>
             </Card>
