@@ -3,24 +3,24 @@ import { Clock } from "../icon/icon.component";
 import Button from "../button/button.component";
 import HDivider from "../h-divider/h-divider.component";
 
-function CourseInfo(props) {
+function CourseInfo({ course }) {
     return (
         <div className="container mx-auto">
             <div className="bg-gray-200 rounded-lg lg:px-8 px-4 py-3 flex md:flex-row flex-col justify-between items-center">
                 <div className="flex sm:flex-row flex-col flex-wrap justify-start items-center h-full justify-center items-center">
-                    <span className="text-lg leading-10">
-                        دوره آشنایی با پایتون
-                    </span>
+                    <span className="text-lg leading-10">{course.title}</span>
                     <HDivider />
-                    <span className="font-bold leading-10">مرتضی معصومی</span>
+                    <span className="font-bold leading-10">
+                        {course.user.first_name} {course.user.last_name}
+                    </span>
                     <HDivider />
                     <span className="font-bold leading-10">
                         <Clock className="text-xs ml-1" />
-                        14 ساعت
+                        {course.hour_length} ساعت
                     </span>
                     <HDivider />
                     <span className="font-bold text-lg leading-10 text-green-500">
-                        20000 تومان
+                        {course.price} تومان
                     </span>
                 </div>
                 <Button

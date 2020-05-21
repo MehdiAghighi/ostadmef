@@ -17,15 +17,17 @@ function TeacherCard({ teacher, className }) {
                     <div className="flex flex-col mx-3">
                         <span className="text-base leading-10">
                             مدرس:{" "}
-                            <span className="font-bold">مرتضی معصومی</span>
+                            <span className="font-bold">
+                                {teacher.first_name} {teacher.last_name}
+                            </span>
                         </span>
-                        <span className="text-base leading-10">
+                        {/* <span className="text-base leading-10">
                             کارشناس ارشد ارتباطات
-                        </span>
+                        </span> */}
                     </div>
                 </div>
                 <div className="flex slef-end items-end">
-                    <ArrowLeft className="text-orange-500" />
+                    <ArrowLeft className="text-orange-500 cursor-not-allowed" />
                 </div>
             </div>
         </div>

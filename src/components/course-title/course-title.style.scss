@@ -1,0 +1,12 @@
+.title-wrapper {
+    width: auto;
+    .title {
+        // font-size: 50px;
+        line-height: 48px;
+        font-weight: bold;
+    }
+    .title-through-line {
+        background: rgba(130, 230, 255, 0.5);
+        // z-index: -1;
+    }
+}

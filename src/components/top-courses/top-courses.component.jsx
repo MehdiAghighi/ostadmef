@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import TopCoursesSlider from "../top-courses-slider/top-courses-slider.component";
 
 import API from "../../helpers/api";
-import Loader from "react-loader-spinner";
+import CustomLoader from "../custom-loader/custom-loader.component";
 
 function TopCourses() {
     const [topCourses, setTopCourses] = useState([]);
@@ -41,13 +41,7 @@ function TopCourses() {
             </div>
             <div className="my-5">
                 {isLoading ? (
-                    <div className="mx-auto text-center">
-                        <Loader
-                            type="Triangle"
-                            className="inline-block mb-10"
-                            color="#ed8936"
-                        />
-                    </div>
+                    <CustomLoader />
                 ) : (
                     <TopCoursesSlider
                         isLoading={isLoading}
