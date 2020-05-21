@@ -1,21 +1,21 @@
 import React from "react";
 
 function Card(props) {
-   return (
-      <div {...props} className={`inline-flex ${props.full && "w-full"}`}>
-         <div
-            className={`py-2 px-2 rounded-lg bg-orange-100 ${
-               props.full && "w-full"
-            }`}
-         >
-            {props.children}
-         </div>
-      </div>
-   );
+    return (
+        <div {...props} className={`inline-flex ${props.full ? "w-full" : ""}`}>
+            <div
+                className={`py-2 px-2 rounded-lg bg-orange-100 ${
+                    props.full && "w-full"
+                }`}
+            >
+                {props.children}
+            </div>
+        </div>
+    );
 }
 
 Card.defaultProps = {
-   full: false,
+    full: false,
 };
 
 export default Card;

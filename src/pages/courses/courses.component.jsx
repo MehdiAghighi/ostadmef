@@ -1,69 +1,82 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import {
+    useQueryParams,
+    NumberParam,
+    StringParam,
+    withDefault,
+} from "use-query-params";
 
 import "./courses.style.scss";
 
-import courseImage from "../../assets/images/course.png";
+import CourseCard from "../../components/course-card/course-card.component";
 
-import { ArrowLeft, Clock } from "../../components/icon/icon.component";
-import Card from "../../components/card/card.component";
-import CardImage from "../../components/card/card-image/card-image.component";
-import CardTitle from "../../components/card/card-title/card-title.component";
-import CardBody from "../../components/card/card-body/card-body.component";
-import CardFooter from "../../components/card/card-footer/card-footer.component";
-import ReactPaginate from "react-paginate";
+import API from "../../helpers/api";
+
+import { Link } from "react-router-dom";
+import Loader from "react-loader-spinner";
 
 function Courses(props) {
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 8, 90, 1, 2, 3, 4, 65, 23, 1, 3];
+    const [courses, setCourses] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const [query, setQuery] = useQueryParams({
+        page: withDefault(NumberParam, 1),
+    });
+    const { page } = query;
+
+    useEffect(() => {
+        API.get(`/course?page=${page}`)
+            .then((resp) => {
+                return resp.data.courses;
+            })
+            .then((data) => {
+                setCourses(data);
+                setIsLoading(false);
+                console.log(data);
+            })
+            .catch((err) => console.log(err));
+    }, [query]);
     return (
         <div className="container mx-auto">
-            <div className="flex flex-row flex-wrap mt-5">
-                {arr.map((item) => (
-                    <div className="mx-4 mt-4">
-                        <Card>
-                            <CardImage to="/">
-                                <img src={courseImage} className="" />
-                            </CardImage>
-                            <CardTitle to="/">آموزش فتوشاپ مقدماتی</CardTitle>
-                            <CardBody>
-                                <div className="flex flex-row items-center mx-auto text-center justify-center">
-                                    <span>مهران احمدی</span>
-                                    <div
-                                        className="h-6 bg-gray-400 mx-3"
-                                        style={{
-                                            width: 2,
-                                        }}
-                                    ></div>
-                                    <span className="text-gray-600">
-                                        ساعت 14 &nbsp;
-                                        <Clock className="text-gray-600 text-xs" />
-                                    </span>
-                                </div>
-                            </CardBody>
-                            <CardFooter>
-                                <div className="flex flex-row justify-between items-center">
-                                    <span className="text-xl text-green-500 leading-tight">
-                                        20,000 تومان
-                                    </span>
-                                    <ArrowLeft className="text-xs font-light text-orange-500" />
-                                </div>
-                            </CardFooter>
-                        </Card>
+            {!isLoading ? (
+                <div>
+                    <div className="flex flex-row flex-wrap mt-5 justify-center">
+                        {courses.data.map((course) => (
+                            <div className="mx-4 mt-4">
+                                <CourseCard course={course} />
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
-            <ReactPaginate
-                pageCount={3}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={2}
-                previousLabel="قبلی"
-                nextLabel="بعدی"
-                breakLabel={"..."}
-                breakClassName={"break-me"}
-                // onPageChange={this.handlePageClick}
-                containerClassName={"pagination"}
-                subContainerClassName={"pages pagination"}
-                activeClassName={"active"}
-            />
+                    <ul className="pagination mx-auto flex flex-row justify-center">
+                        {courses.prev_page_url && (
+                            <li className="py-2 px-4 bg-white border border-orange-500 mx-1 rounded">
+                                <Link to={`?page=${courses.current_page - 1}`}>
+                                    قبلی
+                                </Link>
+                            </li>
+                        )}
+                        {}
+                        <li className="py-2 px-4 bg-white border-2 border-orange-500 bg-orange-500 font-bold text-white mx-1 rounded">
+                            {courses.current_page}
+                        </li>
+                        {courses.next_page_url && (
+                            <li className="py-2 px-4 bg-white border border-orange-500 mx-1 rounded">
+                                <Link to={`?page=${courses.current_page + 1}`}>
+                                    بعدی
+                                </Link>
+                            </li>
+                        )}
+                    </ul>
+                </div>
+            ) : (
+                <div className="mx-auto w-full flex justify-center">
+                    <Loader
+                        type="Triangle"
+                        className="inline-block mb-10"
+                        color="#ed8936"
+                    />
+                </div>
+            )}
         </div>
     );
 }
