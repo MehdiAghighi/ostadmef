@@ -40,7 +40,6 @@ function Courses(props) {
                                 </div>
                             </CardBody>
                             <CardFooter>
-                                \
                                 <div className="flex flex-row justify-between items-center">
                                     <span className="text-xl text-green-500 leading-tight">
                                         20,000 تومان
