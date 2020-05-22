@@ -16,30 +16,30 @@ import { fetchUser, useAuthDispatch } from "./contexts/auth-context";
 
 toast.configure({});
 function App() {
-   const authDispatch = useAuthDispatch();
-   useEffect(async () => {
-      await fetchUser(authDispatch);
-   });
-   return (
-      <div className="bg-white">
-         <Login />
-         <TopNav />
-         <Switch>
-            {routes.map((route) => (
-               <Route {...route} />
-            ))}
-         </Switch>
-         <Footer />
-         <ToastContainer
-            rtl={true}
-            position={toast.POSITION.BOTTOM_RIGHT}
-            closeButton={false}
-            limit={1}
-            toastClassName="font-sans font-bold"
-            autoClose={false}
-         />
-      </div>
-   );
+    const authDispatch = useAuthDispatch();
+    useEffect(async () => {
+        await fetchUser(authDispatch);
+    });
+    return (
+        <div className="bg-white">
+            <Login />
+            <TopNav />
+            <Switch>
+                {routes.map((route) => (
+                    <Route {...route} />
+                ))}
+            </Switch>
+            <Footer />
+            <ToastContainer
+                rtl={true}
+                position={toast.POSITION.BOTTOM_RIGHT}
+                closeButton={false}
+                limit={1}
+                toastClassName="font-sans font-bold"
+                autoClose={false}
+            />
+        </div>
+    );
 }
 
 export default App;
