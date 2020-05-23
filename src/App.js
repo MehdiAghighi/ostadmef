@@ -17,8 +17,8 @@ import { fetchUser, useAuthDispatch } from "./contexts/auth-context";
 toast.configure({});
 function App() {
     const authDispatch = useAuthDispatch();
-    useEffect(async () => {
-        await fetchUser(authDispatch);
+    useEffect(() => {
+        fetchUser(authDispatch);
     });
     return (
         <div className="bg-white">
@@ -36,7 +36,7 @@ function App() {
                 closeButton={false}
                 limit={1}
                 toastClassName="font-sans font-bold"
-                autoClose={false}
+                autoClose={4000}
             />
         </div>
     );

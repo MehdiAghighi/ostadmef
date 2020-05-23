@@ -4,6 +4,7 @@ import Title from "../title/title.component";
 import RelatedCoursesSlider from "../related-courses-slider/related-courses-slider.component";
 import API from "../../helpers/api";
 import CustomLoader from "../custom-loader/custom-loader.component";
+import { toast } from "react-toastify";
 
 function RelatedCourses({ course }) {
     const [relatedCourses, setRelatedCourses] = useState([]);
@@ -18,7 +19,13 @@ function RelatedCourses({ course }) {
                 setRelatedCourses(courses);
                 setIsLoading(false);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                if (err.response) {
+                    toast.error(err.response.data.message);
+                } else {
+                    toast.error("مشکلی در ارتباط با سرور پیش آمده است");
+                }
+            });
     }, [course]);
     return (
         <div>

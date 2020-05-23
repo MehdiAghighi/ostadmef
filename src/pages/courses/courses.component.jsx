@@ -14,6 +14,7 @@ import API from "../../helpers/api";
 
 import { Link } from "react-router-dom";
 import Loader from "react-loader-spinner";
+import { toast } from "react-toastify";
 
 function Courses(props) {
     const [courses, setCourses] = useState([]);
@@ -34,7 +35,13 @@ function Courses(props) {
                 setIsLoading(false);
                 console.log(data);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                if (err.response) {
+                    toast.error(err.response.data.message);
+                } else {
+                    toast.error("دریافت اطلاعات دوره‌ها امکان پذیر نیست");
+                }
+            });
     }, [query]);
     return (
         <div className="container mx-auto">

@@ -6,6 +6,7 @@ import TopCoursesSlider from "../top-courses-slider/top-courses-slider.component
 
 import API from "../../helpers/api";
 import CustomLoader from "../custom-loader/custom-loader.component";
+import { toast } from "react-toastify";
 
 function TopCourses() {
     const [topCourses, setTopCourses] = useState([]);
@@ -18,7 +19,11 @@ function TopCourses() {
                 setIsLoading(false);
             })
             .catch((err) => {
-                console.log(err);
+                if (err.response) {
+                    toast.error(err.response.data.message);
+                } else {
+                    toast.error("مشکلی در ارتباط با سرور پیش آمده است");
+                }
             });
     }, []);
     return (

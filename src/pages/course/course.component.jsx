@@ -6,6 +6,7 @@ import CourseInfo from "../../components/course-info/course-info.component";
 import CourseSections from "../../components/course-sections/course-sections.component";
 import RelatedCourses from "../../components/related-courses/related-courses.component";
 import API from "../../helpers/api";
+import { toast } from "react-toastify";
 
 function Course(props) {
     let { slug } = useParams();
@@ -21,14 +22,20 @@ function Course(props) {
                 setCourse(course);
                 setIsLoading(false);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                if (err.response) {
+                    toast.error(err.response.data.message);
+                } else {
+                    toast.error("دریافت اطلاعات دوره موفقیت‌آمیز نبود");
+                }
+            });
     }, [slug]);
     return (
         <div>
             {isLoading ? null : (
                 <>
                     <CourseIntro course={course} />
-                    <CourseInfo course={course} />
+                    {/* <CourseInfo course={course} /> */}
                     <CourseSections
                         course={{ id: course.id, title: course.title }}
                     />

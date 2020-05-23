@@ -3,6 +3,7 @@ import Title from "../title/title.component";
 import CourseSection from "../course-section/course-section.component";
 import Loader from "react-loader-spinner";
 import API from "../../helpers/api";
+import { toast } from "react-toastify";
 function CourseSections({ course }) {
     const [videos, setVideos] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +17,13 @@ function CourseSections({ course }) {
                 setVideos(data);
                 setIsLoading(false);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                if (err.response) {
+                    toast.error(err.response.data.message);
+                } else {
+                    toast.error("مشکلی در ارتباط با سرور پیش آمده است");
+                }
+            });
     }, [course]);
     return (
         <div className="mt-8 bg-gray-200">

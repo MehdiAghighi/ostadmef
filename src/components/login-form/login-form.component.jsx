@@ -65,16 +65,19 @@ function LoginForm(props) {
                             phone: values.phone,
                         },
                     }).catch((err) => {
-                        toast.error("مشکلی در ارتباط پیش آمده");
-                        return;
+                        if (err.response.status === 500) {
+                            toast.error("مشکلی در ارتباط پیش آمده");
+                            return;
+                        } else {
+                            toast.error(err.response.data.message);
+                            return;
+                        }
                     });
                     if (json.status === 200) {
                         data = json.data;
                         await setStage(2);
                         await setInProp(false);
                         await setButtonText("اعتبار سنجی کد");
-                    } else {
-                        toast.error("مشکلی در ارتباط پیش آمده", {});
                     }
                 } else if (stage == 2) {
                     const json = await API.post(`/auth/login`, null, {
@@ -83,8 +86,13 @@ function LoginForm(props) {
                             verification_code: values.verification_code,
                         },
                     }).catch((err) => {
-                        toast.error("مشکلی در ارتباط پیش آمده");
-                        return;
+                        if (err.response.status === 500) {
+                            toast.error("مشکلی در ارتباط پیش آمده");
+                            return;
+                        } else {
+                            toast.error(err.response.data.message);
+                            return;
+                        }
                     });
                     data = json.data;
 

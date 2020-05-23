@@ -82,7 +82,11 @@ async function fetchUser(dispatch) {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
     }).catch((err) => {
-        toast.error("دریافت اطلاعات کاربر موفقیت‌آمیز نبود");
+        if (err.response) {
+            toast.error(err.response.data.message);
+        } else {
+            toast.error("دریافت اطلاعات کاربر موفقیت‌آمیز نبود");
+        }
         return;
     });
     if (data) {
