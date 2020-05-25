@@ -12,15 +12,24 @@ import { toast } from "react-toastify";
 function Course(props) {
    let { slug } = useParams();
    const [course, setCourse] = useState({});
+   const [bought, setBought] = useState(false);
    const [isLoading, setIsLoading] = useState(true);
 
    useEffect(() => {
+      setIsLoading(true);
       API.get(`/course/${slug}`)
          .then((response) => {
             return response.data.course;
          })
          .then((course) => {
             setCourse(course);
+            return API.get(`/course/admin/invoice/check/${slug}`);
+         })
+         .then((invoice) => {
+            return invoice.data.invoice;
+         })
+         .then((bought) => {
+            setBought(bought);
             setIsLoading(false);
          })
          .catch((err) => {
@@ -29,6 +38,7 @@ function Course(props) {
             } else {
                toast.error("دریافت اطلاعات دوره موفقیت‌آمیز نبود");
             }
+            setIsLoading(false);
          });
    }, [slug]);
    return (
@@ -37,7 +47,7 @@ function Course(props) {
             <CustomLoader />
          ) : (
             <>
-               <CourseIntro course={course} />
+               <CourseIntro course={course} bought={bought} />
                {/* <CourseInfo course={course} /> */}
                <CourseSections
                   course={{ id: course.id, title: course.title }}

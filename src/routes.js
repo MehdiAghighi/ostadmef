@@ -6,6 +6,7 @@ import Courses from "./pages/courses/courses.component";
 import Payment from "./pages/payment/payment.component";
 import Logout from "./pages/logout/logout.component";
 import NotFound from "./pages/not-found/not-found.component";
+import ProfileCourses from "./pages/profile-courses/profile-courses.component";
 
 const routes = [
    {
@@ -38,6 +39,10 @@ const routes = [
    {
       path: "/logout",
       component: Logout,
+   },
+   {
+      path: "/profile/courses",
+      component: ProfileCourses,
    },
    {
       component: NotFound,
