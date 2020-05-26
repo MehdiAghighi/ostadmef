@@ -1,3 +1,11 @@
 .active-link .link-bottom-border {
    display: block !important;
 }
+
+.dropdown .dropdown-menu {
+   display: none;
+}
+
+.dropdown .dropdown-toggle:hover .dropdown-menu {
+   display: block;
+}

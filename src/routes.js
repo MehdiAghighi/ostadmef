@@ -3,10 +3,11 @@ import Blog from "./pages/blog/blog.component";
 import Post from "./pages/post/post.component";
 import Course from "./pages/course/course.component";
 import Courses from "./pages/courses/courses.component";
+import Video from "./pages/video/video.component";
 import Payment from "./pages/payment/payment.component";
 import Logout from "./pages/logout/logout.component";
-import NotFound from "./pages/not-found/not-found.component";
 import ProfileCourses from "./pages/profile-courses/profile-courses.component";
+import NotFound from "./pages/not-found/not-found.component";
 
 const routes = [
    {
@@ -31,6 +32,10 @@ const routes = [
    {
       path: "/course/:slug",
       component: Course,
+   },
+   {
+      path: "/video/:slug",
+      component: Video,
    },
    {
       path: "/payment",
