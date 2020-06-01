@@ -20,7 +20,7 @@ function CourseSections({ course, activeId }) {
                 setIsLoading(false);
             })
             .catch((err) => {
-                if (err.response.data) {
+                if (err.response) {
                     toast.error(err.response.data.message);
                 } else {
                     toast.error("مشکلی در ارتباط با سرور پیش آمده است");

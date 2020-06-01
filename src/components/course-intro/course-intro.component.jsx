@@ -40,7 +40,7 @@ function CourseIntro({ course, bought }) {
                             setFetchingUrlStatus("success");
                         })
                         .catch((err) => {
-                            if (err.response.data) {
+                            if (err.response) {
                                 toast.error(err.response.data.message);
                             } else {
                                 toast.error(

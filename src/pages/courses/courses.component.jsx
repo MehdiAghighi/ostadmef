@@ -36,7 +36,7 @@ function Courses(props) {
                 console.log(data);
             })
             .catch((err) => {
-                if (err.response.data) {
+                if (err.response) {
                     toast.error(err.response.data.message);
                 } else {
                     toast.error("دریافت اطلاعات دوره‌ها امکان پذیر نیست");

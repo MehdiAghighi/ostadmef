@@ -82,7 +82,7 @@ async function fetchUser(dispatch) {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
     }).catch((err) => {
-        if (err.response.data) {
+        if (err.response) {
             toast.error(err.response.data.message);
         } else {
             toast.error("دریافت اطلاعات کاربر موفقیت‌آمیز نبود");
