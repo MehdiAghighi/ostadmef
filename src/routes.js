@@ -15,15 +15,15 @@ const routes = [
         component: Index,
         exact: true,
     },
-    // {
-    //    path: "/blog",
-    //    component: Blog,
-    //    exact: true,
-    // },
-    // {
-    //    path: "/blog/:slug",
-    //    component: Post,
-    // },
+    {
+        path: "/blog",
+        component: Blog,
+        exact: true,
+    },
+    {
+        path: "/blog/:slug",
+        component: Post,
+    },
     {
         path: "/courses",
         component: Courses,
