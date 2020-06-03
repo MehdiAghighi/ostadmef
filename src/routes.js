@@ -10,49 +10,49 @@ import ProfileCourses from "./pages/profile-courses/profile-courses.component";
 import NotFound from "./pages/not-found/not-found.component";
 
 const routes = [
-    {
-        path: "/",
-        component: Index,
-        exact: true,
-    },
-    {
-        path: "/blog",
-        component: Blog,
-        exact: true,
-    },
-    {
-        path: "/blog/:slug",
-        component: Post,
-    },
-    {
-        path: "/courses",
-        component: Courses,
-        exact: true,
-    },
-    {
-        path: "/course/:slug",
-        component: Course,
-    },
-    {
-        path: "/video/:slug",
-        component: Video,
-    },
-    {
-        path: "/payment",
-        component: Payment,
-    },
-    {
-        path: "/logout",
-        component: Logout,
-    },
-    {
-        path: "/profile/courses",
-        component: ProfileCourses,
-    },
-    {
-        component: NotFound,
-        status: 404,
-    },
+   {
+      path: "/",
+      component: Index,
+      exact: true,
+   },
+   {
+      path: "/blog",
+      component: Blog,
+      exact: true,
+   },
+   {
+      path: "/blog/:slug",
+      component: Post,
+   },
+   {
+      path: "/courses",
+      component: Courses,
+      exact: true,
+   },
+   {
+      path: "/course/:slug",
+      component: Course,
+   },
+   {
+      path: "/video/:slug",
+      component: Video,
+   },
+   {
+      path: "/payment",
+      component: Payment,
+   },
+   {
+      path: "/logout",
+      component: Logout,
+   },
+   {
+      path: "/profile/courses",
+      component: ProfileCourses,
+   },
+   {
+      component: NotFound,
+      status: 404,
+   },
 ];
 
 export default routes;

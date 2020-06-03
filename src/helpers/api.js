@@ -1,23 +1,39 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const API = axios.create({
-    baseURL: process.env.REACT_APP_API_DOMAIN,
-    responseType: "json",
-    //  headers: {
-    //      Authorization: () => `Bearer ${localStorage.getItem("token")}`,
-    //  },
+   baseURL: process.env.REACT_APP_API_DOMAIN,
+   responseType: "json",
+   //  headers: {
+   //      Authorization: () => `Bearer ${localStorage.getItem("token")}`,
+   //  },
 });
 
 API.interceptors.request.use(function (config) {
-    const token = localStorage.getItem("token");
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-    }
-    const utm_source = localStorage.getItem("utm_source");
-    if (utm_source) {
-        config.headers.utm_source = utm_source;
-    }
-    return config;
+   const token = localStorage.getItem("token");
+   if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+   }
+   const utm_source = localStorage.getItem("utm_source");
+   if (utm_source) {
+      config.headers.utm_source = utm_source;
+   }
+   return config;
 });
+
+export const request = (path, cb, ecb = () => {}) => {
+   API.get(path)
+      .then((response) => {
+         cb(response);
+      })
+      .catch((err) => {
+         if (err.response) {
+            toast.error(err.response.data.message);
+         } else {
+            toast.error("مشکلی در ارتباط با سرور پیش آمده است");
+         }
+         ecb();
+      });
+};
 
 export default API;

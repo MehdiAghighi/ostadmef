@@ -1,40 +1,55 @@
 import React from "react";
 
-function BlogCard({ post }) {
-    return (
-        <div>
-            <Card>
-                <CardImage to="/">
-                    <img src={post.img} className="" />
-                </CardImage>
-                <CardTitle to="/">{post.title}</CardTitle>
-                <CardBody>
-                    <PostTag to="/">{post.category}</PostTag>
-                </CardBody>
-                <CardFooter>
-                    <div className="flex flex-row justify-between items-center">
-                        <span></span>
-                        <div className="flex flex-row">
-                            <span className="text-gray-600">
-                                {post.timeAgo} &nbsp;
-                                <Clock className="text-gray-600 text-xs" />
-                            </span>
-                            <div
-                                className="h-6 bg-gray-400 mx-3"
-                                style={{
-                                    width: 2,
-                                }}
-                            ></div>
-                            <span className="text-gray-600">
-                                {post.time} &nbsp;
-                                <Clock className="text-gray-600 text-xs" />
-                            </span>
-                        </div>
-                    </div>
-                </CardFooter>
-            </Card>
-        </div>
-    );
+import Card from "../card/card.component";
+import CardImage from "../card/card-image/card-image.component";
+import CardTitle from "../card/card-title/card-title.component";
+import CardBody from "../card/card-body/card-body.component";
+import CardFooter from "../card/card-footer/card-footer.component";
+import { Clock } from "../icon/icon.component";
+
+function BlogCard({ post, full }) {
+   return (
+      <div>
+         <Card full={full}>
+            <CardImage to={`/blog/${post.id}`}>
+               <img
+                  src={post.pic.url}
+                  style={full && { width: 600, height: 300 }}
+                  className=""
+               />
+            </CardImage>
+            <CardTitle to={`/blog/${post.id}`}>{post.title}</CardTitle>
+            <CardBody>
+               {/* <PostTag to="/">{post.category}</PostTag> */}
+            </CardBody>
+            <CardFooter>
+               <div className="flex flex-row justify-between items-center">
+                  <span></span>
+                  <div className="flex flex-row">
+                     <span className="text-gray-600">
+                        {post.time_ago} &nbsp;
+                        <Clock className="text-gray-600 text-xs" />
+                     </span>
+                     <div
+                        className="h-6 bg-gray-400 mx-3"
+                        style={{
+                           width: 2,
+                        }}
+                     ></div>
+                     <span className="text-gray-600">
+                        {post.read_time} دقیقه &nbsp;
+                        <Clock className="text-gray-600 text-xs" />
+                     </span>
+                  </div>
+               </div>
+            </CardFooter>
+         </Card>
+      </div>
+   );
 }
+
+BlogCard.defaultProps = {
+   full: false,
+};
 
 export default BlogCard;

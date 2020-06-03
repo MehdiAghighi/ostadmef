@@ -34,9 +34,9 @@ function MobileSidebar({ isOpen }) {
                <MobileNavLink to="/about-us" exact>
                   درباره‌ما
                </MobileNavLink>
-               {/* <MobileNavLink to="/blog" exact>
-                        بلاگ
-                    </MobileNavLink> */}
+               <MobileNavLink to="/blog" exact>
+                  بلاگ
+               </MobileNavLink>
             </div>
             <div>
                {!isLoggedIn ? (
