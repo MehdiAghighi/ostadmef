@@ -23,14 +23,13 @@ function CourseSections({ course, activeId }) {
                   <CustomLoader />
                ) : (
                   <div className="flex flex-col">
-                     {videos.map((video) => (
-                        <>
-                           <CourseSection
-                              active={activeId == video.id}
-                              video={video}
-                              title={course.title}
-                           />
-                        </>
+                     {videos.map((video, index) => (
+                        <CourseSection
+                           key={index}
+                           active={activeId === video.id}
+                           video={video}
+                           title={course.title}
+                        />
                      ))}
                   </div>
                )}

@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from "react";
-import {
-   useQueryParams,
-   NumberParam,
-   StringParam,
-   withDefault,
-} from "use-query-params";
+import { useQueryParams, NumberParam, withDefault } from "use-query-params";
+import { Helmet } from "react-helmet";
 
 import "./courses.style.scss";
 
 import CourseCard from "../../components/course-card/course-card.component";
 
-import API, { request } from "../../helpers/api";
+import { request } from "../../helpers/api";
 
 import { Link } from "react-router-dom";
-import Loader from "react-loader-spinner";
-import { toast } from "react-toastify";
+import CustomLoader from "../../components/custom-loader/custom-loader.component";
 
 function Courses(props) {
    const [courses, setCourses] = useState([]);
@@ -30,14 +25,17 @@ function Courses(props) {
          setCourses(resp.data.courses);
          setIsLoading(false);
       });
-   }, [query]);
+   }, [query, page]);
    return (
       <div className="container mx-auto">
+         <Helmet>
+            <title>لینوم | دوره‌ها</title>
+         </Helmet>
          {!isLoading ? (
             <div>
                <div className="flex flex-row flex-wrap mt-5 justify-center">
-                  {courses.data.map((course) => (
-                     <div className="mx-4 mt-4">
+                  {courses.data.map((course, index) => (
+                     <div className="mx-4 mt-4" key={index}>
                         <CourseCard course={course} />
                      </div>
                   ))}
@@ -64,13 +62,7 @@ function Courses(props) {
                </ul>
             </div>
          ) : (
-            <div className="mx-auto w-full flex justify-center">
-               <Loader
-                  type="Triangle"
-                  className="inline-block mb-10"
-                  color="#ed8936"
-               />
-            </div>
+            <CustomLoader />
          )}
       </div>
    );

@@ -15,10 +15,19 @@ function WhyLinom(props) {
       <div className="container mx-auto mt-3 why-linom">
          <div className="flex lg:flex-row lg:justify-between flex-col justify-center items-center">
             <div className="w-11/12 sm:w-7/12 lg:w-5/12 relative">
-               <img src={PurpRecBig} className="absolute purp-rec" style={{}} />
-               <img src={WhyLinomImg} className="w-full relative z-10" />
-               <img src={OrRecBot} className="absolute or-rec" />
-               <img src={Blueprint} className="absolute blueprint" />
+               <img
+                  src={PurpRecBig}
+                  alt=""
+                  className="absolute purp-rec"
+                  style={{}}
+               />
+               <img
+                  src={WhyLinomImg}
+                  alt="چرا لینوم ؟"
+                  className="w-full relative z-10"
+               />
+               <img src={OrRecBot} alt="" className="absolute or-rec" />
+               <img src={Blueprint} alt="" className="absolute blueprint" />
             </div>
             <div className="w-12/12 sm:w-11/12 md:10/12 lg:w-7/12 mt-8 lg:mt-0 lg:mr-5">
                <div className="flex flex-col inline-flex">

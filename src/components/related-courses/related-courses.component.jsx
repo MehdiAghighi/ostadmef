@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import Title from "../title/title.component";
 import RelatedCoursesSlider from "../related-courses-slider/related-courses-slider.component";
-import API, { request } from "../../helpers/api";
+import { request } from "../../helpers/api";
 import CustomLoader from "../custom-loader/custom-loader.component";
-import { toast } from "react-toastify";
 
 function RelatedCourses({ course }) {
    const [relatedCourses, setRelatedCourses] = useState([]);

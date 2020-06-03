@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 import { useQueryParams, NumberParam } from "use-query-params";
-import { toast } from "react-toastify";
 
-import API, { request } from "../../helpers/api";
+import { request } from "../../helpers/api";
 import CustomLoader from "../../components/custom-loader/custom-loader.component";
 import { Link } from "react-router-dom";
 
@@ -26,6 +26,9 @@ function Payment(props) {
    }, [transaction_id]);
    return (
       <div className="container mx-auto">
+         <Helmet>
+            <title>لینوم | نمایش پرداخت</title>
+         </Helmet>
          {isLoading ? (
             <CustomLoader />
          ) : (

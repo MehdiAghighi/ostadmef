@@ -9,12 +9,13 @@ import { Clock } from "../icon/icon.component";
 
 function BlogCard({ post, full }) {
    return (
-      <div>
+      <div className="card">
          <Card full={full}>
             <CardImage to={`/blog/${post.id}`}>
                <img
-                  src={post.pic.url}
-                  style={full && { width: 600, height: 300 }}
+                  src={full ? post.pic.card_url : post.pic.card_url}
+                  style={full ? { width: 600 } : {}}
+                  alt={post.title}
                   className=""
                />
             </CardImage>

@@ -8,17 +8,13 @@ import HDivider from "../h-divider/h-divider.component";
 import "./course-intro.style.scss";
 
 import Rodal from "rodal";
-// include styles
-import "rodal/lib/rodal.css";
-
-import { toast } from "react-toastify";
 
 // import Main from "../../assets/images/Main.png";
 // import DecoratedImage from "../decorated-image/decorated-image.component";
 import TeacherCard from "../teacher-card/teacher-card.component";
 import CourseTitle from "../course-title/course-title.component";
 
-import API, { request } from "../../helpers/api";
+import { request } from "../../helpers/api";
 import CustomLoader from "../custom-loader/custom-loader.component";
 
 function CourseIntro({ course, bought }) {
@@ -39,22 +35,6 @@ function CourseIntro({ course, bought }) {
                   },
                   () => setFetchingUrlStatus("error")
                );
-               // API.get(`/course/admin/invoice/${course.id}`)
-               //    .then((resp) => {
-               //       return resp.data;
-               //    })
-               //    .then((data) => {
-               //       setPaymentLink(data.payment_url);
-               //       setFetchingUrlStatus("success");
-               //    })
-               //    .catch((err) => {
-               //       if (err.response) {
-               //          toast.error(err.response.data.message);
-               //       } else {
-               //          toast.error("مشکلی در ارتباط با سرور پیش آمده است");
-               //       }
-               //       setFetchingUrlStatus("error");
-               //    });
             }
          }
       }
@@ -63,9 +43,9 @@ function CourseIntro({ course, bought }) {
       <>
          <div className="course-intro pt-10 container mx-auto flex flex-col-reverse lg:flex-row justify-between index-intro">
             <div
-               className="xl:py-20 lg:py-16 py-10 ml-2"
+               className="xl:py-20 lg:py-16 py-10"
                style={{
-                  flexBasis: "49%",
+                  flexBasis: "50%",
                }}
             >
                <div className="xl:mb-5 mb-5 mx-auto lg:text-right text-center">
@@ -89,8 +69,12 @@ function CourseIntro({ course, bought }) {
                   )}
                </div>
             </div>
-            <div className="pt-8 w-full sm:w-11/12 lg:w-auto mx-auto mt-6">
-               <img src={`${course.pic.url}`} className="mx-auto" />
+            <div className="pt-8 w-full sm:w-11/12 lg:w-auto mx-auto mt-6 mr-6">
+               <img
+                  src={`${course.pic.url}`}
+                  alt={course.title}
+                  className="mx-auto"
+               />
             </div>
             <Rodal
                visible={buyModalOpen}

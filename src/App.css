@@ -10,3 +10,11 @@
 .z--10 {
     z-index: -10;
 }
+
+.card img {
+    border-radius: 10px 80px 10px 10px;
+}
+
+.h-card img {
+    border-radius: 10px 50px 10px 10px;
+}

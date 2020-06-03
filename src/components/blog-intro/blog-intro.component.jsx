@@ -110,7 +110,9 @@ function BlogIntro(props) {
                         {isLoading ? (
                            <CustomLoader />
                         ) : (
-                           randPosts.map((it, index) => <HPostCard post={it} />)
+                           randPosts.map((it, index) => (
+                              <HPostCard key={index} post={it} />
+                           ))
                         )}
                      </div>
                   </div>

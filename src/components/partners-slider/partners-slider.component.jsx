@@ -1,12 +1,10 @@
 import React from "react";
 
-// import "react-id-swiper/lib/styles/scss/swiper.css";
-
 import "./partners-slider.style.scss";
 
 import { SliderBack, SliderFor } from "../icon/icon.component";
 
-import Kabir from "../../assets/images/Kabir.png";
+// import Kabir from "../../assets/images/Kabir.png";
 import Sharif from "../../assets/images/Sharif.png";
 import Tehran from "../../assets/images/Tehran.png";
 
@@ -14,8 +12,6 @@ import Swiper from "react-id-swiper";
 
 function PartnersSlider(props) {
    const params = {
-      // slidesPerView: 6.1,
-      // slidesPerGroup: 1,
       breakpoints: {
          1090: {
             slidesPerView: 5.9,
@@ -59,7 +55,7 @@ function PartnersSlider(props) {
          <Swiper {...params} className="">
             <div className="text-center">
                <div className="py-3 px-8">
-                  <img className="mx-auto" src={Tehran} />
+                  <img className="mx-auto" alt="" src={Tehran} />
                   <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
                      دانشگاه تهران
                   </span>
@@ -67,7 +63,7 @@ function PartnersSlider(props) {
             </div>
             <div className="text-center">
                <div className="py-3 px-8">
-                  <img className="mx-auto" src={Sharif} />
+                  <img className="mx-auto" alt="" src={Sharif} />
                   <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
                      دانشگاه تهران
                   </span>
@@ -75,7 +71,7 @@ function PartnersSlider(props) {
             </div>
             <div className="text-center">
                <div className="py-3 px-8">
-                  <img className="mx-auto" src={Sharif} />
+                  <img className="mx-auto" alt="" src={Tehran} />
                   <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
                      دانشگاه تهران
                   </span>
@@ -83,7 +79,7 @@ function PartnersSlider(props) {
             </div>
             <div className="text-center">
                <div className="py-3 px-8">
-                  <img className="mx-auto" src={Sharif} />
+                  <img className="mx-auto" alt="" src={Sharif} />
                   <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
                      دانشگاه تهران
                   </span>
@@ -91,7 +87,7 @@ function PartnersSlider(props) {
             </div>
             <div className="text-center">
                <div className="py-3 px-8">
-                  <img className="mx-auto" src={Sharif} />
+                  <img className="mx-auto" alt="" src={Tehran} />
                   <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
                      دانشگاه تهران
                   </span>

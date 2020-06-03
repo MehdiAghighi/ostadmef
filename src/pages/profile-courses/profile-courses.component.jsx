@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
-import { toast } from "react-toastify";
-
-import API, { request } from "../../helpers/api";
+import { request } from "../../helpers/api";
 import CustomLoader from "../../components/custom-loader/custom-loader.component";
 import Title from "../../components/title/title.component";
 import CourseCard from "../../components/course-card/course-card.component";
@@ -23,11 +22,14 @@ function ProfileCourses(props) {
             <CustomLoader />
          ) : (
             <div className="mt-6">
+               <Helmet>
+                  <title>لینوم | دوره‌های خریداری شده</title>
+               </Helmet>
                <Title>دوره‌های خریداری شده</Title>
                <div className="flex flex-row flex-wrap mt-5 justify-center">
                   {courses.length > 0 ? (
-                     courses.map((course) => (
-                        <div className="mx-4 mt-4">
+                     courses.map((course, index) => (
+                        <div className="mx-4 mt-4" key={index}>
                            <CourseCard course={course} />
                         </div>
                      ))

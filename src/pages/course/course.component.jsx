@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import CourseIntro from "../../components/course-intro/course-intro.component";
 // import CourseInfo from "../../components/course-info/course-info.component"
 import CustomLoader from "../../components/custom-loader/custom-loader.component";
 import CourseSections from "../../components/course-sections/course-sections.component";
 import RelatedCourses from "../../components/related-courses/related-courses.component";
-import API, { request } from "../../helpers/api";
+import request from "../../helpers/api";
+import API from "../../helpers/api";
 import { toast } from "react-toastify";
 
 function Course(props) {
@@ -17,13 +19,28 @@ function Course(props) {
 
    useEffect(() => {
       setIsLoading(true);
-      request(`/course/${slug}`, (resp) => {
-         setCourse(resp.data.course);
-         request(`/course/admin/invoice/check/${slug}`, (resp) => {
-            setBought(resp.data.invoice);
+      API.get(`/course/${slug}`)
+         .then((resp) => {
+            return resp.data.course;
+         })
+         .then((course) => {
+            setCourse(course);
+            return API.get(`/course/admin/invoice/check/${slug}`);
+         })
+         .then((resp) => {
+            return resp.data.invoice;
+         })
+         .then((invoice) => {
+            setBought(invoice);
             setIsLoading(false);
+         })
+         .catch((err) => {
+            if (err.response) {
+               toast.error(err.response.data.message);
+            } else {
+               toast.error("مشکلی در ارتباط با سرور پیش آمده است");
+            }
          });
-      });
    }, [slug]);
    return (
       <div>
@@ -31,6 +48,9 @@ function Course(props) {
             <CustomLoader />
          ) : (
             <>
+               <Helmet>
+                  <title>لینوم | {course.title}</title>
+               </Helmet>
                <CourseIntro course={course} bought={bought} />
                {/* <CourseInfo course={course} /> */}
                <CourseSections

@@ -1,15 +1,15 @@
 import React from "react";
 import { Clock } from "../icon/icon.component";
 
-function DateTime(props) {
+function DateTime({ timeAgo, readTime, className }) {
    return (
       <div
-         className={`flex flex-row justify-between items-center ${props.className}`}
+         className={`flex flex-row justify-between items-center ${className}`}
       >
          <span></span>
          <div className="flex flex-row">
             <span className="text-gray-600">
-               9 روز پیش &nbsp;
+               {timeAgo} &nbsp;
                <Clock className="text-gray-600 text-xs" />
             </span>
             <div
@@ -19,7 +19,7 @@ function DateTime(props) {
                }}
             ></div>
             <span className="text-gray-600">
-               ساعت 14 &nbsp;
+               {readTime} دقیقه &nbsp;
                <Clock className="text-gray-600 text-xs" />
             </span>
          </div>

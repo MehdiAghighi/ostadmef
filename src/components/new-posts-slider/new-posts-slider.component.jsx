@@ -3,22 +3,10 @@ import Swiper from "react-id-swiper";
 
 import "./new-posts.style.scss";
 
-import courseImage from "../../assets/images/course.png";
+import { SliderBack, SliderFor } from "../icon/icon.component";
+import BlogCard from "../blog-card/blog-card.component";
 
-import {
-   SliderBack,
-   SliderFor,
-   ArrowLeft,
-   Clock,
-} from "../icon/icon.component";
-import Card from "../card/card.component";
-import CardImage from "../card/card-image/card-image.component";
-import CardTitle from "../card/card-title/card-title.component";
-import CardBody from "../card/card-body/card-body.component";
-import CardFooter from "../card/card-footer/card-footer.component";
-import PostTag from "../post-tag/post-tag.component";
-
-function NewPostsSlider() {
+function NewPostsSlider({ posts }) {
    const params = {
       // slidesPerView: 6.1,
       // slidesPerGroup: 1,
@@ -64,42 +52,12 @@ function NewPostsSlider() {
          </span>
       ),
    };
-   const arr = [1, 2, 3];
    return (
       <div className="mr-1 md:mr-5">
          <Swiper {...params}>
-            {arr.map((it) => (
-               <div className="">
-                  <Card>
-                     <CardImage to="/">
-                        <img src={courseImage} className="" />
-                     </CardImage>
-                     <CardTitle to="/">دانستنی‌های هک با پایتون</CardTitle>
-                     <CardBody>
-                        <PostTag to="/">آموزشی</PostTag>
-                     </CardBody>
-                     <CardFooter>
-                        <div className="flex flex-row justify-between items-center">
-                           <span></span>
-                           <div className="flex flex-row">
-                              <span className="text-gray-600">
-                                 9 روز پیش &nbsp;
-                                 <Clock className="text-gray-600 text-xs" />
-                              </span>
-                              <div
-                                 className="h-6 bg-gray-400 mx-3"
-                                 style={{
-                                    width: 2,
-                                 }}
-                              ></div>
-                              <span className="text-gray-600">
-                                 ساعت 14 &nbsp;
-                                 <Clock className="text-gray-600 text-xs" />
-                              </span>
-                           </div>
-                        </div>
-                     </CardFooter>
-                  </Card>
+            {posts.map((item, index) => (
+               <div className="" key={index}>
+                  <BlogCard key={index} post={item} />
                </div>
             ))}
          </Swiper>

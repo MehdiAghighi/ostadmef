@@ -5,14 +5,17 @@ import CardTitle from "../card/card-title/card-title.component";
 import CardBody from "../card/card-body/card-body.component";
 import CardFooter from "../card/card-footer/card-footer.component";
 import { ArrowLeft, Clock } from "../icon/icon.component";
-import { Link } from "react-router-dom";
 
 function CourseCard({ course }) {
    return (
-      <div>
+      <div className="card">
          <Card>
             <CardImage to={`/course/${course.id}`}>
-               <img src={`${course.pic.card_url}`} className="" />
+               <img
+                  src={`${course.pic.card_url}`}
+                  alt={course.title}
+                  className=""
+               />
             </CardImage>
             <CardTitle to={`/course/${course.id}`}>{course.title}</CardTitle>
             <CardBody>

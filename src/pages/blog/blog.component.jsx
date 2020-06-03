@@ -1,4 +1,6 @@
 import React from "react";
+import { Helmet } from "react-helmet";
+
 import BlogIntro from "../../components/blog-intro/blog-intro.component";
 import NewPosts from "../../components/new-posts/new-posts.component";
 import HotPosts from "../../components/hot-posts/hot-posts";
@@ -6,6 +8,9 @@ import HotPosts from "../../components/hot-posts/hot-posts";
 function Blog() {
    return (
       <div>
+         <Helmet>
+            <title>لینوم | بلاگ</title>
+         </Helmet>
          <BlogIntro />
          <NewPosts />
          <HotPosts />

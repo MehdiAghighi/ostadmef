@@ -8,14 +8,14 @@ import HCardFooter from "../h-card/h-card-footer/h-card-footer.component";
 import HCardImage from "../h-card/h-card-image/h-card-image.component";
 import HCardData from "../h-card/h-card-data/h-card-data.component";
 import HCardTitleGroup from "../h-card/h-card-title-group/h-card-title-group.component";
-import PostTag from "../post-tag/post-tag.component";
+// import PostTag from "../post-tag/post-tag.component";
 
 function HPostCard({ post }) {
    return (
-      <HCard className="my-6">
+      <HCard className="my-6 h-card">
          <HCardData>
             <HCardTitleGroup>
-               <HCardTitle>{post.title}</HCardTitle>
+               <HCardTitle to={`/blog/${post.id}`}>{post.title}</HCardTitle>
                <HCardBody>{/* <PostTag>آموزشی</PostTag> */}</HCardBody>
             </HCardTitleGroup>
             <HCardFooter>
@@ -35,8 +35,8 @@ function HPostCard({ post }) {
                </span>
             </HCardFooter>
          </HCardData>
-         <HCardImage>
-            <img src={post.pic.thumb_url} />
+         <HCardImage to={`/blog/${post.id}`}>
+            <img src={post.pic.thumb_url} alt={post.title} />
          </HCardImage>
       </HCard>
    );
