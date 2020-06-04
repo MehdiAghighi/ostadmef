@@ -65,7 +65,7 @@ function PartnersSlider(props) {
                <div className="py-3 px-8">
                   <img className="mx-auto" alt="" src={Sharif} />
                   <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
-                     دانشگاه تهران
+                     دانشگاه شریف
                   </span>
                </div>
             </div>
@@ -81,7 +81,7 @@ function PartnersSlider(props) {
                <div className="py-3 px-8">
                   <img className="mx-auto" alt="" src={Sharif} />
                   <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
-                     دانشگاه تهران
+                     دانشگاه شریف
                   </span>
                </div>
             </div>

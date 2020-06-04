@@ -36,7 +36,7 @@ function App() {
       fetchUser(authDispatch);
    });
    return (
-      <div className="bg-white">
+      <div className="bg-white px-4 xs:px-0">
          <Helmet>
             <meta charSet="utf-8" />
          </Helmet>
