@@ -1,6 +1,6 @@
 import React from "react";
 
-import UserImg from "../../assets/images/user.png";
+import UserImg from "../../assets/images/unnamed.png";
 
 import { ArrowLeft } from "../icon/icon.component";
 
@@ -12,7 +12,11 @@ function TeacherCard({ teacher, className }) {
          >
             <div className="flex flex-row items-center justify-center">
                <div className="overflow-hidden rounded-full">
-                  <img src={UserImg} alt="معلم دوره" />
+                  <img
+                     src={teacher.pic ? teacher.pic.thumb_url : UserImg}
+                     style={{ borderRadius: "50%", width: 62, height: 62 }}
+                     alt="معلم دوره"
+                  />
                </div>
                <div className="flex flex-col mx-3">
                   <span className="text-base leading-10">

@@ -7,6 +7,7 @@ import {
    InstagramButton,
    TelegramButton,
    FacebookButton,
+   AparatButton,
 } from "../social-icon/social-icon.component";
 
 function Footer(props) {
@@ -42,6 +43,7 @@ function Footer(props) {
                   <TelegramButton />
                   <FacebookButton />
                   <TwitterButton />
+                  {/* <AparatButton /> */}
                </div>
             </div>
          </div>
