@@ -20,46 +20,46 @@ import { fetchUser, useAuthDispatch } from "./contexts/auth-context";
 
 toast.configure({});
 function App() {
-   const authDispatch = useAuthDispatch();
+    const authDispatch = useAuthDispatch();
 
-   const [cookies, setCookie] = useCookies(["utm_source"]);
+    const [cookies, setCookie] = useCookies(["utm_source"]);
 
-   const [query, setQuery] = useQueryParams({
-      utm_source: withDefault(NumberParam, null, true),
-   });
-   const { utm_source } = query;
+    const [query, setQuery] = useQueryParams({
+        utm_source: withDefault(NumberParam, null, true),
+    });
+    const { utm_source } = query;
 
-   useEffect(() => {
-      if (utm_source) {
-         setCookie("utm_source", utm_source);
-      }
-      fetchUser(authDispatch);
-   });
-   return (
-      <div className="bg-white px-4 xs:px-0">
-         <Helmet>
-            <meta charSet="utf-8" />
-         </Helmet>
-         <CookiesProvider>
-            <Login />
-            <TopNav />
-            <Switch>
-               {routes.map((route, index) => (
-                  <Route key={index} {...route} />
-               ))}
-            </Switch>
-            <Footer />
-            <ToastContainer
-               rtl={true}
-               position={toast.POSITION.BOTTOM_RIGHT}
-               closeButton={false}
-               limit={1}
-               toastClassName="font-sans font-bold"
-               autoClose={4000}
-            />
-         </CookiesProvider>
-      </div>
-   );
+    useEffect(() => {
+        if (utm_source) {
+            setCookie("utm_source", utm_source);
+        }
+        fetchUser(authDispatch);
+    });
+    return (
+        <div className="bg-white">
+            <Helmet>
+                <meta charSet="utf-8" />
+            </Helmet>
+            <CookiesProvider>
+                <Login />
+                <TopNav />
+                <Switch>
+                    {routes.map((route, index) => (
+                        <Route key={index} {...route} />
+                    ))}
+                </Switch>
+                <Footer />
+                <ToastContainer
+                    rtl={true}
+                    position={toast.POSITION.BOTTOM_RIGHT}
+                    closeButton={false}
+                    limit={1}
+                    toastClassName="font-sans font-bold"
+                    autoClose={4000}
+                />
+            </CookiesProvider>
+        </div>
+    );
 }
 
 export default App;

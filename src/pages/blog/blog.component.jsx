@@ -6,16 +6,16 @@ import NewPosts from "../../components/new-posts/new-posts.component";
 import HotPosts from "../../components/hot-posts/hot-posts";
 
 function Blog() {
-   return (
-      <div>
-         <Helmet>
-            <title>لینوم | بلاگ</title>
-         </Helmet>
-         <BlogIntro />
-         <NewPosts />
-         <HotPosts />
-      </div>
-   );
+    return (
+        <div>
+            <Helmet>
+                <title>لینوم | بلاگ</title>
+            </Helmet>
+            <BlogIntro />
+            <NewPosts />
+            <HotPosts />
+        </div>
+    );
 }
 
 export default Blog;

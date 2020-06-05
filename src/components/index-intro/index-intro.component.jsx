@@ -11,7 +11,7 @@ import DecoratedImage from "../decorated-image/decorated-image.component";
 
 function IndexIntro() {
     return (
-        <div className="pt-10 container mx-auto flex flex-col-reverse lg:flex-row justify-between index-intro">
+        <div className="pt-10 container mx-auto flex flex-col-reverse lg:flex-row justify-between index-intro px-4 xs:px-0">
             <div
                 className="xl:py-20 py-16"
                 style={{

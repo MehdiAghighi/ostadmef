@@ -11,96 +11,105 @@ import { FAQ } from "../icon/icon.component";
 import Button from "../button/button.component";
 
 function WhyLinom(props) {
-   return (
-      <div className="container mx-auto mt-3 why-linom">
-         <div className="flex lg:flex-row lg:justify-between flex-col justify-center items-center">
-            <div className="w-11/12 sm:w-7/12 lg:w-5/12 relative">
-               <img
-                  src={PurpRecBig}
-                  alt=""
-                  className="absolute purp-rec"
-                  style={{}}
-               />
-               <img
-                  src={WhyLinomImg}
-                  alt="چرا لینوم ؟"
-                  className="w-full relative z-10"
-               />
-               <img src={OrRecBot} alt="" className="absolute or-rec" />
-               <img src={Blueprint} alt="" className="absolute blueprint" />
+    return (
+        <div className="container mx-auto mt-3 why-linom px-4 xs:px-0">
+            <div className="flex lg:flex-row lg:justify-between flex-col justify-center items-center">
+                <div className="w-11/12 sm:w-7/12 lg:w-5/12 relative">
+                    <img
+                        src={PurpRecBig}
+                        alt=""
+                        className="absolute purp-rec"
+                        style={{}}
+                    />
+                    <img
+                        src={WhyLinomImg}
+                        alt="چرا لینوم ؟"
+                        className="w-full relative z-10"
+                    />
+                    <img src={OrRecBot} alt="" className="absolute or-rec" />
+                    <img
+                        src={Blueprint}
+                        alt=""
+                        className="absolute blueprint"
+                    />
+                </div>
+                <div className="w-12/12 sm:w-11/12 md:10/12 lg:w-7/12 mt-8 lg:mt-0 lg:mr-5">
+                    <div className="flex flex-col inline-flex">
+                        <span>چرا باید</span>
+                        <Title>لینوم را انتخاب کنم؟</Title>
+                    </div>
+                    <p className="font-light text-base sm:text-lg leading-10 mt-3 xl:text-2xl xl:mt-6 text-justify ml-2">
+                        لینوم یک پلتفرم آموزشی است که با تکیه بر ویدئو های کوتاه
+                        و فشرده بستری را برای دانشجویان ایجاد میکند که در آن
+                        بتوانند در کوتاه ترین زمان ممکن یک کورس را به طور کامل
+                        یاد بگیرند.
+                    </p>
+                    <div className="xl:mr-10 mr-6">
+                        <div className="flex flex-row flex-wrap mt-3 features-ic">
+                            <div className="mx-2 xl:mt-5 lg:mt-3 md:mt-6 sm:mt-3 mt-6 flex flex-row items-center">
+                                <div>
+                                    <span className="shadow-md py-5 px-3 rounded">
+                                        <FAQ className="text-blue-1000 text-3xl" />
+                                    </span>
+                                </div>
+                                <div className="mr-2">
+                                    <span className="font-bold text-base xl:text-lg leading-8 text-blue-1000">
+                                        بیش از 3500 کپسول آموزشی
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="mx-2 xl:mt-5 lg:mt-3 md:mt-6 sm:mt-3 mt-6 flex flex-row items-center">
+                                <div>
+                                    <span className="shadow-md py-5 px-3 rounded">
+                                        <FAQ className="text-blue-1000 text-3xl" />
+                                    </span>
+                                </div>
+                                <div className="mr-2">
+                                    <span className="font-bold text-base xl:text-lg leading-8 text-blue-1000">
+                                        پرسش و پاسخ
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="mx-2 xl:mt-5 lg:mt-3 md:mt-6 sm:mt-3 mt-6 flex flex-row items-center">
+                                <div>
+                                    <span className="shadow-md py-5 px-3 rounded">
+                                        <FAQ className="text-blue-1000 text-3xl" />
+                                    </span>
+                                </div>
+                                <div className="mr-2">
+                                    <span className="font-bold text-base xl:text-lg leading-8 text-blue-1000">
+                                        بیش از 1800 دانشجو
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="mx-2 xl:mt-5 lg:mt-3 md:mt-6 sm:mt-3 mt-6 flex flex-row items-center">
+                                <div>
+                                    <span className="shadow-md py-5 px-3 rounded">
+                                        <FAQ className="text-blue-1000 text-3xl" />
+                                    </span>
+                                </div>
+                                <div className="mr-2">
+                                    <span className="font-bold text-base xl:text-lg leading-8 text-blue-1000">
+                                        کپسول‌های ویژه شب امتحان
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-full flex flex-row justify-between mt-8 xl:mt-12">
+                        <span></span>
+                        <Button
+                            arrow
+                            className="px-3 py-2 self-end"
+                            to="/about-us"
+                        >
+                            آشنایی بیشتر
+                        </Button>
+                    </div>
+                </div>
             </div>
-            <div className="w-12/12 sm:w-11/12 md:10/12 lg:w-7/12 mt-8 lg:mt-0 lg:mr-5">
-               <div className="flex flex-col inline-flex">
-                  <span>چرا باید</span>
-                  <Title>لینوم را انتخاب کنم؟</Title>
-               </div>
-               <p className="font-light text-base sm:text-lg leading-6 sm:leading-8 mt-3 xl:text-2xl xl:leading-10 xl:mt-6 text-justify ml-2">
-                  لینوم یک پلتفرم آموزشی است که با تکیه بر ویدئو های کوتاه و
-                  فشرده بستری را برای دانشجویان ایجاد میکند که در آن بتوانند در
-                  کوتاه ترین زمان ممکن یک کورس را به طور کامل یاد بگیرند.
-               </p>
-               <div className="xl:mr-10 mr-6">
-                  <div className="flex flex-row flex-wrap mt-3 features-ic">
-                     <div className="mx-2 xl:mt-5 lg:mt-3 md:mt-6 sm:mt-3 mt-6 flex flex-row items-center">
-                        <div>
-                           <span className="shadow-md py-5 px-3 rounded">
-                              <FAQ className="text-blue-1000 text-3xl" />
-                           </span>
-                        </div>
-                        <div className="mr-2">
-                           <span className="font-bold text-base xl:text-lg leading-8 text-blue-1000">
-                              بیش از 3500 کپسول آموزشی
-                           </span>
-                        </div>
-                     </div>
-                     <div className="mx-2 xl:mt-5 lg:mt-3 md:mt-6 sm:mt-3 mt-6 flex flex-row items-center">
-                        <div>
-                           <span className="shadow-md py-5 px-3 rounded">
-                              <FAQ className="text-blue-1000 text-3xl" />
-                           </span>
-                        </div>
-                        <div className="mr-2">
-                           <span className="font-bold text-base xl:text-lg leading-8 text-blue-1000">
-                              پرسش و پاسخ
-                           </span>
-                        </div>
-                     </div>
-                     <div className="mx-2 xl:mt-5 lg:mt-3 md:mt-6 sm:mt-3 mt-6 flex flex-row items-center">
-                        <div>
-                           <span className="shadow-md py-5 px-3 rounded">
-                              <FAQ className="text-blue-1000 text-3xl" />
-                           </span>
-                        </div>
-                        <div className="mr-2">
-                           <span className="font-bold text-base xl:text-lg leading-8 text-blue-1000">
-                              بیش از 1800 دانشجو
-                           </span>
-                        </div>
-                     </div>
-                     <div className="mx-2 xl:mt-5 lg:mt-3 md:mt-6 sm:mt-3 mt-6 flex flex-row items-center">
-                        <div>
-                           <span className="shadow-md py-5 px-3 rounded">
-                              <FAQ className="text-blue-1000 text-3xl" />
-                           </span>
-                        </div>
-                        <div className="mr-2">
-                           <span className="font-bold text-base xl:text-lg leading-8 text-blue-1000">
-                              کپسول‌های ویژه شب امتحان
-                           </span>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div className="w-full flex flex-row justify-between mt-8 xl:mt-12">
-                  <span></span>
-                  <Button arrow className="px-3 py-2 self-end" to="/about-us">
-                     آشنایی بیشتر
-                  </Button>
-               </div>
-            </div>
-         </div>
-      </div>
-   );
+        </div>
+    );
 }
 
 export default WhyLinom;
