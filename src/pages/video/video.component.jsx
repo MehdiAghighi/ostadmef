@@ -17,7 +17,7 @@ function Video(props) {
   useEffect(() => {
     API.get(`/video/admin/${slug}`)
       .then((resp) => {
-        return resp.data.video
+        return resp.data
       })
       .then((video) => {
         setVideo(video)
@@ -51,20 +51,20 @@ function Video(props) {
   }, [slug])
   return isLoading ? (
     <CustomLoader />
-  ) : video.id ? (
+  ) : video.video.id ? (
     course.id ? (
       <div className="">
         <Helmet>
-          <title>لینوم | {video.title}</title>
+          <title>لینوم | {video.video.title}</title>
         </Helmet>
         <div className="container mx-auto">
-          {!video.video ? (
+          {!video.video.video ? (
             <h2>شما این دوره را خریداری نکرده‌اید</h2>
           ) : (
-            <ShowVideo video={video} />
+            <ShowVideo video={video.player_url} />
           )}
         </div>
-        <CourseSections course={course} activeId={video.id} />
+        <CourseSections course={course} activeId={video.video.id} />
       </div>
     ) : null
   ) : (
