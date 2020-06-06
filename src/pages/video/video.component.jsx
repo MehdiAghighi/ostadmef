@@ -21,7 +21,7 @@ function Video(props) {
       })
       .then((video) => {
         setVideo(video)
-        return API.get(`/course/${video.course_id}`)
+        return API.get(`/course/${video.video.course_id}`)
       })
       .then((resp) => {
         return resp.data.course
