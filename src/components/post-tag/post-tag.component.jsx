@@ -1,18 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 
-function PostTag(props) {
-   return (
-      <span
-         className={`text-orange-500 text-base leading-10 ${props.className}`}
-      >
-         <Link to={props.to}>{props.children}</Link>
-      </span>
-   );
+function PostTag({ category, className }) {
+  return (
+    <span className={`text-${category.color}-500 text-base leading-8 ${className}`}>
+      <Link to={`/category/${category.id}`} className="cursor-not-allowed">
+        {category.title}
+      </Link>
+    </span>
+  )
 }
 
 PostTag.defaultProps = {
-   to: "/",
-};
+  to: "/",
+  className: "",
+}
 
-export default PostTag;
+export default PostTag

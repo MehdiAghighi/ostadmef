@@ -26,87 +26,12 @@ function BlogIntro(props) {
             {isLoading ? (
               <CustomLoader />
             ) : (
-              <>{<BlogCard full={true} post={bigPost} />}</>
+              bigPost && <>{<BlogCard full={true} post={bigPost} />}</>
             )}
-            {/* <Card full>
-                     <CardImage to="/">
-                        <img
-                           src={courseImage}
-                           className=""
-                           style={{
-                              width: "100%",
-                           }}
-                        />
-                     </CardImage>
-                     <CardTitle className="text-2xl text-blue-1000 my-2" to="/">
-                        دانستنی‌های هک با پایتون
-                     </CardTitle>
-                     <CardBody>
-                        <PostTag to="/">آموزشی</PostTag>
-                        <p className="text-lg text-base leading-10 text-justify px-1">
-                           لینوم یک پلتفرم آموزشی است که با تکیه بر ویدئو های
-                           کوتاه و فشرده بستری را برای دانشجویان ایجاد میکند که
-                           در آن بتوانند در کوتاه ترین زمان ممکن یک کورس را به
-                           طور کامل یاد بگیرند...
-                        </p>
-                     </CardBody>
-                     <CardFooter>
-                        <div className="flex flex-row justify-between items-center">
-                           <span></span>
-                           <div className="flex flex-row">
-                              <span className="text-gray-600">
-                                 9 روز پیش &nbsp;
-                                 <Clock className="text-gray-600 text-xs" />
-                              </span>
-                              <div
-                                 className="h-6 bg-gray-400 mx-3"
-                                 style={{
-                                    width: 2,
-                                 }}
-                              ></div>
-                              <span className="text-gray-600">
-                                 ساعت 14 &nbsp;
-                                 <Clock className="text-gray-600 text-xs" />
-                              </span>
-                           </div>
-                        </div>
-                     </CardFooter>
-                  </Card> */}
           </div>
           <div className="lg:w-1/2 xs:w-full">
             <div className="md:px-6 mx-auto w-full flex flex-col items-center justify-center">
               <div>
-                {/* <HCard className="my-6">
-                           <HCardData>
-                              <HCardTitleGroup>
-                                 <HCardTitle>
-                                    دانستنی‌های هک با پایتون
-                                 </HCardTitle>
-                                 <HCardBody>
-                                    <PostTag>آموزشی</PostTag>
-                                 </HCardBody>
-                              </HCardTitleGroup>
-                              <HCardFooter>
-                                 <span className="text-gray-600 sm:text-base text-xs">
-                                    9 روز پیش &nbsp;
-                                    <Clock className="text-gray-600 text-xs" />
-                                 </span>
-                                 <div
-                                    className="h-6 bg-gray-400 mx-3"
-                                    style={{
-                                       width: 2,
-                                    }}
-                                 ></div>
-                                 <span className="text-gray-600 sm:text-base text-xs">
-                                    ساعت 14 &nbsp;
-                                    <Clock className="text-gray-600 text-xs" />
-                                 </span>
-                              </HCardFooter>
-                           </HCardData>
-                           <HCardImage>
-                              <img src={courseImage} />
-                           </HCardImage>
-                        </HCard> */}
                 {isLoading ? (
                   <CustomLoader />
                 ) : (

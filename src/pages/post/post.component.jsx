@@ -21,8 +21,10 @@ function Post(props) {
     request(`/blogpost/${slug}`, (resp) => {
       setPost(resp.data.post)
       if (resp.data.post.keywords) {
-        const keywordsArr = JSON.parse(resp.data.post.keywords)
-        setKeyWords(keywordsArr.toString())
+        const keywordsArr = resp.data.post.keywords
+        const arr = []
+        keywordsArr.map((item, index) => arr.push(item["title"]))
+        setKeyWords(arr)
       }
       setIsLoading(false)
     })
@@ -38,7 +40,7 @@ function Post(props) {
             <>
               <Helmet>
                 <title>لینوم | {post.title}</title>
-                <meta name="keywords" value={keywords} />
+                <meta name="keywords" value={keywords.toString()} />
               </Helmet>
               <img src={post.pic.url} alt={post.title} className="w-full" />
               <div className="mx-auto text-center my-6">
@@ -48,7 +50,7 @@ function Post(props) {
                 <span className="text-blue-1000 font-bold sm:w-1/3">
                   {post.user.first_name} {post.user.last_name}
                 </span>
-                <PostTag className="sm:w-1/3 text-center">آموزشی</PostTag>
+                <PostTag className="sm:w-1/3 text-center" category={post.category} />
                 <DateTime
                   className="sm:w-1/3"
                   timeAgo={post.time_ago}
