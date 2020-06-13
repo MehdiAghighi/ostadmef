@@ -102,11 +102,12 @@ function LoginForm(props) {
             // localStorage.setItem("token", data.token)
             var expiryDate = new Date()
             expiryDate.setMonth(expiryDate.getMonth() + 1)
-            setCookie("token", data.token, { expires: expiryDate })
+            setCookie("token", data.token, { expires: expiryDate, path: "/" })
             setCookie("token", data.token, {
               domain: `${process.env.REACT_APP_DOMAIN}`,
               httpOnly: true,
               expires: expiryDate,
+              path: "/",
             })
             toggleModal({
               type: "TOGGLE_MODAL",

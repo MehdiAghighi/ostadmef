@@ -31,10 +31,6 @@
   h6 {
     line-height: 2.5rem;
   }
-  p,
-  span {
-    line-height: 2.32rem;
-  }
   img {
     text-align: center;
     margin: 10px auto;
@@ -46,7 +42,8 @@
     font-family: shabnam !important;
   }
   p,
-  span {
-    line-height: 2.5rem;
+  span,
+  li {
+    line-height: 3rem;
   }
 }

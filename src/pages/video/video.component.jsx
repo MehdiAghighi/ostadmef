@@ -51,7 +51,7 @@ function Video(props) {
   }, [slug])
   return isLoading ? (
     <CustomLoader />
-  ) : video.video.id ? (
+  ) : video.player_url ? (
     course.id ? (
       <div className="">
         <Helmet>
