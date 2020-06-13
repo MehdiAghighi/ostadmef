@@ -12,6 +12,7 @@ import API from "../../helpers/api"
 import { useAuthDispatch, fetchUser } from "../../contexts/auth-context"
 
 import { useCookies } from "react-cookie"
+import { setCookie } from "../../helpers/functions"
 
 const duration = 500
 
@@ -36,9 +37,6 @@ const transitionStyles2 = {
 
 function LoginForm(props) {
   const authDispatch = useAuthDispatch()
-
-  const [cookies, setCookie] = useCookies(["token"])
-
   const toggleModal = () => authDispatch({ type: "TOGGLE_MODAL" })
 
   const [stage, setStage] = useState(1)
@@ -106,12 +104,8 @@ function LoginForm(props) {
             //   expires: expiryDate,
             //   path: "/",
             // })
-            setCookie("token", `Bearer ${data.token}`, {
-              domain: `.${process.env.REACT_APP_DOMAIN}`,
-              httpOnly: true,
-              expires: expiryDate,
-              path: "/",
-            })
+            setCookie("token", `Bearer ${data.token}`, 30, "linom.ir")
+            setCookie("token", `Bearer ${data.token}`, 30, "localhost")
             toggleModal({
               type: "TOGGLE_MODAL",
             })
