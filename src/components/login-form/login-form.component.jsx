@@ -104,8 +104,8 @@ function LoginForm(props) {
             //   expires: expiryDate,
             //   path: "/",
             // })
-            setCookie("token", `Bearer ${data.token}`, 30, "linom.ir")
-            setCookie("token", `Bearer ${data.token}`, 30, "localhost")
+            setCookie("token", data.token, 30, "linom.ir")
+            setCookie("token", data.token, 30, "localhost")
             toggleModal({
               type: "TOGGLE_MODAL",
             })
