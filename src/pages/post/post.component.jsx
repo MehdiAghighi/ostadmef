@@ -3,13 +3,12 @@ import { useParams, Link } from "react-router-dom"
 import { Helmet } from "react-helmet"
 
 import "./post.style.scss"
-import "katex/dist/katex.min.css"
+import "./katex.min.css"
 
-import Title from "../../components/title/title.component"
 import PostTag from "../../components/post-tag/post-tag.component"
 import DateTime from "../../components/date-time/date-time.component"
 import CustomLoader from "../../components/custom-loader/custom-loader.component"
-import API, { request } from "../../helpers/api"
+import API from "../../helpers/api"
 import { toast } from "react-toastify"
 
 function Post(props) {
