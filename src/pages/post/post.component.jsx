@@ -9,6 +9,7 @@ import PostTag from "../../components/post-tag/post-tag.component"
 import DateTime from "../../components/date-time/date-time.component"
 import CustomLoader from "../../components/custom-loader/custom-loader.component"
 import API, { request } from "../../helpers/api"
+import { toast } from "react-toastify"
 
 function Post(props) {
   let { slug } = useParams()
@@ -43,7 +44,6 @@ function Post(props) {
               } else {
                 toast.error("مشکلی در ارتباط با سرور پیش آمده است")
               }
-              ecb()
             })
         }
       })
