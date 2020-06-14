@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { Helmet } from "react-helmet"
 
 import "./post.style.scss"
@@ -8,11 +8,12 @@ import Title from "../../components/title/title.component"
 import PostTag from "../../components/post-tag/post-tag.component"
 import DateTime from "../../components/date-time/date-time.component"
 import CustomLoader from "../../components/custom-loader/custom-loader.component"
-import { request } from "../../helpers/api"
+import API, { request } from "../../helpers/api"
 
 function Post(props) {
   let { slug } = useParams()
   const [post, setPost] = useState({})
+  const [serie, setSerie] = useState({})
   const [isLoading, setIsLoading] = useState(true)
   const [keywords, setKeyWords] = useState("")
 
@@ -26,7 +27,16 @@ function Post(props) {
         keywordsArr.map((item, index) => arr.push(item["title"]))
         setKeyWords(arr)
       }
-      setIsLoading(false)
+      if (resp.data.post.serie_id) {
+        API.get(`/serie/${resp.data.post.serie_id}`)
+          .then((resp) => {
+            return resp.data.serie
+          })
+          .then((serie) => {
+            setSerie(serie)
+            setIsLoading(false)
+          })
+      }
     })
   }, [slug])
 
@@ -61,6 +71,36 @@ function Post(props) {
                 className="my-6 post-body"
                 dangerouslySetInnerHTML={{ __html: post.body }}
               ></div>
+              <div className="my-4 rounded bg-gray-100 py-2 px-3">
+                {serie.posts.map((serie_post, index) => (
+                  <div
+                    className={`flex flex-row items-center py-2 px-3 border-b-2 border-gray-200 my-2`}
+                  >
+                    <div
+                      className={`rounded-lg text-base py-1 w-8 h-8 text-center ml-5 sm:ml-3 ${
+                        serie_post.id == post.id
+                          ? "bg-red-700 text-white"
+                          : " bg-green-200"
+                      }`}
+                    >
+                      {serie_post.serie_order}
+                    </div>
+                    <Link to={`/blog/${serie_post.id}`}>
+                      <h3
+                        className={`xs:text-lg text-sm text-blue-500 hover:text-purple-600 cursor-pointer transition-all duration-300 sm:inline`}
+                      >
+                        &nbsp;{serie_post.title}
+                        {"  "}
+                      </h3>
+                      {serie_post.id == post.id && (
+                        <span className="text-xs text-red-700 font-bold">
+                          (در حال مطالعه)
+                        </span>
+                      )}
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </>
           )}
         </div>
