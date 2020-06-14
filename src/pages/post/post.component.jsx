@@ -14,7 +14,7 @@ import { toast } from "react-toastify"
 function Post(props) {
   let { slug } = useParams()
   const [post, setPost] = useState({})
-  const [serie, setSerie] = useState({})
+  const [serie, setSerie] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [keywords, setKeyWords] = useState("")
 
@@ -45,6 +45,8 @@ function Post(props) {
                 toast.error("مشکلی در ارتباط با سرور پیش آمده است")
               }
             })
+        } else {
+          setIsLoading(false)
         }
       })
       .catch((err) => {
@@ -87,36 +89,38 @@ function Post(props) {
                 className="my-6 post-body"
                 dangerouslySetInnerHTML={{ __html: post.body }}
               ></div>
-              <div className="my-4 rounded bg-gray-100 py-2 px-3">
-                {serie.posts.map((serie_post, index) => (
-                  <div
-                    className={`flex flex-row items-center py-2 px-3 border-b-2 border-gray-200 my-2`}
-                  >
+              {serie && (
+                <div className="my-4 rounded bg-gray-100 py-2 px-3">
+                  {serie.posts.map((serie_post, index) => (
                     <div
-                      className={`rounded-lg text-base py-1 w-8 h-8 text-center ml-5 sm:ml-3 ${
-                        serie_post.id == post.id
-                          ? "bg-red-700 text-white"
-                          : " bg-green-200"
-                      }`}
+                      className={`flex flex-row items-center py-2 px-3 border-b-2 border-gray-200 my-2`}
                     >
-                      {serie_post.serie_order}
-                    </div>
-                    <Link to={`/blog/${serie_post.id}`}>
-                      <h3
-                        className={`xs:text-lg text-sm text-blue-500 hover:text-purple-600 cursor-pointer transition-all duration-300 sm:inline`}
+                      <div
+                        className={`rounded-lg text-base py-1 w-8 h-8 text-center ml-5 sm:ml-3 ${
+                          serie_post.id == post.id
+                            ? "bg-red-700 text-white"
+                            : " bg-green-200"
+                        }`}
                       >
-                        &nbsp;{serie_post.title}
-                        {"  "}
-                      </h3>
-                      {serie_post.id == post.id && (
-                        <span className="text-xs text-red-700 font-bold">
-                          (در حال مطالعه)
-                        </span>
-                      )}
-                    </Link>
-                  </div>
-                ))}
-              </div>
+                        {serie_post.serie_order}
+                      </div>
+                      <Link to={`/blog/${serie_post.id}`}>
+                        <h3
+                          className={`xs:text-lg text-sm text-blue-500 hover:text-purple-600 cursor-pointer transition-all duration-300 sm:inline`}
+                        >
+                          &nbsp;{serie_post.title}
+                          {"  "}
+                        </h3>
+                        {serie_post.id == post.id && (
+                          <span className="text-xs text-red-700 font-bold">
+                            (در حال مطالعه)
+                          </span>
+                        )}
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              )}
             </>
           )}
         </div>
