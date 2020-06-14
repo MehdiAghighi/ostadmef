@@ -19,25 +19,41 @@ function Post(props) {
 
   useEffect(() => {
     setIsLoading(true)
-    request(`/blogpost/${slug}`, (resp) => {
-      setPost(resp.data.post)
-      if (resp.data.post.keywords) {
-        const keywordsArr = resp.data.post.keywords
-        const arr = []
-        keywordsArr.map((item, index) => arr.push(item["title"]))
-        setKeyWords(arr)
-      }
-      if (resp.data.post.serie_id) {
-        API.get(`/serie/${resp.data.post.serie_id}`)
-          .then((resp) => {
-            return resp.data.serie
-          })
-          .then((serie) => {
-            setSerie(serie)
-            setIsLoading(false)
-          })
-      }
-    })
+    API.get(`/blogpost/${slug}`)
+      .then((resp) => {
+        setPost(resp.data.post)
+        if (resp.data.post.keywords) {
+          const keywordsArr = resp.data.post.keywords
+          const arr = []
+          keywordsArr.map((item, index) => arr.push(item["title"]))
+          setKeyWords(arr)
+        }
+        if (resp.data.post.serie_id) {
+          return API.get(`/serie/${resp.data.post.serie_id}`)
+            .then((resp) => {
+              return resp.data.serie
+            })
+            .then((serie) => {
+              setSerie(serie)
+              setIsLoading(false)
+            })
+            .catch((err) => {
+              if (err.response) {
+                toast.error(err.response.data.message)
+              } else {
+                toast.error("مشکلی در ارتباط با سرور پیش آمده است")
+              }
+              ecb()
+            })
+        }
+      })
+      .catch((err) => {
+        if (err.response) {
+          toast.error(err.response.data.message)
+        } else {
+          toast.error("مشکلی در ارتباط با سرور پیش آمده است")
+        }
+      })
   }, [slug])
 
   return (
