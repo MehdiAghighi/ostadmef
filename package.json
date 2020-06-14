@@ -10,7 +10,6 @@
         "axios": "^0.19.2",
         "formik": "^2.1.4",
         "html-to-react": "^1.4.3",
-        "katex": "^0.11.1",
         "node-sass": "^4.14.1",
         "query-string": "^6.12.1",
         "react": "^16.13.1",
