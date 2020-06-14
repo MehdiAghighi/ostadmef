@@ -87,7 +87,7 @@ function Payment(props) {
             <div className="flex flex-row justify-around mx-4">
               <span>دوره: </span>
               <span className="text-blue-500 hover:text-purple-800">
-                <Link to={`/course/${invoice.course.id}`}>
+                <Link to={`/course/${invoice.course.slug}`}>
                   {invoice.course.title}
                 </Link>
               </span>

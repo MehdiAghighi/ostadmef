@@ -104,7 +104,7 @@ function Post(props) {
                       >
                         {serie_post.serie_order}
                       </div>
-                      <Link to={`/blog/${serie_post.id}`}>
+                      <Link to={`/blog/${serie_post.slug}`}>
                         <h3
                           className={`xs:text-lg text-sm text-blue-500 hover:text-purple-600 cursor-pointer transition-all duration-300 sm:inline`}
                         >

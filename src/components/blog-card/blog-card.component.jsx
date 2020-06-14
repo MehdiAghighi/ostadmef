@@ -12,7 +12,7 @@ function BlogCard({ post, full }) {
   return (
     <div className="card">
       <Card full={full}>
-        <CardImage to={`/blog/${post.id}`}>
+        <CardImage to={`/blog/${post.slug}`}>
           <img
             src={full ? post.pic.url : post.pic.card_url}
             style={full ? { width: 600, objectFit: "cover" } : {}}
@@ -20,7 +20,7 @@ function BlogCard({ post, full }) {
             className=""
           />
         </CardImage>
-        <CardTitle to={`/blog/${post.id}`}>{post.title}</CardTitle>
+        <CardTitle to={`/blog/${post.slug}`}>{post.title}</CardTitle>
         <CardBody>
           <PostTag category={post.category} />
         </CardBody>

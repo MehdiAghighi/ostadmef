@@ -15,7 +15,7 @@ function HPostCard({ post }) {
     <HCard className="my-6 h-card">
       <HCardData>
         <HCardTitleGroup>
-          <HCardTitle to={`/blog/${post.id}`}>{post.title}</HCardTitle>
+          <HCardTitle to={`/blog/${post.slug}`}>{post.title}</HCardTitle>
           <HCardBody>
             <PostTag category={post.category} />
           </HCardBody>
@@ -37,7 +37,7 @@ function HPostCard({ post }) {
           </span>
         </HCardFooter>
       </HCardData>
-      <HCardImage to={`/blog/${post.id}`}>
+      <HCardImage to={`/blog/${post.slug}`}>
         <img src={post.pic.thumb_url} alt={post.title} />
       </HCardImage>
     </HCard>
