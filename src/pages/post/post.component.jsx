@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom"
 import { Helmet } from "react-helmet"
 
 import "./post.style.scss"
-import "./katex.min.css"
+import "./katex.style.scss"
 
 import PostTag from "../../components/post-tag/post-tag.component"
 import DateTime from "../../components/date-time/date-time.component"
