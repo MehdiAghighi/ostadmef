@@ -18,6 +18,8 @@ function Post(props) {
   const [isLoading, setIsLoading] = useState(true)
   const [keywords, setKeyWords] = useState("")
 
+  const postBodyRef = React.useRef(null)
+
   useEffect(() => {
     setIsLoading(true)
     API.get(`/blogpost/${slug}`)
@@ -57,6 +59,26 @@ function Post(props) {
         }
       })
   }, [slug])
+  useEffect(() => {
+    const postBody = document.getElementById("post-body")
+    if (postBody) {
+      const images = postBody.getElementsByTagName("img")
+
+      for (let i = 0; i < images.length; i++) {
+        // if (images[i].height < 400) {
+        images[i].style.verticalAlign = "middle"
+        images[i].style.display = "inline-block"
+        // }
+      }
+      // images((img) => {
+      //   if (img.height < 400) {
+      //     img.style.verticalAlign = "middle"
+      //     img.style.textAlign = "unset"
+      //     img.style.margin = "unset"
+      //   }
+      // })
+    }
+  }, [isLoading])
 
   return (
     <div className="my-6">
@@ -86,6 +108,8 @@ function Post(props) {
                 />
               </div>
               <div
+                id="post-body"
+                ref={postBodyRef}
                 className="my-6 post-body"
                 dangerouslySetInnerHTML={{ __html: post.body }}
               ></div>
