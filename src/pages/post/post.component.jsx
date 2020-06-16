@@ -67,6 +67,7 @@ function Post(props) {
       for (let i = 0; i < images.length; i++) {
         // if (images[i].height < 400) {
         images[i].style.verticalAlign = "middle"
+        // if (images[i].style)
         images[i].style.display = "inline-block"
         // }
       }

@@ -15,7 +15,7 @@ function BlogCard({ post, full }) {
         <CardImage to={`/blog/${post.slug}`}>
           <img
             src={full ? post.pic.url : post.pic.card_url}
-            style={full ? { width: 600, objectFit: "cover" } : {}}
+            style={full ? { width: 600, height: 400, objectFit: "cover" } : {}}
             alt={post.title}
             className=""
           />
