@@ -32,11 +32,40 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script type="text/javascript">
+      !(function () {
+        function t() {
+          var t = document.createElement("script")
+          ;(t.type = "text/javascript"),
+            (t.async = !0),
+            localStorage.getItem("rayToken")
+              ? (t.src =
+                  "https://app.raychat.io/scripts/js/" +
+                  o +
+                  "?rid=" +
+                  localStorage.getItem("rayToken") +
+                  "&href=" +
+                  window.location.href)
+              : (t.src = "https://app.raychat.io/scripts/js/" + o)
+          var e = document.getElementsByTagName("script")[0]
+          e.parentNode.appendChild(t, e)
+        }
+        var e = document,
+          a = window,
+          o = "683454b1-3009-4054-9776-d0ef133b8785"
+        "complete" == e.readyState
+          ? t()
+          : a.attachEvent
+          ? a.attachEvent("onload", t)
+          : a.addEventListener("load", t, !1)
+      })()
+    </script>
     <title>لینوم</title>
   </head>
 
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+
     <div id="root"></div>
     <!--
       This HTML file is a template.

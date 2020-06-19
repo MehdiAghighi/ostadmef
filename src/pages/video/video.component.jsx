@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { Helmet } from "react-helmet"
+import { toast } from "react-toastify"
 
-import API, { request } from "../../helpers/api"
+import API from "../../helpers/api"
 import CustomLoader from "../../components/custom-loader/custom-loader.component"
 import CourseSections from "../../components/course-sections/course-sections.component"
 import ShowVideo from "../../components/show-video/show-video.component"
-import { toast } from "react-toastify"
+import UserDataForm from "../../components/user-data-form/user-data-form.component"
 
 function Video(props) {
   const { slug } = useParams()
@@ -34,26 +35,30 @@ function Video(props) {
   }, [slug])
   return isLoading ? (
     <CustomLoader />
-  ) : video.player_url ? (
-    video.video.course.id ? (
-      <div className="">
-        <Helmet>
-          <title>لینوم | {video.video.title}</title>
-        </Helmet>
-        <div className="container mx-auto">
-          {!video.video.video ? (
-            <h2>شما این دوره را خریداری نکرده‌اید</h2>
-          ) : (
-            <ShowVideo video={video.player_url} />
-          )}
+  ) : !video.get_data && !video.get_email ? (
+    video.player_url ? (
+      video.video.course.id ? (
+        <div className="">
+          <Helmet>
+            <title>لینوم | {video.video.title}</title>
+          </Helmet>
+          <div className="container mx-auto">
+            {!video.video.video ? (
+              <h2>شما این دوره را خریداری نکرده‌اید</h2>
+            ) : (
+              <ShowVideo video={video.player_url} />
+            )}
+          </div>
+          <CourseSections course={video.video.course} activeId={video.video.id} />
         </div>
-        <CourseSections course={video.video.course} activeId={video.video.id} />
+      ) : null
+    ) : (
+      <div className="flex flex-row justify-center">
+        <span className="text-xl text-red-500">شما به این ویدیو دسترسی ندارید</span>
       </div>
-    ) : null
+    )
   ) : (
-    <div className="flex flex-row justify-center">
-      <span className="text-xl text-red-500">شما به این ویدیو دسترسی ندارید</span>
-    </div>
+    <UserDataForm justEmail={video.get_email} />
   )
 }
 
