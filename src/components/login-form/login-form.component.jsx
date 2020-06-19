@@ -11,7 +11,6 @@ import Button from "../../components/button/button.component"
 import API from "../../helpers/api"
 import { useAuthDispatch, fetchUser } from "../../contexts/auth-context"
 
-import { useCookies } from "react-cookie"
 import { setCookie } from "../../helpers/functions"
 
 const duration = 500

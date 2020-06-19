@@ -25,7 +25,7 @@ function Course(props) {
       })
       .then((course) => {
         setCourse(course)
-        return API.get(`/course/admin/invoice/check/${slug}`)
+        return API.get(`/course/admin/invoice/check/${course.id}`)
       })
       .then((resp) => {
         return resp.data.invoice

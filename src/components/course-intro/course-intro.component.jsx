@@ -28,7 +28,7 @@ function CourseIntro({ course, bought }) {
         if (buyModalOpen) {
           setFetchingUrlStatus("pending")
           request(
-            `/course/admin/invoice/${course.id}`,
+            `/course/admin/invoice/${course.slug}`,
             (resp) => {
               setPaymentLink(resp.data.payment_url)
               setFetchingUrlStatus("success")
@@ -43,7 +43,7 @@ function CourseIntro({ course, bought }) {
     <>
       <div className="course-intro pt-10 container mx-auto flex flex-col-reverse lg:flex-row justify-between index-intro">
         <div
-          className="xl:py-20 lg:py-16 py-10"
+          className="xl:py-20 lg:py-16 py-10 lg:w-3/12"
           style={{
             flexBasis: "50%",
           }}
@@ -69,7 +69,7 @@ function CourseIntro({ course, bought }) {
             )}
           </div>
         </div>
-        <div className="pt-8 w-full sm:w-11/12 lg:w-auto mx-auto mt-6 md:mr-6">
+        <div className="pt-8 w-full sm:w-11/12 lg:w-9/12 mx-auto mt-6 md:mr-6">
           <img src={`${course.pic.url}`} alt={course.title} className="mx-auto" />
         </div>
         <Rodal
