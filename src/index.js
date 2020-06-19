@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css"
 import "./assets/main.css"
 import "./assets/fonts/font.css"
 import { AuthProvider } from "./contexts/auth-context"
+import { SiteProvider } from "./contexts/site-context"
 
 const tagManagerArgs = {
   gtmId: "GTM-T4WT6L5",
@@ -20,9 +21,11 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <QueryParamProvider ReactRouterRoute={Route}>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
+        <SiteProvider>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </SiteProvider>
       </QueryParamProvider>
     </BrowserRouter>
   </React.StrictMode>,

@@ -3,7 +3,7 @@ import "./App.css"
 import "rodal/lib/rodal.css"
 
 import { Helmet } from "react-helmet"
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, withRouter } from "react-router-dom"
 import { useQueryParams, NumberParam, withDefault } from "use-query-params"
 import { ToastContainer, toast } from "react-toastify"
 
@@ -17,10 +17,12 @@ import Login from "./pages/login/login.component"
 
 import { fetchUser, useAuthDispatch } from "./contexts/auth-context"
 import { setCookie } from "./helpers/functions"
+import { useSiteDispatch } from "./contexts/site-context"
 
 toast.configure({})
-function App() {
+function App(props) {
   const authDispatch = useAuthDispatch()
+  const siteDispatch = useSiteDispatch()
 
   const [query, setQuery] = useQueryParams({
     utm_source: withDefault(NumberParam, null, true),
@@ -33,7 +35,16 @@ function App() {
       setCookie("utm_source", utm_source, 7, "localhost")
     }
     fetchUser(authDispatch)
-  })
+  }, [])
+
+  useEffect(() => {
+    props.history.listen((location, action) => {
+      if (action == "PUSH") {
+        siteDispatch({ type: "CLOSE_SIDEBAR" })
+      }
+      console.log(`The last navigation action was ${action}`)
+    })
+  }, [])
   return (
     <div className="bg-white">
       <Helmet>
@@ -49,7 +60,7 @@ function App() {
       <Footer />
       <ToastContainer
         rtl={true}
-        position={toast.POSITION.BOTTOM_RIGHT}
+        position={toast.POSITION.BOTTOM_LEFT}
         closeButton={false}
         limit={1}
         toastClassName="font-sans font-bold"
@@ -59,4 +70,4 @@ function App() {
   )
 }
 
-export default App
+export default withRouter((props) => <App {...props} />)

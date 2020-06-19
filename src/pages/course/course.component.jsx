@@ -36,7 +36,11 @@ function Course(props) {
       })
       .catch((err) => {
         if (err.response) {
-          toast.error(err.response.data.message)
+          if (err.response.status == 401) {
+            toast.error("لطفا ابتدا وارد سایت شوید")
+          } else {
+            toast.error(err.response.data.message)
+          }
           setIsLoading(false)
         } else {
           toast.error("مشکلی در ارتباط با سرور پیش آمده است")
@@ -54,7 +58,10 @@ function Course(props) {
           </Helmet>
           <CourseIntro course={course} bought={bought} />
           {/* <CourseInfo course={course} /> */}
-          <CourseSections course={{ id: course.id, title: course.title }} />
+          <CourseSections
+            course={{ id: course.id, title: course.title }}
+            bought={bought}
+          />
           <RelatedCourses course={{ id: course.id }} />
         </>
       )}

@@ -1,0 +1,20 @@
+import React from "react"
+import { Link } from "react-router-dom"
+
+function CondLink(props) {
+  return props.isLink ? (
+    <Link to={props.to} className={`${props.className}`}>
+      {props.children}
+    </Link>
+  ) : (
+    <>{props.children}</>
+  )
+}
+
+CondLink.defaultProps = {
+  className: "",
+  isLink: false,
+  to: "",
+}
+
+export default CondLink

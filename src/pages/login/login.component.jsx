@@ -14,6 +14,7 @@ import { NavLink } from "react-router-dom"
 import Title from "../../components/title/title.component"
 import LoginForm from "../../components/login-form/login-form.component"
 import DecoratedImage from "../../components/decorated-image/decorated-image.component"
+import LinomLogo from "../../assets/images/linomlogo.png"
 
 function Login(props) {
   const { authModalOpen } = useAuthState()
@@ -33,8 +34,9 @@ function Login(props) {
         duration={500}
       >
         <div className="relative w-full h-full flex flex-col text-center">
-          <NavLink to="/">
-            <h1 className="font-bold text-4xl leading-tight">لــــینوم</h1>
+          <NavLink to="/" className="mx-auto">
+            {/* <h1 className="font-bold text-4xl leading-tight">لــــینوم</h1> */}
+            <img src={LinomLogo} className="h-16 mt-2" />
           </NavLink>
           <div className="h-full w-full flex justify-center mt-8">
             <div className="container">
