@@ -21,13 +21,6 @@ function Video(props) {
       })
       .then((video) => {
         setVideo(video)
-        return API.get(`/course/${video.video.course_id}`)
-      })
-      .then((resp) => {
-        return resp.data.course
-      })
-      .then((course) => {
-        setCourse(course)
         setIsLoading(false)
       })
       .catch((err) => {
@@ -38,21 +31,11 @@ function Video(props) {
           toast.error("مشکلی در ارتباط با سرور پیش آمده است")
         }
       })
-    // async function fetchData() {
-    //    request(`/video/admin/${slug}`, async (resp) => {
-    //       await setVideo(resp.data.video);
-    //       request(`/course/${video.course_id}`, async (resp) => {
-    //          setCourse(resp.data.course);
-    //          setIsLoading(false);
-    //       });
-    //    });
-    // }
-    // fetchData();
   }, [slug])
   return isLoading ? (
     <CustomLoader />
   ) : video.player_url ? (
-    course.id ? (
+    video.video.course.id ? (
       <div className="">
         <Helmet>
           <title>لینوم | {video.video.title}</title>
@@ -64,7 +47,7 @@ function Video(props) {
             <ShowVideo video={video.player_url} />
           )}
         </div>
-        <CourseSections course={course} activeId={video.video.id} />
+        <CourseSections course={video.video.course} activeId={video.video.id} />
       </div>
     ) : null
   ) : (
