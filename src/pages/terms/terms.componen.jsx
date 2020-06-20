@@ -1,9 +1,13 @@
 import React from "react"
 import TermsImg from "../../assets/images/terms.png"
+import { Helmet } from "react-helmet"
 
 function Terms(props) {
   return (
     <div className="container mx-auto">
+      <Helmet>
+        <title>لینوم | شرایط استفاده</title>
+      </Helmet>
       <div className="bg-orange-100 mx-auto rounded-lg py-3 px-3">
         <img src={TermsImg} className="rounded-lg" />
         <p className="my-2 px-2 leading-10 text-justify">

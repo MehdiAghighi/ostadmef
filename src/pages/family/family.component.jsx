@@ -1,4 +1,5 @@
 import React from "react"
+import { Helmet } from "react-helmet"
 
 import Amir from "../../assets/images/amir.png"
 import Nima from "../../assets/images/nima.png"
@@ -10,6 +11,9 @@ import Faeze from "../../assets/images/faeze.png"
 function Family(props) {
   return (
     <div className="container mx-auto">
+      <Helmet>
+        <title>لینوم | خانواده‌ی ما</title>
+      </Helmet>
       <div className="bg-orange-100 mx-auto rounded-lg py-3 px-3 sm:w-2/3 w-full">
         <div className="flex flex-col">
           <p className="leading-10 text-justify text-lg my-2">

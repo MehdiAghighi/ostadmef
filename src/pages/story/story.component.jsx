@@ -1,4 +1,5 @@
 import React from "react"
+import { Helmet } from "react-helmet"
 
 import StoryImg from "../../assets/images/story.png"
 import GroupImg from "../../assets/images/group.png"
@@ -6,6 +7,9 @@ import GroupImg from "../../assets/images/group.png"
 function Story(props) {
   return (
     <div>
+      <Helmet>
+        <title>لینوم | داستان ما</title>
+      </Helmet>
       <div className="container mx-auto">
         <div className="bg-orange-100 py-3 px-3 rounded-lg">
           <img src={StoryImg} className="rounded-lg" />

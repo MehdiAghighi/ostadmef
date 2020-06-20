@@ -1,9 +1,13 @@
 import React from "react"
+import { Helmet } from "react-helmet"
 import RightsImg from "../../assets/images/rights.png"
 
 function Rights(props) {
   return (
     <div className="container mx-auto">
+      <Helmet>
+        <title>لینوم | منشور اخلاقی</title>
+      </Helmet>
       <div className="bg-orange-100 mx-auto py-3 px-3 my-2 rounded-lg">
         <img src={RightsImg} className="rounded-lg mb-4" />
         <p className="leading-10 text-justify">

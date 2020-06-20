@@ -1,9 +1,13 @@
 import React from "react"
+import { Helmet } from "react-helmet"
 import FAQImg from "../../assets/images/faq.png"
 
 function FAQ(props) {
   return (
     <div className="container mx-auto">
+      <Helmet>
+        <title>لینوم | سوالات متداول</title>
+      </Helmet>
       <div className="bg-orange-100 rounded-lg py-3 px-3 my-2">
         <img src={FAQImg} className="rounded-lg" />
         <p className="leading-10 text-justify text-lg">

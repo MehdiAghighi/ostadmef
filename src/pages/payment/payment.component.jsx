@@ -27,7 +27,7 @@ function Payment(props) {
   return (
     <div className="container mx-auto">
       <Helmet>
-        <title>لینوم | نمایش پرداخت</title>
+        <title>لینوم | فاکتور پرداخت</title>
       </Helmet>
       {isLoading ? (
         <CustomLoader />

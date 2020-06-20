@@ -10,7 +10,9 @@ function CourseSection({ video, title, active, lock }) {
         <span
           className={`text-lg font-bold ${!lock && "cursor-pointer"} ${
             active ? "text-orange-500" : ""
-          } transition-all duration-100 ${!lock && "hover:text-orange-500"}`}
+          } transition-all duration-100 ${!lock && "hover:text-orange-500"} ${
+            lock && "text-gray-600"
+          }`}
         >
           {video.order}. {title}: {video.title}{" "}
           {video.order == 1 && (

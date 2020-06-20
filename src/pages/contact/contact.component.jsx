@@ -1,9 +1,13 @@
 import React from "react"
 import ContactImg from "../../assets/images/contact.png"
+import { Helmet } from "react-helmet"
 
 function Contact(props) {
   return (
     <div className="container mx-auto">
+      <Helmet>
+        <title>لینوم | تماس با ما</title>
+      </Helmet>
       <div className="bg-orange-100 py-3 px-3 my-2 rounded-lg">
         <img src={ContactImg} className="rounded-lg mb-4" />
         <p className="leading-10 text-justify text-xl">
