@@ -30,7 +30,7 @@ function DesktopNav(props) {
         <div>
           {!isLoggedIn ? (
             <Button
-              btnBgClass="bg-orange-500"
+              btnBgClass="bg-indigo-500"
               btnTextClass="text-white"
               className="font-bold leading-loose px-6 py-1"
               onClick={() => setAuthModalOpen({ type: "TOGGLE_MODAL" })}

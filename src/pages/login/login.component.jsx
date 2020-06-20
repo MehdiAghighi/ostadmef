@@ -3,7 +3,7 @@ import { useAuthState, useAuthDispatch } from "../../contexts/auth-context"
 
 import "./login.style.scss"
 
-import Main from "../../assets/images/Main.png"
+import Main from "../../assets/images/login.jpg"
 
 import Rodal from "rodal"
 // include styles

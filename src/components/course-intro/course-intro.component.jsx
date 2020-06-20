@@ -58,13 +58,11 @@ function CourseIntro({ course, bought }) {
           <div className="w-full mx-auto lg:w-auto">
             {bought ? null : (
               <Button
-                btnBgClass="bg-purple-800"
-                bgnTextClass="text-white"
                 className="xl:mt-5 mt-5 text-sm leading-8 py-2 px-5 lg:mx-0 mx-auto"
                 arrow
                 onClick={() => setBuyModalOpen(true)}
               >
-                شرکت در دوره
+                خرید دوره
               </Button>
             )}
           </div>
@@ -139,13 +137,11 @@ function CourseIntro({ course, bought }) {
             <span>شما عضو این دوره هستید</span>
           ) : (
             <Button
-              btnBgClass="bg-purple-800"
-              bgnTextClass="text-white"
               className="text-sm leading-8 py-2 px-5 lg:mx-0 mx-auto"
               arrow
               onClick={() => setBuyModalOpen(true)}
             >
-              شرکت در دوره
+              خرید دوره
             </Button>
           )}
         </div>

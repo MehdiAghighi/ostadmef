@@ -1,5 +1,5 @@
 import React from "react"
-import ContactImg from "../../assets/images/contact.png"
+import ContactImg from "../../assets/images/contact.jpg"
 import { Helmet } from "react-helmet"
 
 function Contact(props) {
