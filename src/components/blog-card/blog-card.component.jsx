@@ -7,18 +7,33 @@ import CardBody from "../card/card-body/card-body.component"
 import CardFooter from "../card/card-footer/card-footer.component"
 import PostTag from "../post-tag/post-tag.component"
 import { Clock } from "../icon/icon.component"
+import { LazyLoadImage } from "react-lazy-load-image-component"
+import ImageLoader from "../image-loader/image-loader.component"
 
-function BlogCard({ post, full }) {
+function BlogCard({ post, full, lazy }) {
   return (
     <div className="card">
       <Card full={full}>
         <CardImage to={`/blog/${post.slug}`}>
-          <img
-            src={full ? post.pic.url : post.pic.card_url}
-            style={full ? { width: 600, height: 400, objectFit: "cover" } : {}}
-            alt={post.title}
-            className=""
-          />
+          {lazy ? (
+            <LazyLoadImage
+              threshold={30}
+              placeholder={
+                <ImageLoader width={full ? 585 : 278} height={full ? 400 : 278} />
+              }
+              src={full ? post.pic.url : post.pic.card_url}
+              style={full ? { width: 600, height: 400, objectFit: "cover" } : {}}
+              alt={post.title}
+              className=""
+            />
+          ) : (
+            <img
+              src={full ? post.pic.url : post.pic.card_url}
+              style={full ? { width: 600, height: 400, objectFit: "cover" } : {}}
+              alt={post.title}
+              className=""
+            />
+          )}
         </CardImage>
         <CardTitle to={`/blog/${post.slug}`}>{post.title}</CardTitle>
         <CardBody>
@@ -52,6 +67,7 @@ function BlogCard({ post, full }) {
 
 BlogCard.defaultProps = {
   full: false,
+  lazy: true,
 }
 
 export default BlogCard

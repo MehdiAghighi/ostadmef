@@ -1,18 +1,18 @@
-import React from "react";
+import React from "react"
 
-import "./card-image.style.scss";
-import { Link } from "react-router-dom";
+import "./card-image.style.scss"
+import { Link } from "react-router-dom"
 
 function CardImage(props) {
-   return (
-      <div className="mb-1 card-image-wrapper">
-         <Link to={props.to}>{props.children}</Link>
-      </div>
-   );
+  return (
+    <div className="mb-1 card-image-wrapper">
+      <Link to={props.to}>{props.children}</Link>
+    </div>
+  )
 }
 
 CardImage.defaultProps = {
-   to: "/",
-};
+  to: "/",
+}
 
-export default CardImage;
+export default CardImage

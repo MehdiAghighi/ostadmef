@@ -1,18 +1,18 @@
-import React from "react";
+import React from "react"
 
-import "./h-card-image.style.scss";
-import { Link } from "react-router-dom";
+import "./h-card-image.style.scss"
+import { Link } from "react-router-dom"
 
 function HCardImage(props) {
-   return (
-      <div className="h-card-image-wrapper">
-         <Link to={props.to}>{props.children}</Link>
-      </div>
-   );
+  return (
+    <div className="h-card-image-wrapper">
+      <Link to={props.to}>{props.children}</Link>
+    </div>
+  )
 }
 
 HCardImage.defaultProps = {
-   to: "/",
-};
+  to: "/",
+}
 
-export default HCardImage;
+export default HCardImage

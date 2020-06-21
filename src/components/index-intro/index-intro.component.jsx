@@ -38,7 +38,10 @@ function IndexIntro() {
         </div>
       </div>
       <div className="pt-8 w-full sm:w-10/12 lg:w-auto mx-auto">
-        <DecoratedImage mainImg={Main} />
+        <DecoratedImage
+          mainImg={Main}
+          imgStyle={{ borderRadius: "10px 80px 10px 10px" }}
+        />
       </div>
     </div>
   )

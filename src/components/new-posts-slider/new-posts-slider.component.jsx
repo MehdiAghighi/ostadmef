@@ -8,6 +8,7 @@ import BlogCard from "../blog-card/blog-card.component"
 
 function NewPostsSlider({ posts }) {
   const params = {
+    lazy: true,
     // slidesPerView: 6.1,
     // slidesPerGroup: 1,
     breakpoints: {
@@ -57,7 +58,7 @@ function NewPostsSlider({ posts }) {
       <Swiper {...params}>
         {posts.map((item, index) => (
           <div className="" key={index}>
-            <BlogCard key={index} post={item} />
+            <BlogCard key={index} post={item} lazy={false} />
           </div>
         ))}
       </Swiper>

@@ -3,32 +3,11 @@ import React from "react"
 import "./partners-slider.style.scss"
 
 import { SliderBack, SliderFor } from "../icon/icon.component"
-
-// import Kabir from "../../assets/images/Kabir.png";
-import Sharif from "../../assets/images/Sharif.png"
-import Tehran from "../../assets/images/Tehran.png"
-
-import Alame from "../../assets/images/universities/alame.png"
-import AmirKabir from "../../assets/images/universities/amirkabir.png"
-import Beheshti from "../../assets/images/universities/beheshti.png"
-import ElmoSanat from "../../assets/images/universities/elmosanat.png"
-import Esfahan from "../../assets/images/universities/esfahan.png"
-import Ferdosi from "../../assets/images/universities/ferdosi.png"
-import Gilan from "../../assets/images/universities/gilan.png"
-import Ilam from "../../assets/images/universities/ilam.png"
-import ImamHosein from "../../assets/images/universities/imamhosein.png"
-import Mazandaran from "../../assets/images/universities/mazandaran.png"
-import Oxford from "../../assets/images/universities/oxford.png"
-import Payam from "../../assets/images/universities/payam.jpg"
-import Semnan from "../../assets/images/universities/semnan.png"
-import Shahed from "../../assets/images/universities/shahed.png"
-import Shiraz from "../../assets/images/universities/shiraz.png"
-import Yazd from "../../assets/images/universities/yazd.png"
-
 import Swiper from "react-id-swiper"
 
 function PartnersSlider(props) {
   const params = {
+    lazy: true,
     breakpoints: {
       1090: {
         slidesPerView: 5.9,
@@ -72,7 +51,11 @@ function PartnersSlider(props) {
       <Swiper {...params} className="">
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={Tehran} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/tehran.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه تهران
             </span>
@@ -80,7 +63,11 @@ function PartnersSlider(props) {
         </div>
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={Sharif} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/sharif.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه شریف
             </span>
@@ -88,7 +75,11 @@ function PartnersSlider(props) {
         </div>
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={Alame} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/alame.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه علامه طباطبایی
             </span>
@@ -96,7 +87,11 @@ function PartnersSlider(props) {
         </div>
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={AmirKabir} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/amirkabir.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه امیرکبیر
             </span>
@@ -104,7 +99,11 @@ function PartnersSlider(props) {
         </div>
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={Beheshti} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/beheshti.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه بهشتی
             </span>
@@ -112,7 +111,11 @@ function PartnersSlider(props) {
         </div>
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={ElmoSanat} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/elmosanat.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه علم و صنعت
             </span>
@@ -120,7 +123,11 @@ function PartnersSlider(props) {
         </div>
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={Esfahan} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/esfahan.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه اصفهان
             </span>
@@ -128,7 +135,11 @@ function PartnersSlider(props) {
         </div>
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={Ferdosi} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/ferdosi.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه فردوسی
             </span>
@@ -136,7 +147,11 @@ function PartnersSlider(props) {
         </div>
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={Gilan} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/gilan.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه گیلان
             </span>
@@ -144,7 +159,11 @@ function PartnersSlider(props) {
         </div>
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={Ilam} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/ilam.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه ایلام
             </span>
@@ -152,7 +171,11 @@ function PartnersSlider(props) {
         </div>
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={ImamHosein} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/imamhosein.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه امام حسین(ع)
             </span>
@@ -160,7 +183,11 @@ function PartnersSlider(props) {
         </div>
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={Mazandaran} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/mazandaran.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه مازندران
             </span>
@@ -168,15 +195,11 @@ function PartnersSlider(props) {
         </div>
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={Oxford} />
-            <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
-              دانشگاه آکسفورد
-            </span>
-          </div>
-        </div>
-        <div className="text-center">
-          <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={Payam} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/payam.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه پیام‌نور
             </span>
@@ -184,7 +207,11 @@ function PartnersSlider(props) {
         </div>
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={Semnan} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/semnan.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه سمنان
             </span>
@@ -192,7 +219,11 @@ function PartnersSlider(props) {
         </div>
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={Shahed} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/shahed.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه شاهد
             </span>
@@ -200,17 +231,13 @@ function PartnersSlider(props) {
         </div>
         <div className="text-center">
           <div className="py-3 px-8">
-            <img className="mx-auto" alt="" src={Shiraz} />
+            <img
+              className="mx-auto swiper-lazy"
+              alt=""
+              src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/shiraz.png`}
+            />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
               دانشگاه شیراز
-            </span>
-          </div>
-        </div>
-        <div className="text-center">
-          <div className="py-3 px-8">
-            <img className="mx-auto h-32" alt="" src={Yazd} />
-            <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
-              دانشگاه یزد
             </span>
           </div>
         </div>

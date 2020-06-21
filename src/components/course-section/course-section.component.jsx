@@ -25,7 +25,7 @@ function CourseSection({ video, title, active, lock }) {
             lock && "text-gray-600"
           }`}
         >
-          {video.order}. {title}: {video.title}{" "}
+          {video.order}. کپسول {video.title}{" "}
           {video.order == 1 && (
             <span className="font-bold text-xs text-teal-600">(رایگان)</span>
           )}

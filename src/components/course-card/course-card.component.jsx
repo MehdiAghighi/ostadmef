@@ -5,13 +5,34 @@ import CardTitle from "../card/card-title/card-title.component"
 import CardBody from "../card/card-body/card-body.component"
 import CardFooter from "../card/card-footer/card-footer.component"
 import { ArrowLeft, Clock } from "../icon/icon.component"
+import { LazyLoadImage } from "react-lazy-load-image-component"
+import Loader from "react-loader-spinner"
+import ImageLoader from "../image-loader/image-loader.component"
 
-function CourseCard({ course }) {
+function CourseCard({ course, full, lazy }) {
   return (
     <div className="card">
       <Card>
         <CardImage to={`/course/${course.slug}`}>
-          <img src={`${course.pic.card_url}`} alt={course.title} className="" />
+          {lazy ? (
+            <LazyLoadImage
+              threshold={30}
+              placeholder={
+                <ImageLoader width={full ? 585 : 278} height={full ? 400 : 278} />
+              }
+              src={`${course.pic.card_url}`}
+              alt={course.title}
+              style={full ? { width: 600, height: 400, objectFit: "cover" } : {}}
+              className=""
+            />
+          ) : (
+            <img
+              src={`${course.pic.card_url}`}
+              alt={course.title}
+              style={full ? { width: 600, height: 400, objectFit: "cover" } : {}}
+              className=""
+            />
+          )}
         </CardImage>
         <CardTitle to={`/course/${course.slug}`}>{course.title}</CardTitle>
         <CardBody>
@@ -45,6 +66,10 @@ function CourseCard({ course }) {
       </Card>
     </div>
   )
+}
+
+CourseCard.defaultProps = {
+  full: false,
 }
 
 export default CourseCard

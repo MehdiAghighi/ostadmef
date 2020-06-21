@@ -9,6 +9,9 @@ import HCardImage from "../h-card/h-card-image/h-card-image.component"
 import HCardData from "../h-card/h-card-data/h-card-data.component"
 import HCardTitleGroup from "../h-card/h-card-title-group/h-card-title-group.component"
 import PostTag from "../post-tag/post-tag.component"
+import { LazyLoadImage } from "react-lazy-load-image-component"
+import Loader from "react-loader-spinner"
+import ImageLoader from "../image-loader/image-loader.component"
 
 function HPostCard({ post }) {
   return (
@@ -38,7 +41,13 @@ function HPostCard({ post }) {
         </HCardFooter>
       </HCardData>
       <HCardImage to={`/blog/${post.slug}`}>
-        <img src={post.pic.thumb_url} alt={post.title} />
+        <LazyLoadImage
+          threshold={30}
+          placeholder={<ImageLoader width={147} height={147} />}
+          src={post.pic.thumb_url}
+          alt={post.title}
+          className=""
+        />
       </HCardImage>
     </HCard>
   )

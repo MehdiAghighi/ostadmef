@@ -8,6 +8,7 @@ import CourseCard from "../course-card/course-card.component"
 
 function TopCoursesSlider({ isLoading, courses }) {
   const params = {
+    lazy: true,
     // slidesPerView: 6.1,
     // slidesPerGroup: 1,
     breakpoints: {
@@ -58,7 +59,7 @@ function TopCoursesSlider({ isLoading, courses }) {
         <Swiper {...params}>
           {courses.map((course, index) => (
             <div key={index}>
-              <CourseCard course={course} />
+              <CourseCard course={course} lazy={false} />
             </div>
           ))}
         </Swiper>

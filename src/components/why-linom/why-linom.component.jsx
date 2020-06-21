@@ -20,6 +20,7 @@ function WhyLinom(props) {
             src={WhyLinomImg}
             alt="چرا لینوم ؟"
             className="w-full relative z-10"
+            style={{ borderRadius: "10px 226px 10px 10px" }}
           />
           <img src={OrRecBot} alt="" className="absolute or-rec" />
           <img src={Blueprint} alt="" className="absolute blueprint" />
