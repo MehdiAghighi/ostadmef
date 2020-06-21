@@ -12,6 +12,7 @@ import UserDataForm from "../../components/user-data-form/user-data-form.compone
 function Video(props) {
   const { slug } = useParams()
   const [video, setVideo] = useState({})
+  const [bought, setBought] = useState(false)
   const [course, setCourse] = useState({})
   const [isLoading, setIsLoading] = useState(true)
 
@@ -22,6 +23,10 @@ function Video(props) {
       })
       .then((video) => {
         setVideo(video)
+        return API.get(`/course/admin/invoice/check/${video.video.course.id}`)
+      })
+      .then((resp) => {
+        setBought(resp.data.invoice)
         setIsLoading(false)
       })
       .catch((err) => {
@@ -49,7 +54,11 @@ function Video(props) {
               <ShowVideo video={video.player_url} />
             )}
           </div>
-          <CourseSections course={video.video.course} activeId={video.video.id} />
+          <CourseSections
+            course={video.video.course}
+            activeId={video.video.id}
+            bought={bought}
+          />
         </div>
       ) : null
     ) : (
