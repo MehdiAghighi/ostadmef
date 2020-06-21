@@ -7,7 +7,7 @@ function CondLink(props) {
       {props.children}
     </Link>
   ) : (
-    <>{props.children}</>
+    <span className={`${props.className}`}>{props.children}</span>
   )
 }
 

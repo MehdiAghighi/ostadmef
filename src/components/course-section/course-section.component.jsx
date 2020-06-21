@@ -1,12 +1,23 @@
 import React from "react"
-import { Clock } from "../icon/icon.component"
+import { Clock, Lock, Unlock } from "../icon/icon.component"
 import { Link } from "react-router-dom"
 import CondLink from "../cond-link/cond-link.component"
 
 function CourseSection({ video, title, active, lock }) {
   return (
     <div className="flex flex-row justify-between items-center py-2 px-2 border-b border-gray-400">
-      <CondLink isLink={!lock} to={`/video/${video.id}`}>
+      <CondLink
+        isLink={!lock}
+        to={`/video/${video.id}`}
+        className="flex flex-row items-center"
+      >
+        <div
+          className={`${
+            lock ? "bg-red-700" : "bg-teal-700"
+          } py-2 px-2 rounded-full text-white ml-3`}
+        >
+          {lock ? <Lock /> : <Unlock />}
+        </div>
         <span
           className={`text-lg font-bold ${!lock && "cursor-pointer"} ${
             active ? "text-orange-500" : ""
