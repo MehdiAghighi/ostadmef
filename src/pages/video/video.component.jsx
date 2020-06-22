@@ -13,7 +13,7 @@ function Video(props) {
   const { slug } = useParams()
   const [video, setVideo] = useState({})
   const [bought, setBought] = useState(false)
-  const [course, setCourse] = useState({})
+  const [shouldGetData, setShouldGetData] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -23,11 +23,25 @@ function Video(props) {
       })
       .then((video) => {
         setVideo(video)
-        return API.get(`/course/admin/invoice/check/${video.video.course.id}`)
+        const gotEmail = localStorage.getItem("GetEmail")
+        if (!gotEmail && video.get_email) {
+          setShouldGetData(true)
+        }
+        if (video.get_data) {
+          setShouldGetData(true)
+        }
+        if (video.video.order != 1) {
+          return API.get(`/course/admin/invoice/check/${video.video.course.id}`)
+        } else {
+          setIsLoading(false)
+          return null
+        }
       })
       .then((resp) => {
-        setBought(resp.data.invoice)
-        setIsLoading(false)
+        if (resp) {
+          setBought(resp.data.invoice)
+          setIsLoading(false)
+        }
       })
       .catch((err) => {
         if (err.response) {
@@ -40,7 +54,7 @@ function Video(props) {
   }, [slug])
   return isLoading ? (
     <CustomLoader />
-  ) : !video.get_data && !video.get_email ? (
+  ) : !shouldGetData ? (
     video.player_url ? (
       video.video.course.id ? (
         <div className="">
@@ -67,7 +81,7 @@ function Video(props) {
       </div>
     )
   ) : (
-    <UserDataForm justEmail={video.get_email} />
+    <UserDataForm justEmail={video.get_email} afterSubmit={setShouldGetData} />
   )
 }
 

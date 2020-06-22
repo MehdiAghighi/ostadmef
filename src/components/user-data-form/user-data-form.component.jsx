@@ -22,31 +22,35 @@ import { NavLink } from "react-router-dom"
 import Title from "../title/title.component"
 import CustomLoader from "../custom-loader/custom-loader.component"
 
-function UserDataForm({ justEmail }) {
-  const { userDataModalOpen } = useAuthState()
+function UserDataForm({ justEmail, afterSubmit }) {
+  const { userDataModalOpen, isLoggedIn } = useAuthState()
   const authDispatch = useAuthDispatch()
 
   const [user, setUser] = useState({})
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    API.get("/auth/me")
-      .then((res) => {
-        return res.data
-      })
-      .then((user) => {
-        setUser(user)
-        setIsLoading(false)
-      })
-      .catch((err) => {
-        if (err.response) {
-          toast.error(err.response.data.message)
+    if (isLoggedIn) {
+      API.get("/auth/me")
+        .then((res) => {
+          return res.data
+        })
+        .then((user) => {
+          setUser(user)
           setIsLoading(false)
-        } else {
-          toast.error("مشکلی در ارتباط با سرور پیش آمده است")
-        }
-      })
-  }, [])
+        })
+        .catch((err) => {
+          if (err.response) {
+            toast.error(err.response.data.message)
+            setIsLoading(false)
+          } else {
+            toast.error("مشکلی در ارتباط با سرور پیش آمده است")
+          }
+        })
+    } else {
+      setIsLoading(false)
+    }
+  }, [isLoggedIn])
 
   return (
     <div className="user-data-form">
@@ -82,13 +86,13 @@ function UserDataForm({ justEmail }) {
                         initialValues={
                           !justEmail
                             ? {
-                                first_name: user.first_name,
-                                last_name: user.last_name,
+                                first_name: user.first_name ? user.first_name : "",
+                                last_name: user.last_name ? user.last_name : "",
                                 email: user.email ? user.email : "",
                                 university: user.university ? user.university : "",
                               }
                             : {
-                                email: user.email ? user.email : "",
+                                email: "",
                               }
                         }
                         validationSchema={Yup.object(
@@ -102,7 +106,7 @@ function UserDataForm({ justEmail }) {
                                   .required("لطفا نام خانوادگی را وارد کنید"),
                                 email: Yup.string()
                                   .trim()
-                                  .email()
+                                  .email("فرمت ایمیل صحیح نیست")
                                   .required("لطفا ایمیل را وارد کنید"),
                                 university: Yup.string()
                                   .trim()
@@ -111,16 +115,24 @@ function UserDataForm({ justEmail }) {
                             : {
                                 email: Yup.string()
                                   .trim()
-                                  .email()
+                                  .email("فرمت ایمیل صحیح نیست")
                                   .required("لطفا ایمیل را وارد کنید"),
                               }
                         )}
                         onSubmit={async (values, { setSubmitting }) => {
-                          console.log(values)
-                          const request = await updateUser(authDispatch, values)
-                          if (request.status >= 200 && request.status < 300) {
-                            toast.success("اطلاعات کاربر با موفقیت بروز شد")
+                          if (!justEmail) {
+                            const request = await updateUser(authDispatch, values)
+                            if (request.status >= 200 && request.status < 300) {
+                              toast.success("اطلاعات کاربر با موفقیت بروز شد")
+                            }
+                            localStorage.setItem("GetData", 1)
+                          } else {
+                            const fd = new FormData()
+                            fd.append("email", values.email)
+                            API.post("/newsletter/admin", fd)
+                            localStorage.setItem("GetEmail", 1)
                           }
+                          afterSubmit(false)
                           setSubmitting(false)
                           authDispatch({ type: "TOGGLE_USER_DATA_MODAL" })
                         }}

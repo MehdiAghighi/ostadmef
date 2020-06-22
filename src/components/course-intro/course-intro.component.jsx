@@ -13,6 +13,7 @@ import Rodal from "rodal"
 // import DecoratedImage from "../decorated-image/decorated-image.component";
 import TeacherCard from "../teacher-card/teacher-card.component"
 import CourseTitle from "../course-title/course-title.component"
+import { useAuthState, useAuthDispatch } from "../../contexts/auth-context"
 
 import { request } from "../../helpers/api"
 import CustomLoader from "../custom-loader/custom-loader.component"
@@ -21,6 +22,9 @@ function CourseIntro({ course, bought }) {
   const [buyModalOpen, setBuyModalOpen] = useState(false)
   const [fetchingUrlStatus, setFetchingUrlStatus] = useState(false)
   const [paymentLink, setPaymentLink] = useState("")
+
+  const { isLoggedIn } = useAuthState()
+  const authDispatch = useAuthDispatch()
 
   useEffect(() => {
     if (!bought) {
@@ -60,7 +64,13 @@ function CourseIntro({ course, bought }) {
               <Button
                 className="xl:mt-5 mt-5 text-sm leading-8 py-2 px-5 lg:mx-0 mx-auto"
                 arrow
-                onClick={() => setBuyModalOpen(true)}
+                onClick={() => {
+                  if (isLoggedIn) {
+                    setBuyModalOpen(true)
+                  } else {
+                    authDispatch({ type: "TOGGLE_MODAL" })
+                  }
+                }}
               >
                 خرید دوره
               </Button>
@@ -139,7 +149,13 @@ function CourseIntro({ course, bought }) {
             <Button
               className="text-sm leading-8 py-2 px-5 lg:mx-0 mx-auto"
               arrow
-              onClick={() => setBuyModalOpen(true)}
+              onClick={() => {
+                if (isLoggedIn) {
+                  setBuyModalOpen(true)
+                } else {
+                  authDispatch({ type: "TOGGLE_MODAL" })
+                }
+              }}
             >
               خرید دوره
             </Button>

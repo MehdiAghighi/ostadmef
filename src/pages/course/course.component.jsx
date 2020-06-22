@@ -37,7 +37,7 @@ function Course(props) {
       .catch((err) => {
         if (err.response) {
           if (err.response.status == 401) {
-            toast.error("لطفا ابتدا وارد سایت شوید")
+            // toast.error("لطفا ابتدا وارد سایت شوید")
           } else {
             toast.error(err.response.data.message)
           }
