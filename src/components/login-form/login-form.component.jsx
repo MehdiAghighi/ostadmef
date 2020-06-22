@@ -9,9 +9,15 @@ import { toast } from "react-toastify"
 import Button from "../../components/button/button.component"
 
 import API from "../../helpers/api"
-import { useAuthDispatch, fetchUser } from "../../contexts/auth-context"
+import {
+  useAuthDispatch,
+  fetchUser,
+  useAuthState,
+} from "../../contexts/auth-context"
 
-import { setCookie } from "../../helpers/functions"
+import { setCookie, getCookie } from "../../helpers/functions"
+import { useCallback } from "react"
+import { useHistory } from "react-router-dom"
 
 const duration = 500
 
@@ -35,8 +41,51 @@ const transitionStyles2 = {
 }
 
 function LoginForm(props) {
+  const { afterLogin } = useAuthState()
   const authDispatch = useAuthDispatch()
   const toggleModal = () => authDispatch({ type: "TOGGLE_MODAL" })
+  const history = useHistory()
+
+  const [fetchingUrlStatus, setFetchingUrlStatus] = useState(false)
+  const [paymentLink, setPaymentLink] = useState("")
+
+  const fetchPaymentUrl = useCallback(async () => {
+    setFetchingUrlStatus("pending")
+    const hasCourse = await API.get(
+      `/course/admin/invoice/check/${afterLogin.payload.courseId}`
+    )
+    if (hasCourse.statusText == "OK") {
+      if (hasCourse.data.invoice) {
+        return null
+      }
+    } else {
+      if (hasCourse.response) {
+        if (hasCourse.response.status == 401) {
+          // toast.respor("لطفا ابتدا وارد سایت شوید")
+        } else {
+          toast.error(hasCourse.response.data.message)
+        }
+      } else {
+        toast.error("مشکلی در ارتباط با سرور پیش آمده است")
+      }
+    }
+    const resp = await API.get(afterLogin.getDataFrom)
+    if (resp.statusText == "Created") {
+      setFetchingUrlStatus("success")
+      return resp.data.payment_url
+    } else {
+      setFetchingUrlStatus("error")
+      if (resp.response) {
+        if (resp.response.status == 401) {
+          // toast.respor("لطفا ابتدا وارد سایت شوید")
+        } else {
+          toast.error(resp.response.data.message)
+        }
+      } else {
+        toast.error("مشکلی در ارتباط با سرور پیش آمده است")
+      }
+    }
+  })
 
   const [stage, setStage] = useState(1)
   const [buttonText, setButtonText] = useState("ارسال رمز عبور")
@@ -76,7 +125,9 @@ function LoginForm(props) {
             data = json.data
             await setStage(2)
             await setInProp(false)
-            await setButtonText("اعتبار سنجی کد")
+            await setButtonText(
+              afterLogin.buttonText ? afterLogin.buttonText : "اعتبار سنجی کد"
+            )
           }
         } else if (stage === 2) {
           const json = await API.post(`/auth/login`, null, {
@@ -105,10 +156,26 @@ function LoginForm(props) {
             // })
             setCookie("token", data.token, 30, "linom.ir")
             setCookie("token", data.token, 30, "localhost")
-            toggleModal({
-              type: "TOGGLE_MODAL",
-            })
             await fetchUser(authDispatch)
+            if (afterLogin.action == "TOGGLE_MODAL") {
+              toggleModal({ type: "TOGGLE_MODAL" })
+            }
+            if (afterLogin.action == "FETCH_N_REDIRECT") {
+              switch (afterLogin.url) {
+                default: {
+                  const payLink = await fetchPaymentUrl()
+                  if (payLink) {
+                    window.location.href = payLink
+                  } else {
+                    history.go(0)
+                  }
+                }
+              }
+            }
+            authDispatch({
+              type: "CHANGE_AFTER_LOGIN",
+              payload: { action: "TOGGLE_MODAL" },
+            })
             await setStage(1)
             await setInProp(true)
             await setButtonText("ارسال رمز عبور")

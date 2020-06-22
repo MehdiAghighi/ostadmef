@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 // import Title from "../title/title.component";
 // import { Link } from "react-router-dom";
 import { Clock } from "../icon/icon.component"
@@ -15,8 +15,9 @@ import TeacherCard from "../teacher-card/teacher-card.component"
 import CourseTitle from "../course-title/course-title.component"
 import { useAuthState, useAuthDispatch } from "../../contexts/auth-context"
 
-import { request } from "../../helpers/api"
+import API from "../../helpers/api"
 import CustomLoader from "../custom-loader/custom-loader.component"
+import { toast } from "react-toastify"
 
 function CourseIntro({ course, bought }) {
   const [buyModalOpen, setBuyModalOpen] = useState(false)
@@ -26,19 +27,32 @@ function CourseIntro({ course, bought }) {
   const { isLoggedIn } = useAuthState()
   const authDispatch = useAuthDispatch()
 
+  const fetchPaymentUrl = useCallback(async () => {
+    setFetchingUrlStatus("pending")
+    API.get(`/course/admin/invoice/${course.slug}`)
+      .then((resp) => {
+        setPaymentLink(resp.data.payment_url)
+        setFetchingUrlStatus("success")
+      })
+      .catch((err) => {
+        setFetchingUrlStatus("error")
+        if (err.response) {
+          if (err.response.status == 401) {
+            // toast.error("لطفا ابتدا وارد سایت شوید")
+          } else {
+            toast.error(err.response.data.message)
+          }
+        } else {
+          toast.error("مشکلی در ارتباط با سرور پیش آمده است")
+        }
+      })
+  })
+
   useEffect(() => {
     if (!bought) {
       if (paymentLink === "") {
         if (buyModalOpen) {
-          setFetchingUrlStatus("pending")
-          request(
-            `/course/admin/invoice/${course.slug}`,
-            (resp) => {
-              setPaymentLink(resp.data.payment_url)
-              setFetchingUrlStatus("success")
-            },
-            () => setFetchingUrlStatus("error")
-          )
+          fetchPaymentUrl()
         }
       }
     }
@@ -62,12 +76,23 @@ function CourseIntro({ course, bought }) {
           <div className="w-full mx-auto lg:w-auto">
             {bought ? null : (
               <Button
+                id="buyButton"
                 className="xl:mt-5 mt-5 text-sm leading-8 py-2 px-5 lg:mx-0 mx-auto"
                 arrow
-                onClick={() => {
+                onClick={async () => {
                   if (isLoggedIn) {
                     setBuyModalOpen(true)
                   } else {
+                    // await fetchPaymentUrl()
+                    authDispatch({
+                      type: "CHANGE_AFTER_LOGIN",
+                      payload: {
+                        action: "FETCH_N_REDIRECT",
+                        getDataFrom: `/course/admin/invoice/${course.slug}`,
+                        buttonText: "ورود و انتقال به درگاه پرداخت",
+                        payload: { courseId: course.id },
+                      },
+                    })
                     authDispatch({ type: "TOGGLE_MODAL" })
                   }
                 }}
@@ -108,8 +133,9 @@ function CourseIntro({ course, bought }) {
               </div>
             ) : fetchingUrlStatus === "success" ? (
               paymentLink !== "" ? (
-                <a href={paymentLink}>
+                <a href={paymentLink} id="payLink">
                   <Button
+                    id="payButton"
                     className="mx-auto w-2/3 font-bold leading-8 py-2 px-4"
                     arrow
                   >
@@ -147,12 +173,23 @@ function CourseIntro({ course, bought }) {
             <span>شما عضو این دوره هستید</span>
           ) : (
             <Button
+              id="buyButtonDown"
               className="text-sm leading-8 py-2 px-5 lg:mx-0 mx-auto"
               arrow
-              onClick={() => {
+              onClick={async () => {
                 if (isLoggedIn) {
                   setBuyModalOpen(true)
                 } else {
+                  // await fetchPaymentUrl()
+                  authDispatch({
+                    type: "CHANGE_AFTER_LOGIN",
+                    payload: {
+                      action: "FETCH_N_REDIRECT",
+                      getDataFrom: `/course/admin/invoice/${course.slug}`,
+                      buttonText: "ورود و انتقال به درگاه پرداخت",
+                      payload: { courseId: course.id },
+                    },
+                  })
                   authDispatch({ type: "TOGGLE_MODAL" })
                 }
               }}

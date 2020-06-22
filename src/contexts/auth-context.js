@@ -19,6 +19,19 @@ function authReducer(state, action) {
         authModalOpen: !state.authModalOpen,
       }
     }
+    case "CHANGE_AFTER_LOGIN": {
+      return {
+        ...state,
+        afterLogin: {
+          ...state.afterLogin,
+          action: action.payload.action,
+          url: action.payload.url ? action.payload.url : "",
+          buttonText: action.payload.buttonText ? action.payload.buttonText : "",
+          getDataFrom: action.payload.getDataFrom ? action.payload.getDataFrom : "",
+          payload: action.payload.payload ? action.payload.payload : "",
+        },
+      }
+    }
     case "LOGIN": {
       return {
         ...state,
@@ -33,6 +46,9 @@ function authReducer(state, action) {
       }
     }
     case "LOGOUT": {
+      window.dataLayer.push({
+        linom_user: null,
+      })
       return {
         ...state,
         user: {},
@@ -64,6 +80,13 @@ function authReducer(state, action) {
 function AuthProvider({ children }) {
   const [state, dispatch] = React.useReducer(authReducer, {
     userDataModalOpen: true,
+    afterLogin: {
+      action: "TOGGLE_MODAL",
+      url: "",
+      buttonText: "",
+      getDataFrom: "",
+      payload: {},
+    },
     authModalOpen: false,
     user: {},
     isLoggedIn: false,
@@ -93,6 +116,9 @@ function useAuthDispatch() {
 
 async function fetchUser(dispatch) {
   if (!getCookie("token")) {
+    window.dataLayer.push({
+      linom_user: null,
+    })
     console.log("توکن موجود نیست")
     return
   }
@@ -101,6 +127,9 @@ async function fetchUser(dispatch) {
       // Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   }).catch((err) => {
+    window.dataLayer.push({
+      linom_user: null,
+    })
     if (err.response) {
       toast.error(err.response.data.message)
     } else {
@@ -110,6 +139,16 @@ async function fetchUser(dispatch) {
   })
   if (data) {
     dispatch({ type: "LOGIN", payload: data.data })
+    window.dataLayer.push({
+      // user: {
+      //   id: data.data.id,
+      //   first_name: data.data.first_name,
+      //   last_name: data.data.last_name,
+      //   phone: data.data.phone,
+      //   university: data.data.university,
+      // },
+      linom_user: data.data.phone,
+    })
   }
 }
 
@@ -136,6 +175,16 @@ async function updateUser(dispatch, values) {
   })
   if (data) {
     dispatch({ type: "UPDATE", payload: data.data.user })
+    window.dataLayer.push({
+      // user: {
+      //   id: data.data.id,
+      //   first_name: data.data.first_name,
+      //   last_name: data.data.last_name,
+      //   phone: data.data.phone,
+      //   university: data.data.university,
+      // },
+      linom_user: data.data.user.phone,
+    })
   }
   return data
 }

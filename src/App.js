@@ -30,6 +30,7 @@ function App(props) {
   const { utm_source } = query
 
   useEffect(() => {
+    window.dataLayer = window.dataLayer || []
     if (utm_source) {
       setCookie("utm_source", utm_source, 7, "linom.ir")
       setCookie("utm_source", utm_source, 7, "localhost")
