@@ -37,7 +37,7 @@
     "eject": "react-scripts eject",
     "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
     "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
-    "sitemap": "babel-node src/sitemap-generator.js"
+    "sitemap": "node src/sitemap-generator.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -55,12 +55,13 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^9.7.6",
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "autoprefixer": "^9.7.6",
+    "babel-node": "0.0.1-security",
     "postcss-cli": "^7.1.0",
     "tailwindcss": "^1.3.5"
   }
