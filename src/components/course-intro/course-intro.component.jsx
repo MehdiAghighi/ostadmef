@@ -69,9 +69,10 @@ function CourseIntro({ course, bought }) {
           <div className="xl:mb-5 mb-5 mx-auto lg:text-right text-center">
             <CourseTitle>{course.title}</CourseTitle>
           </div>
-          <p className="text-justify xl:font-light font-normal xl:text-lg text-base leading-10 w-full xl:w-10/12 sm:w-9/12 mx-auto lg:w-auto">
-            {course.description}
-          </p>
+          <p
+            className="text-justify xl:font-light font-normal xl:text-lg text-base leading-10 w-full xl:w-10/12 sm:w-9/12 mx-auto lg:w-auto"
+            dangerouslySetInnerHTML={{ __html: course.description }}
+          ></p>
           <TeacherCard className="" teacher={course.user} />
           <div className="w-full mx-auto lg:w-auto">
             {bought ? null : (

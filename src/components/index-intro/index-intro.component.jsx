@@ -28,11 +28,11 @@ function IndexIntro() {
         <div className="w-full mx-auto lg:w-auto">
           <Link to="/">
             <Button
-              className="xl:mt-12 mt-5 text-sm leading-8 py-2 px-5"
+              className="xl:mt-12 mt-5 text-lg font-bold leading-8 py-2 px-5"
               arrow
-              to="/story"
+              to="/courses"
             >
-              قصه‌ی ما
+              کپسول‌های آموزشی شب‌امتحانی
             </Button>
           </Link>
         </div>
