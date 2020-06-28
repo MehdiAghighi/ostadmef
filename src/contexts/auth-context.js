@@ -56,11 +56,6 @@ function authReducer(state, action) {
       }
     }
     case "TOGGLE_USER_DATA_MODAL": {
-      if (state.userDataModalOpen) {
-        document.body.style.overflow = "unset"
-      } else {
-        document.body.style.overflow = "hidden"
-      }
       return {
         ...state,
         userDataModalOpen: !state.userDataModalOpen,
