@@ -24,6 +24,10 @@ function ProfileCourses(props) {
             <div className="mt-6">
                <Helmet>
                   <title>لینوم | دوره‌های خریداری شده</title>
+                  <meta
+                     name="description"
+                     content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
+                  />
                </Helmet>
                <Title>دوره‌های خریداری شده</Title>
                <div className="flex flex-row flex-wrap mt-5 justify-center">

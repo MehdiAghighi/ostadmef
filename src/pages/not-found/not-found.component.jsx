@@ -6,6 +6,10 @@ function NotFound(props) {
       <div className="">
          <Helmet>
             <title>لینوم | صفحه‌ مورد نظر پیدا نشد</title>
+            <meta
+               name="description"
+               content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
+            />  
          </Helmet>
          <div
             class="mx-5 mt-10 bg-red-100 border-t-4 border-red-500 rounded-b text-red-900 px-4 py-3 shadow-md"

@@ -13,6 +13,10 @@ function Family(props) {
     <div className="container mx-auto">
       <Helmet>
         <title>لینوم | خانواده‌ی ما</title>
+        <meta
+          name="description"
+          content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
+        />
       </Helmet>
       <div className="bg-orange-100 mx-auto rounded-lg py-3 px-3 sm:w-2/3 w-full">
         <div className="flex flex-col">

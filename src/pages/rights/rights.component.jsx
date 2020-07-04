@@ -7,6 +7,10 @@ function Rights(props) {
     <div className="container mx-auto">
       <Helmet>
         <title>لینوم | منشور اخلاقی</title>
+        <meta
+          name="description"
+          content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
+        />
       </Helmet>
       <div className="bg-orange-100 mx-auto py-3 px-3 my-2 rounded-lg">
         <img src={RightsImg} className="rounded-lg mb-4" />
