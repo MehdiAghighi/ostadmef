@@ -16,6 +16,7 @@ function Course(props) {
   const [course, setCourse] = useState({})
   const [bought, setBought] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [keywords, setKeyWords] = useState([])
 
   useEffect(() => {
     setIsLoading(true)
@@ -25,6 +26,12 @@ function Course(props) {
       })
       .then((course) => {
         setCourse(course)
+        if (course.keywords) {
+          const keywordsArr = course.keywords
+          const arr = []
+          keywordsArr.map((item, index) => arr.push(item["title"]))
+          setKeyWords(arr)
+        }
         return API.get(`/course/admin/invoice/check/${course.id}`)
       })
       .then((resp) => {
@@ -55,6 +62,8 @@ function Course(props) {
         <>
           <Helmet>
             <title>لینوم | {course.title}</title>
+            <meta name="keywords" value={keywords.toString()} />
+            <meta name="description" value={course.description.replace(/(<([^>]+)>)/ig," ").substr(0, 160)} />
           </Helmet>
           <CourseIntro course={course} bought={bought} />
           {/* <CourseInfo course={course} /> */}

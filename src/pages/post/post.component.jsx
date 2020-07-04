@@ -92,6 +92,7 @@ function Post(props) {
               <Helmet>
                 <title>لینوم | {post.title}</title>
                 <meta name="keywords" value={keywords.toString()} />
+                <meta name="description" value={post.body.substr(0, 160)} />
               </Helmet>
               <img src={post.pic.url} alt={post.title} className="w-full" />
               <div className="mx-auto text-center my-6">
