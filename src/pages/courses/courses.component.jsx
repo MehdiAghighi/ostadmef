@@ -29,7 +29,7 @@ function Courses(props) {
    return (
       <div className="container mx-auto">
          <Helmet>
-            <title>لینوم | دوره‌ها</title>
+            <title>لینوم | دوره‌های آموزشی کپسولی‌شده</title>
             <meta
                name="description"
               content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
