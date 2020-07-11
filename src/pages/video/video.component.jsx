@@ -81,7 +81,7 @@ function Video(props) {
       ) : null
     ) : (
       <div className="flex flex-row justify-center">
-        <span className="text-xl text-red-500">شما به این ویدیو دسترسی ندارید</span>
+        <span className="text-xl text-red-500">مشکلی در ارتباط با سرور‌های آروان‌کلود پیش آمده است</span>
       </div>
     )
   ) : (

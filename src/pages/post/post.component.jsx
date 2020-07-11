@@ -109,12 +109,12 @@ function Post(props) {
                   readTime={post.read_time}
                 />
               </div>
-              <div
+              <article
                 id="post-body"
                 ref={postBodyRef}
                 className="my-6 post-body"
                 dangerouslySetInnerHTML={{ __html: post.body }}
-              ></div>
+              ></article>
               {serie && (
                 <div className="my-4 rounded bg-gray-100 py-2 px-3">
                   {serie.posts.map((serie_post, index) => (
