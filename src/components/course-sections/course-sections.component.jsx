@@ -3,10 +3,12 @@ import Title from "../title/title.component"
 import CourseSection from "../course-section/course-section.component"
 import { request } from "../../helpers/api"
 import CustomLoader from "../custom-loader/custom-loader.component"
+import { useAuthState } from "../../contexts/auth-context"
 
 function CourseSections({ course, bought, activeId }) {
   const [videos, setVideos] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const { user } = useAuthState()
 
   useEffect(() => {
     request(`/course/videos/${course.id}`, (resp) => {
@@ -29,7 +31,7 @@ function CourseSections({ course, bought, activeId }) {
                   active={activeId === video.id}
                   video={video}
                   title={course.title}
-                  lock={video.order != 1 && !bought}
+                  lock={video.order != 1 && !bought && user.role != 0}
                 />
               ))}
             </div>
