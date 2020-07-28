@@ -70,14 +70,12 @@ function Post(props) {
         // if (images[i].style)
         images[i].style.display = "inline-block"
         // }
+        let hi = parseInt(images[i].style.height)
+        if (hi > 120) {
+          images[i].style.height = "auto"
+          images[i].style.width = "100%"
+        }
       }
-      // images((img) => {
-      //   if (img.height < 400) {
-      //     img.style.verticalAlign = "middle"
-      //     img.style.textAlign = "unset"
-      //     img.style.margin = "unset"
-      //   }
-      // })
     }
   }, [isLoading])
 

@@ -9,6 +9,8 @@ import "./course-intro.style.scss"
 
 import Rodal from "rodal"
 
+import { nl2br } from "../../helpers/functions"
+
 // import Main from "../../assets/images/Main.png";
 // import DecoratedImage from "../decorated-image/decorated-image.component";
 import TeacherCard from "../teacher-card/teacher-card.component"
@@ -71,8 +73,9 @@ function CourseIntro({ course, bought }) {
           </div>
           <p
             className="text-justify xl:font-light font-normal xl:text-lg text-base leading-10 w-full xl:w-10/12 sm:w-9/12 mx-auto lg:w-auto"
-            dangerouslySetInnerHTML={{ __html: course.description }}
-          ></p>
+            dangerouslySetInnerHTML={{ __html: nl2br(course.description) }}
+          >
+          </p>
           <TeacherCard className="" teacher={course.user} />
           <div className="w-full mx-auto lg:w-auto">
             {bought ? null : (

@@ -110,6 +110,7 @@ function useAuthDispatch() {
 }
 
 async function fetchUser(dispatch) {
+  console.log(getCookie("token"))
   if (!getCookie("token")) {
     window.dataLayer.push({
       linom_user: null,
