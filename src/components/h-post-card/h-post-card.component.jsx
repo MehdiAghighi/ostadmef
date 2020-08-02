@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Clock } from "../icon/icon.component"
+import { Clock, Calendar } from "../icon/icon.component"
 import HCard from "../h-card/h-card.component"
 import HCardTitle from "../h-card/h-card-title/h-card-title.component"
 import HCardBody from "../h-card/h-card-body/h-card-body.component"
@@ -26,7 +26,7 @@ function HPostCard({ post }) {
         <HCardFooter>
           <span className="text-gray-600 sm:text-base text-xs">
             {post.time_ago} &nbsp;
-            <Clock className="text-gray-600 text-xs" />
+            <Calendar className="text-gray-600 text-xs" />
           </span>
           <div
             className="h-6 bg-gray-400 mx-3"

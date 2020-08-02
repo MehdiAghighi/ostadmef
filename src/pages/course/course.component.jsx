@@ -7,7 +7,7 @@ import CourseIntro from "../../components/course-intro/course-intro.component"
 import CustomLoader from "../../components/custom-loader/custom-loader.component"
 import CourseSections from "../../components/course-sections/course-sections.component"
 import RelatedCourses from "../../components/related-courses/related-courses.component"
-import request from "../../helpers/api"
+import NotFound from "../not-found/not-found.component"
 import API from "../../helpers/api"
 import { toast } from "react-toastify"
 
@@ -16,6 +16,7 @@ function Course(props) {
   const [course, setCourse] = useState({})
   const [bought, setBought] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(0)
   const [keywords, setKeyWords] = useState([])
 
   useEffect(() => {
@@ -48,6 +49,10 @@ function Course(props) {
           } else {
             toast.error(err.response.data.message)
           }
+          console.log(err.response)
+          if (err.response.status == 404) {
+            setError(404)
+          }
           setIsLoading(false)
         } else {
           toast.error("مشکلی در ارتباط با سرور پیش آمده است")
@@ -58,22 +63,28 @@ function Course(props) {
     <div>
       {isLoading ? (
         <CustomLoader />
-      ) : (
-        <>
-          <Helmet>
+      ) :
+          !error ? (
+            <>
+            <Helmet>
             <title>لینوم | {course.title}</title>
             <meta name="keywords" value={keywords.toString()} />
             <meta name="description" value={course.description.replace(/(<([^>]+)>)/ig," ").substr(0, 160)} />
-          </Helmet>
-          <CourseIntro course={course} bought={bought} />
-          {/* <CourseInfo course={course} /> */}
-          <CourseSections
+            </Helmet>
+            <CourseIntro course={course} bought={bought} />
+            {/* <CourseInfo course={course} /> */}
+            <CourseSections
             course={{ id: course.id, title: course.title }}
             bought={bought}
-          />
-          <RelatedCourses course={{ id: course.id }} />
-        </>
-      )}
+            />
+            <RelatedCourses course={{ id: course.id }} />
+            </>
+          )
+          :
+          (
+            <NotFound />
+          )
+    }
     </div>
   )
 }

@@ -73,7 +73,7 @@ function Post(props) {
         let hi = parseInt(images[i].style.height)
         if (hi > 120) {
           images[i].style.height = "auto"
-          images[i].style.width = "100%"
+          images[i].style.width = "auto"
         }
       }
     }

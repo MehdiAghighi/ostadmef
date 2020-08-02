@@ -6,7 +6,7 @@ import CardTitle from "../card/card-title/card-title.component"
 import CardBody from "../card/card-body/card-body.component"
 import CardFooter from "../card/card-footer/card-footer.component"
 import PostTag from "../post-tag/post-tag.component"
-import { Clock } from "../icon/icon.component"
+import { Clock, Calendar } from "../icon/icon.component"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import ImageLoader from "../image-loader/image-loader.component"
 
@@ -45,7 +45,7 @@ function BlogCard({ post, full, lazy }) {
             <div className="flex flex-row">
               <span className="text-gray-600">
                 {post.time_ago} &nbsp;
-                <Clock className="text-gray-600 text-xs" />
+                <Calendar className="text-gray-600 text-xs" />
               </span>
               <div
                 className="h-6 bg-gray-400 mx-3"

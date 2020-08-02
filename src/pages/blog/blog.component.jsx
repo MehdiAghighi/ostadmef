@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import BlogIntro from "../../components/blog-intro/blog-intro.component";
 import NewPosts from "../../components/new-posts/new-posts.component";
 import HotPosts from "../../components/hot-posts/hot-posts";
+import BlogArchive from "../../components/blog-archive/blog-archive.component";
 
 function Blog() {
     return (
@@ -16,8 +17,9 @@ function Blog() {
                 />
             </Helmet>
             <BlogIntro />
-            <NewPosts />
-            <HotPosts />
+            <BlogArchive />
+            {/* <NewPosts /> */}
+            {/* <HotPosts /> */}
         </div>
     );
 }
