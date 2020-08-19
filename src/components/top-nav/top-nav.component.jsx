@@ -6,8 +6,10 @@ import MobileNav from "../mobile-nav/mobile-nav.component";
 function TopNav() {
    return (
       <div className="">
-         <DesktopNav />
-         <MobileNav />
+         <header>
+            <DesktopNav />
+            <MobileNav />
+         </header>
       </div>
    );
 }

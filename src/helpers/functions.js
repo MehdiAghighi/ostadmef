@@ -36,3 +36,13 @@ export function nl2br (str, replaceMode, isXhtml) {
   var replaceStr = (replaceMode) ? '$1'+ breakTag : '$1'+ breakTag +'$2';
   return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, replaceStr);
 }
+
+export function objectToSchema(obj) {
+  return obj
+}
+
+export function stripHtml(html) {
+  var tmp = document.createElement("DIV")
+  tmp.innerHTML = html
+  return tmp.textContent || tmp.innerText || ""
+}

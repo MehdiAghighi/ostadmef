@@ -6,11 +6,19 @@ function Title(props) {
   return (
     <div className="title-wrapper relative inline-flex">
       <div className="z-10 text-blue-800 relative">
-        <h2
-          className={`title text-blue-800 text-3xl sm:text-5xl ${props.className}`}
-        >
-          {props.children}
-        </h2>
+        {props.mainTitle ? (
+          <h1
+            className={`title text-blue-800 text-3xl sm:text-5xl ${props.className}`}
+          >
+            {props.children}
+          </h1>
+        ) : (
+          <span
+            className={`title text-blue-800 text-3xl sm:text-5xl ${props.className}`}
+          >
+            {props.children}
+          </span>
+        )}
       </div>
       <div
         className="title-through-line absolute h-6 w-full"
@@ -20,6 +28,9 @@ function Title(props) {
       ></div>
     </div>
   )
+}
+Title.defaultProps = {
+  mainTitle: false,
 }
 
 export default Title

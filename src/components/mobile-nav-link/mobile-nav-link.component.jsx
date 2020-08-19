@@ -19,7 +19,7 @@ function MobileNavLink(props) {
                         width: 3,
                     }}
                 ></div>
-                <h1 className="leading-loose relative m-1">{props.children}</h1>
+                <span className="leading-loose relative m-1">{props.children}</span>
             </div>
         </NavLink>
     );

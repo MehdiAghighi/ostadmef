@@ -25,6 +25,7 @@ This set of fonts are used in this project under the license: (.....)
     /* IE6-8 */ url("shabnam/Shabnam-Bold-FD.woff") format("woff"),
     /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("shabnam/Shabnam-Bold-FD.ttf")
       format("truetype");
+  font-display: swap;
 }
 
 @font-face {
@@ -36,6 +37,7 @@ This set of fonts are used in this project under the license: (.....)
     /* IE6-8 */ url("shabnam/Shabnam-Thin-FD.woff") format("woff"),
     /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("shabnam/Shabnam-Thin-FD.ttf")
       format("truetype");
+  font-display: swap;
 }
 
 @font-face {
@@ -47,6 +49,7 @@ This set of fonts are used in this project under the license: (.....)
     /* IE6-8 */ url("shabnam/Shabnam-Light-FD.woff") format("woff"),
     /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("shabnam/Shabnam-Light-FD.ttf")
       format("truetype");
+  font-display: swap;
 }
 
 @font-face {
@@ -58,15 +61,17 @@ This set of fonts are used in this project under the license: (.....)
     /* IE6-8 */ url("shabnam/Shabnam-FD.woff") format("woff"),
     /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("shabnam/Shabnam-FD.ttf")
       format("truetype");
+  font-display: swap;
 }
 
 @font-face {
   font-family: shabnamsi;
   font-style: normal;
   font-weight: 500;
-  ]src: url("shabnam/Shabnam-Medium-FD.eot");
+  src: url("shabnam/Shabnam-Medium-FD.eot");
   src: url("shabnam/Shabnam-Medium-FD.eot?#iefix") format("embedded-opentype"),
     /* IE6-8 */ url("shabnam/Shabnam-Medium-FD.woff") format("woff"),
     /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("shabnam/Shabnam-Medium-FD.ttf")
       format("truetype");
+  font-display: swap;
 }

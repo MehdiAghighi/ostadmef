@@ -27,7 +27,8 @@ function Payment(props) {
   return (
     <div className="container mx-auto">
       <Helmet>
-        <title>لینوم | فاکتور پرداخت</title>
+        <title>فاکتور پرداخت |‌ لینوم</title>
+        <meta name="robots" content="noindex,nofollow" />
         <meta
           name="description"
           content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."

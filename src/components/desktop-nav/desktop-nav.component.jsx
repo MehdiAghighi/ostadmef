@@ -17,8 +17,7 @@ function DesktopNav(props) {
       <nav className="hidden md:flex md:flex-row justify-between items-center">
         <div>
           <NavLink to="/">
-            {/* <h1 className="font-bold text-4xl leading-loose">لــــینوم</h1> */}
-            <img src={LinomLogo} className="h-16 mt-2" />
+            <img src={LinomLogo} className="h-16 mt-2" alt="لینوم - پلتفرم آموزشی میکرولرنینگ" />
           </NavLink>
         </div>
         <div className="flex flex-row justify-center items-center">

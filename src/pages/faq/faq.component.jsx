@@ -1,19 +1,57 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import FAQImg from "../../assets/images/faq.png"
+import Title from "../../components/title/title.component"
+import { objectToSchema } from "../../helpers/functions"
 
 function FAQ(props) {
   return (
     <div className="container mx-auto">
+      <script
+        key={`faqJSON`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            objectToSchema({
+              "@context": "http://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  item: {
+                    "@id": `${process.env.REACT_APP_URL}/`,
+                    name: "لینوم",
+                    description: "لینوم - پلتفرم آموزشی میکرولرنینگ",
+                  },
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  item: {
+                    "@id": `${process.env.REACT_APP_URL}/faq`,
+                    name: "سوالات متدوال",
+                    description: "سوالاتی که معمولا از پشتیبانی پرسیده می‌شوند",
+                  },
+                },
+              ],
+            })
+          ),
+        }}
+      />
       <Helmet>
-        <title>لینوم | سوالات متداول</title>
+        <title>سوالات متدوال | لینوم</title>
+        <link rel="canonical" href={`${process.env.REACT_APP_URL}/faq`} />
         <meta
           name="description"
           content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
         />
       </Helmet>
+      <div className="mx-auto text-center my-6">
+        <Title mainTitle={true}>سوالات متداول</Title>
+      </div>
       <div className="bg-orange-100 rounded-lg py-3 px-3 my-2">
-        <img src={FAQImg} className="rounded-lg" />
+        <img src={FAQImg} className="rounded-lg" alt="سوالات متدوال" />
         <p className="leading-10 text-justify text-lg">
           <ol className="list-decimal list-inside">
             <li className="my-2">

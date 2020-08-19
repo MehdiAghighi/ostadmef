@@ -20,8 +20,7 @@ function MobileNav() {
     <div className="w-full block md:hidden">
       <div className="py-4 px-4 flex flex-row justify-between items-center">
         <NavLink to="/">
-          {/* <h1 className="font-bold text-4xl leading-tight">لــــینوم</h1> */}
-          <img src={LinomLogo} className="h-16 mt-2" />
+          <img src={LinomLogo} className="h-16 mt-2" alt="لینوم - پلتفرم آموزشی میکرولرنینگ" />
         </NavLink>
         {!sidebarOpen ? (
           <Hamburger className="text-blue-700" onClick={toggleSidebar} />

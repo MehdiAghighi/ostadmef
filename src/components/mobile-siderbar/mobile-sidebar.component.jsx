@@ -17,11 +17,14 @@ function MobileSidebar({ isOpen }) {
         transform: isOpen ? "translateX(0)" : "translateX(100%)",
       }}
     >
-      <div className="py-2 px-2 mx-auto">
+      <nav className="py-2 px-2 mx-auto">
         <div className="text-center mx-auto">
           <NavLink to="/">
-            {/* <h1 className="font-bold text-4xl leading-loose">لــــینوم</h1> */}
-            <img src={LinomLogo} className="h-12 mt-2" />
+            <img
+              src={LinomLogo}
+              className="h-12 mt-2"
+              alt="لینوم - پلتفرم آموزشی میکرولرنینگ"
+            />
           </NavLink>
         </div>
         <div className="flex flex-col">
@@ -74,7 +77,7 @@ function MobileSidebar({ isOpen }) {
             </div>
           )}
         </div>
-      </div>
+      </nav>
     </div>
   )
 }

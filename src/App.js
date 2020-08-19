@@ -39,12 +39,16 @@ function App(props) {
   }, [])
 
   useEffect(() => {
-    props.history.listen((location, action) => {
+    const listen = props.history.listen((location, action) => {
       if (action == "PUSH") {
         siteDispatch({ type: "CLOSE_SIDEBAR" })
+        window.scrollTo(0, 0)
       }
-      console.log(`The last navigation action was ${action}`)
     })
+
+    return () => {
+      listen()
+    }
   }, [])
   return (
     <div className="bg-white">

@@ -1,19 +1,57 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import RightsImg from "../../assets/images/rights.png"
+import Title from "../../components/title/title.component"
+import { objectToSchema } from "../../helpers/functions"
 
 function Rights(props) {
   return (
     <div className="container mx-auto">
+      <script
+        key={`rightsJSON`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            objectToSchema({
+              "@context": "http://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  item: {
+                    "@id": `${process.env.REACT_APP_URL}/`,
+                    name: "لینوم",
+                    description: "لینوم - پلتفرم آموزشی میکرولرنینگ",
+                  },
+                },
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  item: {
+                    "@id": `${process.env.REACT_APP_URL}/rights`,
+                    name: "منشور اخلاقی",
+                    description: "منشور اخلاقی، باید‌ها و نباید‌های کاربران و لینوم",
+                  },
+                },
+              ],
+            })
+          ),
+        }}
+      />
       <Helmet>
-        <title>لینوم | منشور اخلاقی</title>
+        <title>منشور اخلاقی | لینوم</title>
+        <link rel="canonical" href={`${process.env.REACT_APP_URL}/rights`} />
         <meta
           name="description"
           content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
         />
       </Helmet>
+      <div className="mx-auto text-center my-2">
+        <Title mainTitle={true}>منشور اخلاقی</Title>
+      </div>
       <div className="bg-orange-100 mx-auto py-3 px-3 my-2 rounded-lg">
-        <img src={RightsImg} className="rounded-lg mb-4" />
+        <img src={RightsImg} className="rounded-lg mb-4" alt="منشور اخلاقی" />
         <p className="leading-10 text-justify">
           اخلاق در لینوم اولویت است.
           <br /> اخلاق یک کلمه‌ی 5 حرفیست که در هر کدام از 5 حرف آن دنیایی نفهته است.

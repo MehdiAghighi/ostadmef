@@ -35,8 +35,7 @@ function Login(props) {
       >
         <div className="relative w-full h-full flex flex-col text-center">
           <NavLink to="/" className="mx-auto">
-            {/* <h1 className="font-bold text-4xl leading-tight">لــــینوم</h1> */}
-            <img src={LinomLogo} className="h-16 mt-2" />
+            <img src={LinomLogo} className="h-16 mt-2" alt="" />
           </NavLink>
           <div className="h-full w-full flex justify-center mt-8">
             <div className="container">

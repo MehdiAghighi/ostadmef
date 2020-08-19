@@ -3,20 +3,59 @@ import { Helmet } from "react-helmet"
 
 import StoryImg from "../../assets/images/story.png"
 import GroupImg from "../../assets/images/group.png"
+import Title from "../../components/title/title.component"
+import { objectToSchema } from "../../helpers/functions"
 
 function Story(props) {
   return (
     <div>
       <Helmet>
-        <title>لینوم | داستان ما</title>
+        <script
+          key={`storyJSON`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              objectToSchema({
+                "@context": "http://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    item: {
+                      "@id": `${process.env.REACT_APP_URL}/`,
+                      name: "لینوم",
+                      description: "لینوم - پلتفرم آموزشی میکرولرنینگ",
+                    },
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    item: {
+                      "@id": `${process.env.REACT_APP_URL}/story`,
+                      name: "داستان ما",
+                      description:
+                        "داستان تولد لینوم",
+                    },
+                  },
+                ],
+              })
+            ),
+          }}
+        />
+        <title>داستان ما | لینوم</title>
+        <link rel="canonical" href={`${process.env.REACT_APP_URL}/story`} />
         <meta
           name="description"
           content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
         />
       </Helmet>
+      <div className="mx-auto text-center my-2">
+        <Title mainTitle={true}>داستان ما</Title>
+      </div>
       <div className="container mx-auto">
         <div className="bg-orange-100 py-3 px-3 rounded-lg">
-          <img src={StoryImg} className="rounded-lg" />
+          <img src={StoryImg} className="rounded-lg" alt="داستان لینوم" />
           <p className="my-2 leading-10 font-lg text-justify px-4 text-lg">
             خب حالا که گویا گذرتون به این صفحه خورده، می‌خوام براتون یه قصه بگم،
             قصه‌ای از شکل‌گیری لینوم.

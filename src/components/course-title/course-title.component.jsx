@@ -6,11 +6,11 @@ function CourseTitle(props) {
   return (
     <div className="title-wrapper relative inline-flex">
       <div className="z-10 text-blue-800 relative">
-        <h2
+        <h1
           className={`title text-blue-1000 text-2xl sm:text-2xl ${props.className}`}
         >
           {props.children}
-        </h2>
+        </h1>
       </div>
       <div
         className="title-through-line absolute h-6 w-full"

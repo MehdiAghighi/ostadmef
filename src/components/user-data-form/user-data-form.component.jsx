@@ -68,7 +68,7 @@ function UserDataForm({ justEmail, afterSubmit }) {
       >
         <div className="relative w-full h-full flex flex-col text-center">
           <NavLink to="/">
-            <h1 className="font-bold text-4xl leading-tight">لــــینوم</h1>
+            <span className="font-bold text-4xl leading-tight">لــــینوم</span>
           </NavLink>
           <div className="h-full w-full flex mt-8">
             <div className="container mx-auto">

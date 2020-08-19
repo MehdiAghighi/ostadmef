@@ -59,7 +59,8 @@ function Video(props) {
       video.video.course.id ? (
         <div className="">
           <Helmet>
-            <title>لینوم | {video.video.title}</title>
+            <title>{video.video.title} - ویدیوی آموزشی | لینوم</title>
+            <meta name="robots" content="noindex,nofollow" />
             <meta
               name="description"
               content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."

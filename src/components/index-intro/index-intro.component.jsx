@@ -19,7 +19,7 @@ function IndexIntro() {
         }}
       >
         <div className="xl:mb-16 mb-8" style={{ width: 335 }}>
-          <Title>آشنایی با لــــینوم</Title>
+          <Title mainTitle={true}>آشنایی با لــــینوم</Title>
         </div>
         <p className="text-justify xl:font-light font-normal xl:text-2xl sm:text-xl text-lg leading-10 w-full sm:w-9/12 mx-auto lg:w-auto">
           لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و

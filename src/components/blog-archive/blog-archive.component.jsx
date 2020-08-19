@@ -33,14 +33,17 @@ function BlogArchive() {
     }, [page])
 
     useEffect(() => {
-      history.listen((location, action) => {
+      const listen = history.listen((location, action) => {
         window.scrollTo(0, archiveRef.current.offsetTop)
       })
+      return () => {
+        listen()
+      }
     }, [history, archiveRef])
     return (
       <div className="container mx-auto mt-8">
         <div ref={archiveRef}>
-          <Title>مقالات لینوم</Title>
+          <Title mainTitle={true}>مقالات لینوم</Title>
         </div>
         <div>
           {isLoading ? (

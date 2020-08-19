@@ -10,6 +10,7 @@ import RelatedCourses from "../../components/related-courses/related-courses.com
 import NotFound from "../not-found/not-found.component"
 import API from "../../helpers/api"
 import { toast } from "react-toastify"
+import { objectToSchema } from "../../helpers/functions"
 
 function Course(props) {
   let { slug } = useParams()
@@ -63,28 +64,91 @@ function Course(props) {
     <div>
       {isLoading ? (
         <CustomLoader />
-      ) :
-          !error ? (
-            <>
-            <Helmet>
-            <title>لینوم | {course.title}</title>
+      ) : !error ? (
+        <>
+          <script
+            key={`courseJSON-${course.title}`}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(
+                objectToSchema({
+                  "@context": "http://schema.org",
+                  "@type": "BreadcrumbList",
+                  itemListElement: [
+                    {
+                      "@type": "ListItem",
+                      position: 1,
+                      item: {
+                        "@id": `${process.env.REACT_APP_URL}/`,
+                        name: "لینوم",
+                        description: "لینوم - پلتفرم آموزشی میکرولرنینگ",
+                      },
+                    },
+                    {
+                      "@type": "ListItem",
+                      position: 2,
+                      item: {
+                        "@id": `${process.env.REACT_APP_URL}/courses`,
+                        name: "دوره‌های آموزشی",
+                        description: "دوره‌های آموزشی کپسولی شده",
+                      },
+                    },
+                    {
+                      "@type": "ListItem",
+                      position: 3,
+                      item: {
+                        "@id": `${process.env.REACT_APP_URL}/course/${course.slug}`,
+                        name: `${course.title}`,
+                        description: `${course.description}`,
+                      },
+                    },
+                  ],
+                })
+              ),
+            }}
+          />
+          <script
+            key={`courseJSONcourse`}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(
+                objectToSchema({
+                  "@context": "https://schema.org",
+                  "@type": "Course",
+                  name: course.title,
+                  description: course.description,
+                  provider: {
+                    "@type": "Organization",
+                    name: "لینوم - پلتفرم آموزشی میکرولرنینگ",
+                    sameAs: process.env.REACT_APP_URL,
+                  },
+                })
+              ),
+            }}
+          />
+          <Helmet>
+            <title>{course.title} - دوره‌های آموزشی | لینوم</title>
+            <link
+              rel="canonical"
+              href={`${process.env.REACT_APP_URL}/course/${course.slug}`}
+            />
             <meta name="keywords" value={keywords.toString()} />
-            <meta name="description" value={course.description.replace(/(<([^>]+)>)/ig," ").substr(0, 160)} />
-            </Helmet>
-            <CourseIntro course={course} bought={bought} />
-            {/* <CourseInfo course={course} /> */}
-            <CourseSections
+            <meta
+              name="description"
+              value={course.description.replace(/(<([^>]+)>)/gi, " ").substr(0, 160)}
+            />
+          </Helmet>
+          <CourseIntro course={course} bought={bought} />
+          {/* <CourseInfo course={course} /> */}
+          <CourseSections
             course={{ id: course.id, title: course.title }}
             bought={bought}
-            />
-            <RelatedCourses course={{ id: course.id }} />
-            </>
-          )
-          :
-          (
-            <NotFound />
-          )
-    }
+          />
+          <RelatedCourses course={{ id: course.id }} />
+        </>
+      ) : (
+        <NotFound />
+      )}
     </div>
   )
 }

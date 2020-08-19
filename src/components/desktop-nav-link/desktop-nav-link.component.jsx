@@ -15,7 +15,7 @@ function DesktopNavLink(props) {
             }`}
         >
             <div className="relative">
-                <h1 className="leading-loose relative m-1">{props.children}</h1>
+                <span className="leading-loose relative m-1">{props.children}</span>
                 <div
                     className="link-bottom-border bg-blue-500 absolute w-full rounded-full hidden"
                     style={{ bottom: "4px", height: "3px" }}

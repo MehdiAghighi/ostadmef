@@ -3,19 +3,57 @@ import TermsImg from "../../assets/images/terms.png"
 
 import TeamImage from "../../assets/images/rules-before-user.jpg"
 import { Helmet } from "react-helmet"
+import Title from "../../components/title/title.component"
+import { objectToSchema } from "../../helpers/functions"
 
 function Terms(props) {
   return (
     <div className="container mx-auto">
+      <script
+        key={`termsJSON`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            objectToSchema({
+              "@context": "http://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  item: {
+                    "@id": `${process.env.REACT_APP_URL}/`,
+                    name: "لینوم",
+                    description: "لینوم - پلتفرم آموزشی میکرولرنینگ",
+                  },
+                },
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  item: {
+                    "@id": `${process.env.REACT_APP_URL}/terms`,
+                    name: "قوانین استفاده",
+                    description: "قوانین استفاده از محصولات لینوم، تعریف کاربر",
+                  },
+                },
+              ],
+            })
+          ),
+        }}
+      />
       <Helmet>
-        <title>لینوم | شرایط استفاده</title>
+        <title>شرایط استفاده | لینوم</title>
+        <link rel="canonical" href={`${process.env.REACT_APP_URL}/terms`} />
         <meta
           name="description"
           content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
         />
       </Helmet>
+      <div className="mx-auto text-center my-2">
+        <Title mainTitle={true}>قوانین استفاده</Title>
+      </div>
       <div className="bg-orange-100 mx-auto rounded-lg py-3 px-3">
-        <img src={TermsImg} className="rounded-lg" />
+        <img src={TermsImg} className="rounded-lg" alt="قوانین استفاده" />
         <p className="my-2 px-2 leading-10 text-justify">
           قوانین عمومی تمامی اصول اساسی حاکم بر فعالیت وبسایت لینوم (linom.ir) اعم از
           تولید محتوای آموزشی و فروش آن، منطبق با قوانین جمهوری اسلامی ایران، قانون

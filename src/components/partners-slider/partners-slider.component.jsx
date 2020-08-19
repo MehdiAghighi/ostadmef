@@ -53,7 +53,7 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه تهران"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/tehran.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
@@ -65,7 +65,7 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه صنعتی شریف"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/sharif.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
@@ -77,7 +77,7 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه علامه طباطبایی"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/alame.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
@@ -89,7 +89,7 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه امیرکبیر"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/amirkabir.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
@@ -101,11 +101,11 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه شهید بهشتی"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/beheshti.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
-              دانشگاه بهشتی
+              دانشگاه شهید بهشتی
             </span>
           </div>
         </div>
@@ -113,7 +113,7 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه علم و صنعت"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/elmosanat.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
@@ -125,7 +125,7 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه اصفهان"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/esfahan.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
@@ -137,7 +137,7 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه فردوسی"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/ferdosi.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
@@ -149,7 +149,7 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه گیلان"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/gilan.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
@@ -161,7 +161,7 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه ایلام"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/ilam.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
@@ -173,7 +173,7 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه امام حسین(ع)"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/imamhosein.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
@@ -185,7 +185,7 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه مازندران"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/mazandaran.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
@@ -197,7 +197,7 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه پیام‌نور"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/payam.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
@@ -209,7 +209,7 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه سمنان"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/semnan.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
@@ -221,7 +221,7 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه شاهد"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/shahed.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
@@ -233,7 +233,7 @@ function PartnersSlider(props) {
           <div className="py-3 px-8">
             <img
               className="mx-auto swiper-lazy"
-              alt=""
+              alt="دانشگاه شیراز"
               src={`${process.env.REACT_APP_API_DOMAIN}/storage/static/universities/shiraz.png`}
             />
             <span className="hidden text-blue-1000 text-lg mt-3 font-bold leading-10">
