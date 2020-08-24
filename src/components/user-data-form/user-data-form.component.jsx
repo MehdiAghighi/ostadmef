@@ -66,7 +66,7 @@ function UserDataForm({ justEmail, afterSubmit }) {
         animation="slideUp"
         duration={500}
       >
-        <div className="relative w-full h-full flex flex-col text-center">
+        <div className="relative w-full h-full flex flex-col text-center overflow-scroll">
           <NavLink to="/">
             <span className="font-bold text-4xl leading-tight">لــــینوم</span>
           </NavLink>

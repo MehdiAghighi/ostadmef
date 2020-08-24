@@ -6,6 +6,7 @@ import BlogCard from "../blog-card/blog-card.component"
 import { Link, useHistory } from "react-router-dom"
 import { useQueryParams, withDefault, NumberParam } from "use-query-params"
 import { useRef } from "react"
+import { useSiteDispatch } from "../../contexts/site-context"
 
 // const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)  
 
@@ -14,6 +15,8 @@ function BlogArchive() {
     const [posts, setPosts] = useState([])
     let history = useHistory()
     const archiveRef = useRef(null)
+
+    const siteDispatch = useSiteDispatch()
 
 
     const [query, setQuery] = useQueryParams({
@@ -36,10 +39,12 @@ function BlogArchive() {
       const listen = history.listen((location, action) => {
         window.scrollTo(0, archiveRef.current.offsetTop)
       })
+      setIsLoading(true)
+
       return () => {
         listen()
       }
-    }, [history, archiveRef])
+    }, [archiveRef])
     return (
       <div className="container mx-auto mt-8">
         <div ref={archiveRef}>

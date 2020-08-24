@@ -67,8 +67,34 @@ function Courses(props) {
          <link rel="canonical" href={`${process.env.REACT_APP_URL}/courses`} />
          <meta
            name="description"
-           content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
+           content="یادگیری دروس دانشگاهی و مهارت‌های کاربردی با متد آموزشی میکرولرنینگ، در سریع‌ترین زمان ممکن"
          />
+         <meta name="keywords" content="اولین پلتفرم آموزشی میکرولرنینگ,سامانه یادگیری لینوم,آموزش فشرده به سبک میکرولرنینگ,یادگیری خرد,آموزش های شب امتحانی لینوم,کپسول های آموزشی لینوم,شب امتحان لینوم,دوره های آموزشی میکرو" />
+         <meta name="twitter:card" content="summary" />
+         <meta
+           name="twitter:title"
+           content="دوره‌های آموزشی فشرده و کپسولی | لینوم"
+         />
+         <meta
+           name="twitter:description"
+           content="یادگیری دروس دانشگاهی و مهارت‌های کاربردی با متد آموزشی میکرولرنینگ، در سریع‌ترین زمان ممکن"
+         />
+
+         <meta
+           property="og:title"
+           content="دوره‌های آموزشی فشرده و کپسولی | لینوم"
+         />
+         <meta property="og:type" content="website" />
+         <meta property="og:url" content={`${process.env.REACT_APP_URL}/courses`} />
+         <meta
+           property="og:image"
+           content={`${process.env.REACT_APP_API_DOMAIN}/logo.png`}
+         />
+         <meta
+           property="og:description"
+           content="یادگیری دروس دانشگاهی و مهارت‌های کاربردی با متد آموزشی میکرولرنینگ، در سریع‌ترین زمان ممک"
+         />
+         <meta property="og:site_name" content="لینوم" />
        </Helmet>
        <div className="mx-auto text-center my-4">
          <Title mainTitle={true}>دوره‌های کپسولی لینوم</Title>

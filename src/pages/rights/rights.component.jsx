@@ -1,6 +1,6 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-import RightsImg from "../../assets/images/rights.png"
+import RightsImg from "../../assets/images/rights.webp"
 import Title from "../../components/title/title.component"
 import { objectToSchema } from "../../helpers/functions"
 

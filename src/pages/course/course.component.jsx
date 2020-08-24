@@ -10,12 +10,13 @@ import RelatedCourses from "../../components/related-courses/related-courses.com
 import NotFound from "../not-found/not-found.component"
 import API from "../../helpers/api"
 import { toast } from "react-toastify"
-import { objectToSchema } from "../../helpers/functions"
+import { objectToSchema, stripHtml, nl2br } from "../../helpers/functions"
 
 function Course(props) {
   let { slug } = useParams()
   const [course, setCourse] = useState({})
   const [bought, setBought] = useState(false)
+  const [description, setDescription] = useState("")
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(0)
   const [keywords, setKeyWords] = useState([])
@@ -28,6 +29,7 @@ function Course(props) {
       })
       .then((course) => {
         setCourse(course)
+        setDescription(course.description)
         if (course.keywords) {
           const keywordsArr = course.keywords
           const arr = []
@@ -99,7 +101,7 @@ function Course(props) {
                       item: {
                         "@id": `${process.env.REACT_APP_URL}/course/${course.slug}`,
                         name: `${course.title}`,
-                        description: `${course.description}`,
+                        description: `${description}`,
                       },
                     },
                   ],
@@ -116,7 +118,7 @@ function Course(props) {
                   "@context": "https://schema.org",
                   "@type": "Course",
                   name: course.title,
-                  description: course.description,
+                  description: description,
                   provider: {
                     "@type": "Organization",
                     name: "لینوم - پلتفرم آموزشی میکرولرنینگ",
@@ -133,10 +135,29 @@ function Course(props) {
               href={`${process.env.REACT_APP_URL}/course/${course.slug}`}
             />
             <meta name="keywords" value={keywords.toString()} />
+            <meta name="description" value={description} />
+            <meta name="twitter:card" content="summary" />
             <meta
-              name="description"
-              value={course.description.replace(/(<([^>]+)>)/gi, " ").substr(0, 160)}
+              name="twitter:title"
+              content={`${course.title} - دوره‌های آموزشی | لینوم`}
             />
+            <meta
+              name="twitter:description"
+              content="مجله‌ی آموزشی لینوم با تکیه بر متد میکرولرنینگ تهیه‌شده‌است."
+            />
+            <meta name="twitter:image" content={`${course.pic.url}`} />
+
+            <meta
+              property="og:title"
+              content={`${course.title} - دوره‌های آموزشی | لینوم`}
+            />
+            <meta property="og:type" content="course" />
+            <meta
+              property="og:url"
+              content={`${process.env.REACT_APP_URL}/course/${course.slug}`}
+            />
+            <meta property="og:image" content={`${course.pic.url}`} />
+            <meta property="og:description" content={description} />
           </Helmet>
           <CourseIntro course={course} bought={bought} />
           {/* <CourseInfo course={course} /> */}

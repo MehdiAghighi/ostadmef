@@ -25,7 +25,7 @@ function Blog() {
                     item: {
                       "@id": `${process.env.REACT_APP_URL}/`,
                       name: "لینوم",
-                      description: "لینوم - پلتفرم آموزشی میکرولرنینگ"
+                      description: "لینوم - پلتفرم آموزشی میکرولرنینگ",
                     },
                   },
                   {
@@ -34,7 +34,7 @@ function Blog() {
                     item: {
                       "@id": `${process.env.REACT_APP_URL}/blog`,
                       name: "بلاگ",
-                      description: "مقالات"
+                      description: "مقالات",
                     },
                   },
                 ],
@@ -43,11 +43,29 @@ function Blog() {
           }}
         />
         <Helmet>
-          <title>مقالات آموزشی | لینوم</title>
+          <title>مجله‌ی آموزشی | لینوم</title>
           <link rel="canonical" href={`${process.env.REACT_APP_URL}/blog`} />
           <meta
             name="description"
-            content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
+            content="مجله‌ی آموزشی لینوم با تکیه بر متد میکرولرنینگ تهیه‌شده‌است."
+          />
+          <meta
+            name="keywords"
+            content="مجله آموزشی لینوم،آموزش های خرد،سامانه یادگیری لینوم،میکرولرنینگ به سبک متن و ویدئو،آموزش فشرده"
+          />
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:title" content="مجله‌ی آموزشی | لینوم" />
+          <meta
+            name="twitter:description"
+            content="مجله‌ی آموزشی لینوم با تکیه بر متد میکرولرنینگ تهیه‌شده‌است."
+          />
+
+          <meta property="og:title" content="مجله‌ی آموزشی | لینوم" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content={`${process.env.REACT_APP_URL}/blog`} />
+          <meta
+            property="og:description"
+            content="مجله‌ی آموزشی لینوم با تکیه بر متد میکرولرنینگ تهیه‌شده‌است"
           />
         </Helmet>
         <main>

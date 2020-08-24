@@ -1,5 +1,5 @@
 import React from "react"
-import ContactImg from "../../assets/images/contact.jpg"
+import ContactImg from "../../assets/images/contact-f.webp"
 import { Helmet } from "react-helmet"
 import Title from "../../components/title/title.component"
 import { objectToSchema } from "../../helpers/functions"
@@ -42,10 +42,27 @@ function Contact(props) {
       <Helmet>
         <title>تماس با ما | لینوم</title>
         <link rel="canonical" href={`${process.env.REACT_APP_URL}/contact`} />
+        <meta name="description" content="راه‌های برقراری ارتباط با لینوم" />
+        <meta name="twitter:card" content="summary" />
         <meta
-          name="description"
-          content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
+          name="twitter:title"
+          content="تماس با ما | لینوم"
         />
+        <meta name="twitter:description" content="راه‌های برقراری ارتباط با لینوم" />
+        <meta
+          property="twitter:image"
+          content={`${process.env.REACT_APP_API_DOMAIN}/logo.png`}
+        />
+
+        <meta property="og:title" content="تماس با ما | لینوم" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${process.env.REACT_APP_URL}/contact`} />
+        <meta
+          property="og:image"
+          content={`${process.env.REACT_APP_API_DOMAIN}/logo.png`}
+        />
+        <meta property="og:description" content="راه‌های برقراری ارتباط با لینوم" />
+        <meta property="og:site_name" content="لینوم" />
       </Helmet>
       <div className="mx-auto text-center my-2">
         <Title mainTitle={true}>تماس با ما</Title>

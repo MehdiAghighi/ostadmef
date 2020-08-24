@@ -3,7 +3,7 @@ import { useAuthState, useAuthDispatch } from "../../contexts/auth-context"
 
 import "./login.style.scss"
 
-import Main from "../../assets/images/login.jpg"
+import Main from "../../assets/images/login.webp"
 
 import Rodal from "rodal"
 // include styles
@@ -33,7 +33,7 @@ function Login(props) {
         animation="slideUp"
         duration={500}
       >
-        <div className="relative w-full h-full flex flex-col text-center">
+        <div className="relative w-full h-full flex flex-col text-center overflow-scroll">
           <NavLink to="/" className="mx-auto">
             <img src={LinomLogo} className="h-16 mt-2" alt="" />
           </NavLink>

@@ -50,8 +50,31 @@ function Family(props) {
         <link rel="canonical" href={`${process.env.REACT_APP_URL}/family`} />
         <meta
           name="description"
-          content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
+          content="در لینوم همه یک خانواده‌ هستیم که با تمام توان دورهم جمع شدیم تا با کیفیت‌ترین محتوا رو به شما ارائه دهیم!"
         />
+        <meta
+          name="keywords"
+          content="اقبال شیراسب،محمدرضا مشهدی،نیما گوران، امیرمحمد عقیقی،فائزه محتهدی،استراتژیست محتوا،گرافیست،مارکتینگ،طراح رابط کاربری،کدنویس بک اند،سئوکار،تدوینگر،طراح هویت بصری،مدیر اجرایی"
+        />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="خانواده‌ی ما | لینوم" />
+        <meta
+          name="twitter:description"
+          content="در لینوم همه یک خانواده‌ هستیم که با تمام توان دورهم جمع شدیم تا با کیفیت‌ترین محتوا رو به شما ارائه دهیم!"
+        />
+
+        <meta property="og:title" content="خانواده‌ی ما | لینوم" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${process.env.REACT_APP_URL}/family`} />
+        <meta
+          property="og:image"
+          content={`${process.env.REACT_APP_API_DOMAIN}/logo.png`}
+        />
+        <meta
+          property="og:description"
+          content="در لینوم همه یک خانواده‌ هستیم که با تمام توان دورهم جمع شدیم تا با کیفیت‌ترین محتوا رو به شما ارائه دهیم!"
+        />
+        <meta property="og:site_name" content="لینوم" />
       </Helmet>
       <div className="mx-auto text-center my-2">
         <Title mainTitle={true}>خانواده‌ی لینوم</Title>

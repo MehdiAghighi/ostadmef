@@ -15,7 +15,7 @@ import { objectToSchema, stripHtml } from "../../helpers/functions"
 function Post(props) {
   let { slug } = useParams()
   const [post, setPost] = useState({})
-  const [description, setDescription] = ""
+  const [description, setDescription] = useState("")
   const [serie, setSerie] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [keywords, setKeyWords] = useState("")
@@ -44,6 +44,7 @@ function Post(props) {
               setIsLoading(false)
             })
             .catch((err) => {
+              console.log(err)
               if (err.response) {
                 toast.error(err.response.data.message)
               } else {
@@ -55,6 +56,7 @@ function Post(props) {
         }
       })
       .catch((err) => {
+        console.log(err)
         if (err.response) {
           toast.error(err.response.data.message)
         } else {
@@ -154,9 +156,10 @@ function Post(props) {
                       publisher: {
                         "@type": "Organization",
                         name: "لینوم - پلتفرم آموزشی میکرولرنینگ",
+                        url: `${process.env.REACT_APP_URL}`,
                         logo: {
                           "@type": "ImageObject",
-                          url: "https://google.com/logo.jpg",
+                          url: `${process.env.REACT_APP_API_DOMAIN}/logo.png`,
                         },
                       },
                       description: description,
@@ -174,6 +177,27 @@ function Post(props) {
                 />
                 <meta name="description" value={description} />
                 <meta name="keywords" value={keywords.toString()} />
+
+                <meta name="twitter:card" content="summary" />
+                <meta
+                  name="twitter:title"
+                  content={`${post.title} - ${post.category.title} | لینوم`}
+                />
+                <meta name="twitter:description" content={description} />
+                <meta property="twitter:image" content={post.pic.url} />
+
+                <meta
+                  property="og:title"
+                  content={`${post.title} - ${post.category.title} | لینوم`}
+                />
+                <meta property="og:type" content="article" />
+                <meta
+                  property="og:url"
+                  content={`${process.env.REACT_APP_URL}/blog/${post.slug}`}
+                />
+                <meta property="og:image" content={post.pic.url} />
+                <meta property="og:description" content={description} />
+                <meta property="og:site_name" content="لینوم" />
               </Helmet>
               <img src={post.pic.url} alt={post.title} className="w-full" />
               <article>

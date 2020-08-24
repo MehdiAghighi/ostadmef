@@ -1,8 +1,8 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 
-import StoryImg from "../../assets/images/story.png"
-import GroupImg from "../../assets/images/group.png"
+import StoryImg from "../../assets/images/story.webp"
+import GroupImg from "../../assets/images/group.webp"
 import Title from "../../components/title/title.component"
 import { objectToSchema } from "../../helpers/functions"
 
@@ -34,8 +34,7 @@ function Story(props) {
                     item: {
                       "@id": `${process.env.REACT_APP_URL}/story`,
                       name: "داستان ما",
-                      description:
-                        "داستان تولد لینوم",
+                      description: "داستان تولد لینوم",
                     },
                   },
                 ],
@@ -47,8 +46,26 @@ function Story(props) {
         <link rel="canonical" href={`${process.env.REACT_APP_URL}/story`} />
         <meta
           name="description"
-          content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
+          content="تیم لینوم با به کارگیری جدیدترین متد آموزشی، میکرولرنینگ، با کیفیت‌ترین محتوا را در کوتاه‌ترین زمان ممکن به شما ارائه می‌دهد."
         />
+        <meta name="keywords" content="استارتاپ لینوم،لینوم پیشرو در میکرولرنینگ،اولین پلتفرم آموزشی میکرولرنینگ،(دانشجو های شریف،تهران و امیرکبیراولین سامانه میکرولرنینگ ایران را راه انداختند)،استارتاپ دانشجویی لینوم،لینوم در مرحله شتابدهی،لینوم در شتابدهنده تریگآپ،لینوم زیر نظر هلدینگ شناسا" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="داستان لینوم | لینوم" />
+        <meta
+          name="twitter:description"
+          content="یادگیری دروس دانشگاهی و مهارت‌های کاربردی با متد آموزشی میکرولرنینگ، در سریع‌ترین زمان ممکن"
+        />
+        <meta name="twitter:image" content={StoryImg} />
+
+        <meta property="og:title" content="داستان ما | لینوم" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${process.env.REACT_APP_URL}/story`} />
+        <meta property="og:image" content={StoryImg} />
+        <meta
+          property="og:description"
+          content="تیم لینوم با به کارگیری جدیدترین متد آموزشی، میکرولرنینگ، با کیفیت‌ترین محتوا را در کوتاه‌ترین زمان ممکن به شما ارائه می‌دهد."
+        />
+        <meta property="og:site_name" content="لینوم" />
       </Helmet>
       <div className="mx-auto text-center my-2">
         <Title mainTitle={true}>داستان ما</Title>

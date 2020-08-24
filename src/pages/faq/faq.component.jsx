@@ -1,6 +1,6 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-import FAQImg from "../../assets/images/faq.png"
+import FAQImg from "../../assets/images/faq.webp"
 import Title from "../../components/title/title.component"
 import { objectToSchema } from "../../helpers/functions"
 

@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet"
 import "./index.style.scss"
 
 import IndexIntro from "../../components/index-intro/index-intro.component"
-import Partners from "../../components/partners/partners.component"
 import TopCourses from "../../components/top-courses/top-courses.component"
 import WhyLinom from "../../components/why-linom/why-linom.component"
 import { objectToSchema } from "../../helpers/functions"
@@ -45,6 +44,10 @@ function Index(props) {
               "@type": "Organization",
               name: "لینوم - اولین پلتفرم آموزشی میکرولرنینگ",
               url: `${process.env.REACT_APP_URL}`,
+              logo: {
+                "@type": "ImageObject",
+                url: `${process.env.REACT_APP_API_DOMAIN}/logo.png`,
+              },
               contactPoint: [
                 {
                   "@type": "ContactPoint",
@@ -53,10 +56,11 @@ function Index(props) {
                 },
               ],
               sameAs: [
-               //  "https://twitter.com/roocketir",
-               //  "https://www.facebook.com/roocketi",
-               //  "https://www.linkedin.com/company/roocketir",
-               //  "https://www.instagram.com/roocketir",
+                // "https://twitter.com/roocketir",
+                // "https://www.facebook.com/roocketi",
+                "https://linkedin.com/company/linom",
+                "https://www.instagram.com/1linom",
+                "https://t.me/linomsupport",
               ],
             })
           ),
@@ -69,11 +73,46 @@ function Index(props) {
         <link rel="canonical" href={`${process.env.REACT_APP_URL}`} />
         <meta
           name="description"
-          content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
+          content="لینوم اولین پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو‌های کپسولی و فشرده، یادگیری دروس دانشگاهی و نرم‌افزارهای کاربردی را در سریع‌ترین زمان ممکن به ارمغان می‌آورد."
         />
+        <meta
+          name="keywords"
+          value="،سامانه یادگیری لینوم،پلتفرم آموزشی میکرولرنینگ لینوم،همراه شما در یادگیری،میکرولرنینگ،آموزش به سبک میکرولرنینگ،آموزش گام به گام،جدیدترین متد آموزشی،سامانه یادگیری خرد،اولین پلتفرم میکرولرنینگ، لینوم پیشرو در میکرولرنینگ"
+        />
+
+        <meta name="twitter:card" content="summary" />
+        <meta
+          name="twitter:title"
+          content="لینوم - پلتفرم آموزشی میکرولرنینگ با تکیه بر ویدیو‌های کپسولی شده"
+        />
+        <meta
+          name="twitter:description"
+          content="لینوم اولین پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو‌های کپسولی و فشرده، یادگیری دروس دانشگاهی و نرم‌افزارهای کاربردی را در سریع‌ترین زمان ممکن به ارمغان می‌آورد."
+        />
+        <meta
+          property="twitter:image"
+          content={`${process.env.REACT_APP_API_DOMAIN}/logo.png`}
+        />
+
+        <meta
+          property="og:title"
+          content="لینوم - پلتفرم آموزشی میکرولرنینگ با تکیه بر ویدیو‌های کپسولی شده"
+        />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`${process.env.REACT_APP_URL}/`} />
+        <meta
+          property="og:image"
+          content={`${process.env.REACT_APP_API_DOMAIN}/logo.png`}
+        />
+        <meta
+          property="og:description"
+          content={
+            "لینوم اولین پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو‌های کپسولی و فشرده، یادگیری دروس دانشگاهی و نرم‌افزارهای کاربردی را در سریع‌ترین زمان ممکن به ارمغان می‌آورد."
+          }
+        />
+        <meta property="og:site_name" content="لینوم" />
       </Helmet>
       <IndexIntro />
-      <Partners />
       <TopCourses />
       <WhyLinom />
     </div>

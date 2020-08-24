@@ -4,7 +4,7 @@ import "./why-linom.style.scss"
 
 import OrRecBot from "../../assets/images/or-rec-bot.png"
 import PurpRecBig from "../../assets/images/purp-rec-big.png"
-import WhyLinomImg from "../../assets/images/why-linom.jpg"
+import WhyLinomImg from "../../assets/images/why-linom.webp"
 import Blueprint from "../../assets/images/Blueprint.svg"
 import Title from "../title/title.component"
 import { FAQ, Student, AidKit } from "../icon/icon.component"

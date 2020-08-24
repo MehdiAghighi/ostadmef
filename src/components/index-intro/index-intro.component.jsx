@@ -2,7 +2,7 @@ import React from "react"
 
 import "./index-intro.style.scss"
 
-import Main from "../../assets/images/Main.jpg"
+import Main from "../../assets/images/Main.webp"
 
 import Title from "../title/title.component"
 import { Link } from "react-router-dom"

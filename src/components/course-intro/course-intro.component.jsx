@@ -72,10 +72,9 @@ function CourseIntro({ course, bought }) {
             <CourseTitle>{course.title}</CourseTitle>
           </div>
           <p
-            className="text-justify xl:font-light font-normal xl:text-lg text-base leading-10 w-full xl:w-10/12 sm:w-9/12 mx-auto lg:w-auto"
+            className="text-justify xl:font-light font-normal xl:text-lg text-base leading-10 w-full xl:w-10/12 sm:w-9/12 mx-auto lg:w-auto xs:px-auto px-4"
             dangerouslySetInnerHTML={{ __html: nl2br(course.description) }}
-          >
-          </p>
+          ></p>
           <TeacherCard className="" teacher={course.user} />
           <div className="w-full mx-auto lg:w-auto">
             {bought ? null : (
@@ -121,7 +120,7 @@ function CourseIntro({ course, bought }) {
           animation="slideUp"
           duration={500}
         >
-          <div className="w-full h-full flex flex-col">
+          <div className="w-full h-full flex flex-col overflow-scroll">
             <div className="mx-auto font-bold text-3xl text-center text-green-500">
               خرید دوره
             </div>

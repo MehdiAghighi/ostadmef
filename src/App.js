@@ -32,7 +32,7 @@ function App(props) {
   useEffect(() => {
     window.dataLayer = window.dataLayer || []
     if (utm_source) {
-      setCookie("utm_source", utm_source, 7, "linom.ir")
+      setCookie("utm_source", utm_source, 7, ".linom.ir")
       setCookie("utm_source", utm_source, 7, "localhost")
     }
     fetchUser(authDispatch)

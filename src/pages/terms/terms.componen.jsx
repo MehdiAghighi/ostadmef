@@ -1,7 +1,7 @@
 import React from "react"
-import TermsImg from "../../assets/images/terms.png"
+import TermsImg from "../../assets/images/terms.webp"
 
-import TeamImage from "../../assets/images/rules-before-user.jpg"
+import TeamImage from "../../assets/images/rules-before-user.webp"
 import { Helmet } from "react-helmet"
 import Title from "../../components/title/title.component"
 import { objectToSchema } from "../../helpers/functions"
