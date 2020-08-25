@@ -32,7 +32,7 @@ function IndexIntro() {
               arrow
               to="/courses"
             >
-              کپسول‌های آموزشی شب‌امتحانی
+              مشاهده‌ی دوره‌ها
             </Button>
           </Link>
         </div>

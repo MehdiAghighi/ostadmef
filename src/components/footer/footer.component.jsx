@@ -28,7 +28,7 @@ function Footer(props) {
              </div>
            </div>
            <h5 className="mt-10 text-xs md:text-base">
-             خیابان مطهری پلاک ۹۴، شتاب‌دهنده تریگاپ
+             خیابان مطهری، پلاک ۹۴، شتاب‌دهنده‌ی تریگ‌آپ
            </h5>
            <div
              className="w-full rounded bg-gray-300 my-5"

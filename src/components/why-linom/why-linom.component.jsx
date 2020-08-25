@@ -58,7 +58,7 @@ function WhyLinom(props) {
                 </div>
                 <div className="mr-2">
                   <span className="font-bold text-base xl:text-lg leading-8 text-blue-1000">
-                    بیش از 1800 دانشجو
+                    مورد اعتماد بیش از 1800 دانشجو
                   </span>
                 </div>
               </div>
@@ -70,7 +70,7 @@ function WhyLinom(props) {
                 </div>
                 <div className="mr-2">
                   <span className="font-bold text-base xl:text-lg leading-8 text-blue-1000">
-                    56 ساعت ویئوی کپسولی معادل بیش از 280 ساعت ویدئوی عادی
+                    56 ساعت ویدئوی کپسولی معادل بیش از 280 ساعت ویدئوی عادی
                   </span>
                 </div>
               </div>

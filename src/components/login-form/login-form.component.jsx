@@ -156,6 +156,8 @@ function LoginForm(props) {
             // })
             setCookie("token", data.token, 30, "linom.ir")
             setCookie("token", data.token, 30, "localhost")
+            setCookie("token", data.token, 30, ".sanctum.test")
+            setCookie("token", data.token, 30, "panel.sanctum.test")
             await fetchUser(authDispatch)
             if (afterLogin.action == "TOGGLE_MODAL") {
               toggleModal({ type: "TOGGLE_MODAL" })
