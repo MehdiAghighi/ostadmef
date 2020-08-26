@@ -59,6 +59,14 @@ function Blog() {
             name="twitter:description"
             content="مجله‌ی آموزشی لینوم با تکیه بر متد میکرولرنینگ تهیه‌شده‌است."
           />
+          <meta
+            property="twitter:image"
+            content={`${process.env.REACT_APP_API_DOMAIN}/logo.png`}
+          />
+          <meta
+            property="og:image"
+            content={`${process.env.REACT_APP_API_DOMAIN}/logo.png`}
+          />
 
           <meta property="og:title" content="مجله‌ی آموزشی | لینوم" />
           <meta property="og:type" content="website" />

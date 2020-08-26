@@ -62,6 +62,10 @@ function Family(props) {
           name="twitter:description"
           content="در لینوم همه یک خانواده‌ هستیم که با تمام توان دورهم جمع شدیم تا با کیفیت‌ترین محتوا رو به شما ارائه دهیم!"
         />
+        <meta
+          property="twitter:image"
+          content={`${process.env.REACT_APP_API_DOMAIN}/logo.png`}
+        />
 
         <meta property="og:title" content="خانواده‌ی ما | لینوم" />
         <meta property="og:type" content="website" />

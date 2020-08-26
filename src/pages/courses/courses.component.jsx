@@ -69,7 +69,10 @@ function Courses(props) {
            name="description"
            content="یادگیری دروس دانشگاهی و مهارت‌های کاربردی با متد آموزشی میکرولرنینگ، در سریع‌ترین زمان ممکن"
          />
-         <meta name="keywords" content="اولین پلتفرم آموزشی میکرولرنینگ,سامانه یادگیری لینوم,آموزش فشرده به سبک میکرولرنینگ,یادگیری خرد,آموزش های شب امتحانی لینوم,کپسول های آموزشی لینوم,شب امتحان لینوم,دوره های آموزشی میکرو" />
+         <meta
+           name="keywords"
+           content="اولین پلتفرم آموزشی میکرولرنینگ,سامانه یادگیری لینوم,آموزش فشرده به سبک میکرولرنینگ,یادگیری خرد,آموزش های شب امتحانی لینوم,کپسول های آموزشی لینوم,شب امتحان لینوم,دوره های آموزشی میکرو"
+         />
          <meta name="twitter:card" content="summary" />
          <meta
            name="twitter:title"
@@ -78,6 +81,10 @@ function Courses(props) {
          <meta
            name="twitter:description"
            content="یادگیری دروس دانشگاهی و مهارت‌های کاربردی با متد آموزشی میکرولرنینگ، در سریع‌ترین زمان ممکن"
+         />
+         <meta
+           property="twitter:image"
+           content={`${process.env.REACT_APP_API_DOMAIN}/logo.png`}
          />
 
          <meta

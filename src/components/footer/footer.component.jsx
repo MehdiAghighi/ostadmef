@@ -39,6 +39,7 @@ function Footer(props) {
            <div className="flex flex-row w-full justify-center items-center">
              <InstagramButton />
              <TelegramButton />
+             <FacebookButton />
              {/* <AparatButton /> */}
            </div>
          </footer>
