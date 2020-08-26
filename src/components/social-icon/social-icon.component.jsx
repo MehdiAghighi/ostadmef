@@ -42,7 +42,7 @@ export const FacebookButton = (props) => (
   <a
     href={`https://${process.env.REACT_APP_FACEBOOK_URL}`}
     target="_blank"
-    className="cursor-not-allowed"
+    className=""
   >
     <div
       className="py-3 px-3 bg-teal-500 text-white mx-2"
