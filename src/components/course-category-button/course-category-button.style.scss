@@ -1,0 +1,56 @@
+.course-category-button {
+    .parent {
+
+        .overlay {
+            transition: all .4s;
+        }
+        &:hover .overlay {
+            transform: scale(6);
+        }
+        .sc_studi_cats_info {
+            transition: all .4s;
+        }
+        &:hover .sc_studi_cats_info {
+            color: white;
+        }
+        .border-change {
+            transition: all .4s;
+        }
+        &:hover .border-change {
+            border-color: rgba($color: #fff, $alpha: .2)
+        }
+        .bg-change {
+            transition: all .4s;
+        }
+        &:hover .bg-change-red {
+            background-color: #fc9a9a;
+        }
+        &:hover .bg-change-green {
+            background-color: #86dba7;
+        }
+        &:hover .bg-change-yellow {
+            background-color: #f7e67e;
+        }
+        &:hover .bg-change-orange {
+            background-color: #f7bd77;
+        }
+        &:hover .bg-change-pink {
+            background-color: #f79ec2;
+        }
+        &:hover .bg-change-purple {
+            background-color: #c5a9f6;
+        }
+        &:hover .bg-change-indigo {
+            background-color: #98aff7;
+        }
+        &:hover .bg-change-blue {
+            background-color: #82c2f0;
+        }
+        &:hover .bg-change-teal {
+            background-color: #72dad0;
+        }
+        &:hover .bg-change-gray {
+            background-color: #d5dde6;
+        }
+    }
+}

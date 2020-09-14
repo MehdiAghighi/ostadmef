@@ -36,6 +36,11 @@ const routes = [
     exact: true,
   },
   {
+    path: "/courses/:category",
+    component: Courses,
+    exact: true,
+  },
+  {
     path: "/course/:slug",
     component: Course,
   },
