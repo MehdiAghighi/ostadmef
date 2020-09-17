@@ -44,6 +44,7 @@ function Footer(props) {
            </div>
          </footer>
        </div>
+       <div className="hidden bg-orange-400 bg-red-400 bg-blue-400 bg-pink-400 bg-purple-400 bg-yellow-400 bg-green-400 bg-gray-400 bg-teal-400 bg-indigo-400 border-orange-400 border-red-400 border-blue-400 border-pink-400 border-purple-400 border-yellow-400 border-green-400 border-gray-400 border-teal-400 border-indigo-400"></div>
      </div>
    )
 }

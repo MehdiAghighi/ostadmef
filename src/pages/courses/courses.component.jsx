@@ -215,11 +215,13 @@ function Courses(props) {
             />
             <meta property="og:site_name" content="لینوم" />
           </Helmet>
-          <div className="my-10 flex lg:flex-row flex-col justify-center flex-wrap items-center">
-            {categories.map((category) => (
-              <CourseCategoryButton category={category} />
-            ))}
-          </div>
+          {category ? (
+            <div className="my-10 flex lg:flex-row flex-col justify-center flex-wrap items-center">
+              {categories.map((category) => (
+                <CourseCategoryButton category={category} />
+              ))}
+            </div>
+          ) : null}
         </>
       ) : null}
       {!isLoading ? (
