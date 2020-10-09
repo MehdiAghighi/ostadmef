@@ -59,9 +59,11 @@ function Courses(props) {
   }, [query, page, category])
   return (
     <div className="container mx-auto">
-      <div className="mx-auto text-center my-4">
-        <Title mainTitle={true}>دوره‌های کپسولی لینوم</Title>
-      </div>
+      {!category ? (
+        <div className="mx-auto text-center my-4">
+          <Title mainTitle={true}>دوره‌های کپسولی لینوم</Title>
+        </div>
+      ) : null}
       {!categoryLoading ? (
         <>
           {!categoryObject ? (
@@ -98,47 +100,54 @@ function Courses(props) {
               }}
             />
           ) : (
-            <script
-              key={`coursesJSON`}
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify(
-                  objectToSchema({
-                    "@context": "http://schema.org",
-                    "@type": "BreadcrumbList",
-                    itemListElement: [
-                      {
-                        "@type": "ListItem",
-                        position: 1,
-                        item: {
-                          "@id": `${process.env.REACT_APP_URL}/`,
-                          name: "لینوم",
-                          description: "لینوم - پلتفرم آموزشی میکرولرنینگ",
+            <>
+              <div className="mx-auto text-center my-4">
+                <Title mainTitle={true}>
+                  دوره‌های کپسولی {categoryObject.title}
+                </Title>
+              </div>
+              <script
+                key={`coursesJSON`}
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify(
+                    objectToSchema({
+                      "@context": "http://schema.org",
+                      "@type": "BreadcrumbList",
+                      itemListElement: [
+                        {
+                          "@type": "ListItem",
+                          position: 1,
+                          item: {
+                            "@id": `${process.env.REACT_APP_URL}/`,
+                            name: "لینوم",
+                            description: "لینوم - پلتفرم آموزشی میکرولرنینگ",
+                          },
                         },
-                      },
-                      {
-                        "@type": "ListItem",
-                        position: 2,
-                        item: {
-                          "@id": `${process.env.REACT_APP_URL}/courses`,
-                          name: "دوره‌های آموزشی",
-                          description: "دوره‌های آموزشی کپسولی شده",
+                        {
+                          "@type": "ListItem",
+                          position: 2,
+                          item: {
+                            "@id": `${process.env.REACT_APP_URL}/courses`,
+                            name: "دوره‌های آموزشی",
+                            description: "دوره‌های آموزشی کپسولی شده",
+                          },
                         },
-                      },
-                      {
-                        "@type": "ListItem",
-                        position: 3,
-                        item: {
-                          "@id": `${process.env.REACT_APP_URL}/courses/${categoryObject.slug}`,
-                          name: categoryObject.title,
-                          description: `دوره‌های آموزشی کپسولی شده در دسته‌ی ${categoryObject.title}`,
+                        {
+                          "@type": "ListItem",
+                          position: 3,
+                          item: {
+                            "@id": `${process.env.REACT_APP_URL}/courses/${categoryObject.slug}`,
+                            name: categoryObject.title,
+                            description: `دوره‌های آموزشی کپسولی شده در دسته‌ی ${categoryObject.title}`,
+                          },
                         },
-                      },
-                    ],
-                  })
-                ),
-              }}
-            />
+                      ],
+                    })
+                  ),
+                }}
+              />
+            </>
           )}
           <Helmet>
             {!categoryObject ? (
@@ -215,7 +224,7 @@ function Courses(props) {
             />
             <meta property="og:site_name" content="لینوم" />
           </Helmet>
-          {category ? (
+          {!category ? (
             <div className="my-10 flex lg:flex-row flex-col justify-center flex-wrap items-center">
               {categories.map((category) => (
                 <CourseCategoryButton category={category} />
@@ -233,22 +242,24 @@ function Courses(props) {
               </div>
             ))}
           </div>
-          <ul className="pagination mx-auto flex flex-row justify-center">
-            {courses.prev_page_url && (
-              <li className="py-2 px-4 bg-white border border-orange-500 mx-1 rounded">
-                <Link to={`?page=${courses.current_page - 1}`}>قبلی</Link>
+          {courses.prev_page_url || courses.next_page_url ? (
+            <ul className="pagination mx-auto flex flex-row justify-center">
+              {courses.prev_page_url && (
+                <li className="py-2 px-4 bg-white border border-orange-500 mx-1 rounded">
+                  <Link to={`?page=${courses.current_page - 1}`}>قبلی</Link>
+                </li>
+              )}
+              {}
+              <li className="py-2 px-4 border-2 border-orange-500 bg-orange-500 font-bold text-white mx-1 rounded">
+                {courses.current_page}
               </li>
-            )}
-            {}
-            <li className="py-2 px-4  border-2 border-orange-500 bg-orange-500 font-bold text-white mx-1 rounded">
-              {courses.current_page}
-            </li>
-            {courses.next_page_url && (
-              <li className="py-2 px-4 bg-white border border-orange-500 mx-1 rounded">
-                <Link to={`?page=${courses.current_page + 1}`}>بعدی</Link>
-              </li>
-            )}
-          </ul>
+              {courses.next_page_url && (
+                <li className="py-2 px-4 bg-white border border-orange-500 mx-1 rounded">
+                  <Link to={`?page=${courses.current_page + 1}`}>بعدی</Link>
+                </li>
+              )}
+            </ul>
+          ) : null}
         </div>
       ) : (
         <CustomLoader />

@@ -51,7 +51,7 @@ function App(props) {
     }
   }, [])
   return (
-    <div className="bg-white">
+    <div className="bg-white font-sans">
       <Helmet>
         <meta charSet="utf-8" />
       </Helmet>

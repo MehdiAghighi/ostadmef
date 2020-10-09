@@ -2,6 +2,7 @@ module.exports = {
   prefix: "",
   important: false,
   separator: ":",
+  purge: false,
   theme: {
     screens: {
       xs: "400px",
