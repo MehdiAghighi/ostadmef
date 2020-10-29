@@ -8,6 +8,7 @@ import CustomLoader from "../../components/custom-loader/custom-loader.component
 import CourseSections from "../../components/course-sections/course-sections.component"
 import ShowVideo from "../../components/show-video/show-video.component"
 import UserDataForm from "../../components/user-data-form/user-data-form.component"
+import VideoComments from "../../components/video-comments/video-comments.component"
 
 function Video(props) {
   const { slug } = useParams()
@@ -64,7 +65,25 @@ function Video(props) {
             <meta
               name="description"
               content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
-            />  
+            />
+            {/* <script
+              type="text/javascript"
+              charset="utf-8"
+              async=""
+              src="//ssl.p.jwpcdn.com/player/v/8.17.7/jwpsrv.js"
+            ></script>
+            <script
+              charset="utf-8"
+              src="//ssl.p.jwpcdn.com/player/v/8.17.7/jwplayer.core.controls.js"
+            ></script>
+            <script
+              charset="utf-8"
+              src="//ssl.p.jwpcdn.com/player/v/8.17.7/provider.hlsjs.js"
+            ></script>
+            <script
+              charset="utf-8"
+              src="//ssl.p.jwpcdn.com/player/v/8.17.7/provider.cast.js"
+            ></script> */}
           </Helmet>
           <div className="container mx-auto">
             {!video.video.video ? (
@@ -78,11 +97,14 @@ function Video(props) {
             activeId={video.video.id}
             bought={bought}
           />
+          <VideoComments video={{ id: video.video.id }} bought={bought} />
         </div>
       ) : null
     ) : (
       <div className="flex flex-row justify-center">
-        <span className="text-xl text-red-500">مشکلی در ارتباط با سرور‌های آروان‌کلود پیش آمده است</span>
+        <span className="text-xl text-red-500">
+          مشکلی در ارتباط با سرور‌های آروان‌کلود پیش آمده است
+        </span>
       </div>
     )
   ) : (

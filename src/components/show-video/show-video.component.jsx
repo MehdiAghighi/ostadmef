@@ -1,10 +1,22 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import "./show-video.style.scss"
+// import jwplayer from "jwplayer"
+import ReactJWPlayer from "react-jw-player"
 
 function ShowVideo(props) {
+
+  useEffect(() => {
+    setPlaylist({
+      file:
+        props.video,
+      // image: "https://link-to-my-poster.jpg",
+    })
+  }, [props.video])
+
+  const [ playlist, setPlaylist ] = useState()
   return (
-    <div className="r1_iframe_embed">
-      <iframe
+    <div className="">
+      {/* <iframe
         className="w-full h-full"
         src={props.video}
         // title={props.video.title}
@@ -13,8 +25,13 @@ function ShowVideo(props) {
         allowFullScreen="true"
         webkitallowfullscreen="true"
         mozallowfullscreen="true"
+      /> */}
+      <ReactJWPlayer
+        playerId="myplayer"
+        playerScript="https://cdn.jwplayer.com/libraries/xaT3zPgu.js"
+        playlist={playlist}
       />
-      {/* <div dangerouslySetInnerHTML={{ __html: props.video.video }} /> */}
+      <div id="myplayer" />
     </div>
   )
 }

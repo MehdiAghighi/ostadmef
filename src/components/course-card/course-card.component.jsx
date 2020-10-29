@@ -23,14 +23,14 @@ function CourseCard({ course, full, lazy }) {
               src={`${course.pic.card_url}`}
               alt={course.title}
               style={full ? { width: 600, height: 400, objectFit: "cover" } : {}}
-              className=""
+              className="transform hover:scale-110 transition-all duration-100"
             />
           ) : (
             <img
               src={`${course.pic.card_url}`}
               alt={course.title}
               style={full ? { width: 600, height: 400, objectFit: "cover" } : {}}
-              className=""
+              className="transform hover:scale-110 transition-all duration-100"
             />
           )}
         </CardImage>
@@ -70,6 +70,7 @@ function CourseCard({ course, full, lazy }) {
 
 CourseCard.defaultProps = {
   full: false,
+  lazy: false,
 }
 
 export default CourseCard

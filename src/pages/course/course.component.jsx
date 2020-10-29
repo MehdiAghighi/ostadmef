@@ -11,6 +11,10 @@ import NotFound from "../not-found/not-found.component"
 import API from "../../helpers/api"
 import { toast } from "react-toastify"
 import { objectToSchema, stripHtml, nl2br } from "../../helpers/functions"
+import RelatedPosts from "../../components/related-posts/related-posts.component"
+import CourseRatingsStars from "../../components/course-ratings-stars/course-ratings-stars.component"
+import RateCourse from "../../components/rate-course/rate-course.component"
+import CourseRates from "../../components/course-rates/course-rates.component"
 
 function Course(props) {
   let { slug } = useParams()
@@ -165,7 +169,12 @@ function Course(props) {
             course={{ id: course.id, title: course.title }}
             bought={bought}
           />
-          <RelatedCourses course={{ id: course.id }} />
+          {/* <RelatedCourses course={{ id: course.slug }} /> */}
+          {/* Ratings */}
+          <CourseRatingsStars course={{ id: course.slug }} />
+          {bought ? <RateCourse course={{ id: course.slug }} /> : null}
+          <CourseRates course={{ id: course.slug }} />
+          <RelatedPosts course={{ id: course.slug }} />
         </>
       ) : (
         <NotFound />

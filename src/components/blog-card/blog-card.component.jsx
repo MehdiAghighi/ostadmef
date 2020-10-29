@@ -12,7 +12,7 @@ import ImageLoader from "../image-loader/image-loader.component"
 
 function BlogCard({ post, full, lazy }) {
   return (
-    <div className="card">
+    <div className="card shadow rounded-lg">
       <Card full={full}>
         <CardImage to={`/blog/${post.slug}`}>
           {lazy ? (

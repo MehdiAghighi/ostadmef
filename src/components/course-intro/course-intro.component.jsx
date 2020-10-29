@@ -20,6 +20,7 @@ import { useAuthState, useAuthDispatch } from "../../contexts/auth-context"
 import API from "../../helpers/api"
 import CustomLoader from "../custom-loader/custom-loader.component"
 import { toast } from "react-toastify"
+import CourseDescription from "../course-description/course-description.component"
 
 function CourseIntro({ course, bought }) {
   const [buyModalOpen, setBuyModalOpen] = useState(false)
@@ -61,26 +62,48 @@ function CourseIntro({ course, bought }) {
   }, [bought, buyModalOpen])
   return (
     <>
-      <div className="course-intro pt-10 container mx-auto flex flex-col-reverse lg:flex-row justify-between index-intro">
+      <div className="course-intro pt-10 container mx-auto flex flex-col-reverse xl:flex-row justify-between index-intro items-center">
         <div
-          className="xl:py-20 lg:py-16 py-10 lg:w-3/12"
+          className="xl:pt-6 lg:pt-8 pt-10 xl:pb-3 lg:pb-6 pb-8 lg:w-3/5 xl:w-8/12 px-2 mb-6 xl:mt-0 mt-10"
           style={{
-            flexBasis: "50%",
+            // flexBasis: "50%",
+            borderRadius: 8,
+            boxShadow: "1px 5px 24px rgba(0, 0, 0, 0.16)",
+            background: "#F6F4F5",
           }}
         >
           <div className="xl:mb-5 mb-5 mx-auto lg:text-right text-center">
-            <CourseTitle>{course.title}</CourseTitle>
+            <h1 className="text-3xl text-center font-bold text-blue-800">
+              {course.title}
+            </h1>
           </div>
-          <p
+          {/* <p
             className="text-justify xl:font-light font-normal xl:text-lg text-base leading-10 w-full xl:w-10/12 sm:w-9/12 mx-auto lg:w-auto xs:px-auto px-4"
             dangerouslySetInnerHTML={{ __html: nl2br(course.description) }}
-          ></p>
-          <TeacherCard className="" teacher={course.user} />
+          ></p> */}
+          <p className="text-justify xl:font-light font-normal xl:text-lg text-base leading-9 w-full xl:w-10/12 sm:w-9/12 mx-auto lg:w-auto xs:px-auto my-2">
+            {course.short_description}
+          </p>
+          <div className="my-2">
+            <TeacherCard className="" teacher={course.user} />
+          </div>
+          <div className="px-16 my-6">
+            <div className="flex sm:flex-row flex-col flex-wrap justify-around items-center">
+              <span className="font-bold leading-10 text-xl">
+                <Clock className="text-lg ml-3" />
+                {course.hour_length} ساعت
+              </span>
+              <HDivider className="bg-gray-600" />
+              <span className="font-bold text-xl leading-10 text-green-500">
+                {course.price} تومان
+              </span>
+            </div>
+          </div>
           <div className="w-full mx-auto lg:w-auto">
             {bought ? null : (
-              <Button
+              <button
                 id="buyButton"
-                className="xl:mt-5 mt-5 text-sm leading-8 py-2 px-5 lg:mx-0 mx-auto"
+                className="py-4 w-full bg-teal-600 rounded-lg text-white text-3xl hover:bg-teal-700 transition-all duration-100"
                 arrow
                 onClick={async () => {
                   if (isLoggedIn) {
@@ -101,12 +124,20 @@ function CourseIntro({ course, bought }) {
                 }}
               >
                 خرید دوره
-              </Button>
+              </button>
             )}
           </div>
         </div>
-        <div className="pt-8 w-full sm:w-11/12 lg:w-9/12 mx-auto mt-6 md:mr-6">
-          <img src={`${course.pic.url}`} alt={course.title} className="mx-auto" />
+        <div className="w-full mx-auto md:lg-6">
+          <img
+            src={`${course.pic.url}`}
+            alt={course.title}
+            className="mx-auto"
+            // style={{
+            //   width: 570,
+            //   height: 370,
+            // }}
+          />
         </div>
         <Rodal
           visible={buyModalOpen}
@@ -120,8 +151,8 @@ function CourseIntro({ course, bought }) {
           animation="slideUp"
           duration={500}
         >
-          <div className="w-full h-full flex flex-col overflow-scroll">
-            <div className="mx-auto font-bold text-3xl text-center text-green-500">
+          <div className="w-full h-full flex flex-col">
+            <div className="mx-auto font-bold text-3xl text-center text-green-600">
               خرید دوره
             </div>
             <div className="flex flex-col h-full justify-center items-center">
@@ -154,9 +185,12 @@ function CourseIntro({ course, bought }) {
           </div>
         </Rodal>
       </div>
+      <div className="w-full">
+        <CourseDescription data={course.description} />
+      </div>
       <div className="container mx-auto mt-3">
         <div className="bg-gray-200 rounded-lg lg:px-8 px-4 py-3 flex md:flex-row flex-col justify-between items-center">
-          <div className="flex sm:flex-row flex-col flex-wrap justify-start items-center h-full justify-center items-center">
+          <div className="flex sm:flex-row flex-col flex-wrap justify-start items-center h-full">
             <span className="text-lg leading-10">{course.title}</span>
             <HDivider />
             <span className="font-bold leading-10">
@@ -175,9 +209,9 @@ function CourseIntro({ course, bought }) {
           {bought ? (
             <span>شما عضو این دوره هستید</span>
           ) : (
-            <Button
+            <button
               id="buyButtonDown"
-              className="text-sm leading-8 py-2 px-5 lg:mx-0 mx-auto"
+              className="text-lg leading-8 bg-teal-600 hover:bg-teal-700 px-8 py-3 text-white rounded-lg transition-all duration-100"
               arrow
               onClick={async () => {
                 if (isLoggedIn) {
@@ -198,7 +232,7 @@ function CourseIntro({ course, bought }) {
               }}
             >
               خرید دوره
-            </Button>
+            </button>
           )}
         </div>
       </div>

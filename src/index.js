@@ -17,6 +17,12 @@ import { SiteProvider } from "./contexts/site-context"
 
 // TagManager.initialize(tagManagerArgs)
 
+import JavascriptTimeAgo from "javascript-time-ago"
+
+import fa from "javascript-time-ago/locale/fa"
+
+JavascriptTimeAgo.addLocale(fa)
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

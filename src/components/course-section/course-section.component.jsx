@@ -2,6 +2,7 @@ import React from "react"
 import { Clock, Lock, Unlock } from "../icon/icon.component"
 import { Link } from "react-router-dom"
 import CondLink from "../cond-link/cond-link.component"
+import VideoLockStatus from "../video-lock-status/video-lock-status.component"
 
 function CourseSection({ video, title, active, lock }) {
   return (
@@ -11,13 +12,7 @@ function CourseSection({ video, title, active, lock }) {
         to={`/video/${video.id}`}
         className="flex flex-row items-center"
       >
-        <div
-          className={`${
-            lock ? "bg-red-700" : "bg-teal-700"
-          } py-2 px-2 rounded-full text-white ml-3`}
-        >
-          {lock ? <Lock /> : <Unlock />}
-        </div>
+        <VideoLockStatus lock={lock} />
         <span
           className={`text-lg font-bold ${!lock && "cursor-pointer"} ${
             active ? "text-orange-500" : ""

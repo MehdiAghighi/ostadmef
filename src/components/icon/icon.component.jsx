@@ -217,19 +217,19 @@ export const Student = (props) => (
 
 export const Lock = (props) => (
   <svg {...props} className={`icon icon-aid-kit ${props.className}`}>
-    <symbol id="icon-lock-rounded" viewBox="0 0 32 32">
-      <path d="M16 21.915v0c-0.583-0.206-1-0.762-1-1.415 0-0.828 0.672-1.5 1.5-1.5s1.5 0.672 1.5 1.5c0 0.653-0.417 1.209-1 1.415v2.594c0 0.263-0.224 0.491-0.5 0.491-0.268 0-0.5-0.22-0.5-0.491v-2.594zM9 14v0 0c-1.658 0.005-3 1.34-3 3.009v4.991c0 4.418 3.586 8 7.999 8h5.002c4.418 0 7.999-3.591 7.999-8v-4.991c0-1.659-1.341-3.005-3-3.009v-3.501c0-4.142-3.366-7.499-7.5-7.499-4.142 0-7.5 3.357-7.5 7.499v3.501zM12 14v-3.499c0-2.492 2.015-4.501 4.5-4.501 2.48 0 4.5 2.015 4.5 4.501v3.499h-9z"></path>
+    <symbol id="icon-lock-open" viewBox="0 0 20 20">
+      <path d="M4 8v-2c0-3.314 2.686-6 6-6s6 2.686 6 6v0h-3v2h4c1.105 0 2 0.895 2 2v0 8c0 1.105-0.895 2-2 2v0h-14c-1.105 0-2-0.895-2-2v0-8c0-1.1 0.9-2 2-2h1zM9 14.73v2.27h2v-2.27c0.602-0.352 1-0.996 1-1.732 0-1.105-0.895-2-2-2s-2 0.895-2 2c0 0.736 0.398 1.38 0.991 1.727l0.009 0.005zM7 6v2h6v-2c0-1.657-1.343-3-3-3s-3 1.343-3 3v0z"></path>
     </symbol>
-    <use xlinkHref="#icon-lock-rounded"></use>
+    <use xlinkHref="#icon-lock-open"></use>
   </svg>
 )
 
 export const Unlock = (props) => (
   <svg {...props} className={`icon icon-aid-kit ${props.className}`}>
-    <symbol id="icon-lock-rounded-open" viewBox="0 0 32 32">
-      <path d="M16 23.915v0 0c-0.583-0.206-1-0.762-1-1.415 0-0.828 0.672-1.5 1.5-1.5s1.5 0.672 1.5 1.5c0 0.653-0.417 1.209-1 1.415v2.594c0 0.263-0.224 0.491-0.5 0.491-0.268 0-0.5-0.22-0.5-0.491v-2.594zM24 9.5v-1.001c0-4.142-3.366-7.499-7.5-7.499-4.142 0-7.5 3.357-7.5 7.499v7.501c-1.658 0.005-3 1.34-3 3.009v4.991c0 4.418 3.586 8 7.999 8h5.002c4.418 0 7.999-3.591 7.999-8v-4.991c0-1.659-1.341-3.005-3-3.009h-11.973c-0.018-0.164-0.027-0.331-0.027-0.499v-7.001c0-2.489 2.015-4.499 4.5-4.499 2.48 0 4.5 2.014 4.5 4.499v3.624c0 1.036 0.666 1.876 1.5 1.876 0.828 0 1.5-0.848 1.5-1.876v-2.624z"></path>
+    <symbol id="icon-unlocked" viewBox="0 0 32 32">
+      <path d="M24 2c3.308 0 6 2.692 6 6v6h-4v-6c0-1.103-0.897-2-2-2h-4c-1.103 0-2 0.897-2 2v6h0.5c0.825 0 1.5 0.675 1.5 1.5v15c0 0.825-0.675 1.5-1.5 1.5h-17c-0.825 0-1.5-0.675-1.5-1.5v-15c0-0.825 0.675-1.5 1.5-1.5h12.5v-6c0-3.308 2.692-6 6-6h4z"></path>
     </symbol>
-    <use xlinkHref="#icon-lock-rounded-open"></use>
+    <use xlinkHref="#icon-unlocked"></use>
   </svg>
 )
 
@@ -239,5 +239,34 @@ export const Calendar = (props) => (
       <path d="M10 12h4v4h-4zM16 12h4v4h-4zM22 12h4v4h-4zM4 24h4v4h-4zM10 24h4v4h-4zM16 24h4v4h-4zM10 18h4v4h-4zM16 18h4v4h-4zM22 18h4v4h-4zM4 18h4v4h-4zM26 0v2h-4v-2h-14v2h-4v-2h-4v32h30v-32h-4zM28 30h-26v-22h26v22z"></path>
     </symbol>
     <use xlinkHref="#icon-calendar"></use>
+  </svg>
+)
+
+export const KeyboardArrowUp = (props) => (
+  <svg {...props} className={`icon icon-calendar ${props.className}`}>
+    <symbol id="icon-circle-up" viewBox="0 0 32 32">
+      <path d="M0 16c0 8.837 7.163 16 16 16s16-7.163 16-16-7.163-16-16-16-16 7.163-16 16zM29 16c0 7.18-5.82 13-13 13s-13-5.82-13-13 5.82-13 13-13 13 5.82 13 13z"></path>
+      <path d="M22.086 20.914l2.829-2.829-8.914-8.914-8.914 8.914 2.828 2.828 6.086-6.086z"></path>
+    </symbol>
+    <use xlinkHref="#icon-circle-up"></use>
+  </svg>
+)
+
+export const KeyboardArrowDown = (props) => (
+  <svg {...props} className={`icon icon-calendar ${props.className}`}>
+    <symbol id="icon-circle-down" viewBox="0 0 32 32">
+      <path d="M32 16c0-8.837-7.163-16-16-16s-16 7.163-16 16 7.163 16 16 16 16-7.163 16-16zM3 16c0-7.18 5.82-13 13-13s13 5.82 13 13-5.82 13-13 13-13-5.82-13-13z"></path>
+      <path d="M9.914 11.086l-2.829 2.829 8.914 8.914 8.914-8.914-2.828-2.828-6.086 6.086z"></path>
+    </symbol>
+    <use xlinkHref="#icon-circle-down"></use>
+  </svg>
+)
+
+export const Checkmark = (props) => (
+  <svg {...props} className={`icon icon-checkmark ${props.className}`}>
+    <symbol id="icon-checkmark" viewBox="0 0 32 32">
+      <path d="M27 4l-15 15-7-7-5 5 12 12 20-20z"></path>
+    </symbol>
+    <use xlinkHref="#icon-checkmark"></use>
   </svg>
 )

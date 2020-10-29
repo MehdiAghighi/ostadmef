@@ -67,7 +67,7 @@ function App(props) {
         rtl={true}
         position={toast.POSITION.BOTTOM_LEFT}
         closeButton={false}
-        limit={1}
+        limit={2}
         toastClassName="font-sans font-bold"
         autoClose={4000}
       />
