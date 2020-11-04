@@ -47,8 +47,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css --env production",
-    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
-    "sitemap": "node src/sitemap-generator.js"
+    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
   },
   "eslintConfig": {
     "extends": "react-app"

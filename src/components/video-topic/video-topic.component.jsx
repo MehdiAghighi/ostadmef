@@ -8,6 +8,7 @@ import {
   KeyboardArrowDown,
   KeyboardArrowUp,
   Clock,
+  Checkmark,
 } from "../icon/icon.component"
 import VideoLockStatus from "../video-lock-status/video-lock-status.component"
 import CondLink from "../cond-link/cond-link.component"
@@ -71,18 +72,47 @@ function VideoTopic({ topic, lock, active }) {
               <div className="py-2 px-1 flex flex-row items-center justify-between topic-section w-full">
                 <div className="flex flex-row items-center">
                   <div
-                    className={`border-2 ${
-                      lock ? "border-red-600" : "border-green-600"
-                    } flex justify-center items-center rounded-full font-bold`}
+                    className={`${
+                      video.is_finished
+                        ? "circle-100"
+                        : video.progresses.length > 0
+                        ? video.progresses[0].percentage >= 50
+                          ? "circle-100"
+                          : "circle-50"
+                        : "circle-none"
+                    }`}
                     style={{
-                      width: 45,
-                      height: 45,
-                      boxPack: "center",
-                      fontSize: "1.1em",
-                      paddingTop: 3,
+                      "--v": `${
+                        video.is_finished
+                          ? "90deg"
+                          : video.progresses.length > 0
+                          ? video.progresses[0].percentage >= 50
+                            ? `${(18 / 5) * video.progresses[0].percentage - 90}deg`
+                            : `${(18 / 5) * video.progresses[0].percentage - 270}deg`
+                          : ""
+                      }`,
                     }}
                   >
-                    {video.order}
+                    <div
+                      className={`border-2 ${
+                        lock ? "border-red-600" : "border-green-600"
+                      } flex justify-center items-center rounded-full font-bold`}
+                      style={{
+                        width: 45,
+                        height: 45,
+                        fontSize: "1.1em",
+                        paddingTop: 3,
+                      }}
+                    >
+                      {
+                        !video.is_finished
+                        ?
+                        video.order
+                        :
+                        <Checkmark className="text-green-500 text-xs" />
+                      }
+                      {/* {video.order} */}
+                    </div>
                   </div>
                   <CondLink
                     isLink={!lock}
@@ -92,14 +122,18 @@ function VideoTopic({ topic, lock, active }) {
                     <span
                       className={`text-base sm:text-lg ${
                         !lock ? "hover:mr-6 hover:text-teal-700 " : ""
-                      } ${active === video.id ? "text-teal-700 " : ""}transition-all duration-150`}
+                      } ${
+                        active === video.id ? "text-teal-700 " : ""
+                      }transition-all duration-150`}
                     >
                       {video.title}
                     </span>
                   </CondLink>
                 </div>
                 <div className="mr-1 flex flex-row items-center">
-                  <span className="text-gray-600 sm:text-lg">{video.human_length}</span>
+                  <span className="text-gray-600 sm:text-lg">
+                    {video.human_length}
+                  </span>
                   <span className="text-xs sm:text-sm text-gray-600 mr-1 sm:mr-2">
                     <Clock />
                   </span>{" "}

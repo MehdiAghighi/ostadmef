@@ -9,7 +9,7 @@ import "./course-intro.style.scss"
 
 import Rodal from "rodal"
 
-import { nl2br } from "../../helpers/functions"
+import { nl2br, formatNumberWithCommas } from "../../helpers/functions"
 
 // import Main from "../../assets/images/Main.png";
 // import DecoratedImage from "../decorated-image/decorated-image.component";
@@ -95,15 +95,19 @@ function CourseIntro({ course, bought }) {
               </span>
               <HDivider className="bg-gray-600" />
               <span className="font-bold text-xl leading-10 text-green-500">
-                {course.price} تومان
+                {formatNumberWithCommas(course.price)} تومان
               </span>
             </div>
           </div>
           <div className="w-full mx-auto lg:w-auto">
-            {bought ? null : (
+            {bought ? (
+              <div className="text-center text-lg text-green-600">
+                <span>شما عضو این دوره هستید</span>
+              </div>
+            ) : (
               <button
                 id="buyButton"
-                className="py-4 w-full bg-teal-600 rounded-lg text-white text-3xl hover:bg-teal-700 transition-all duration-100"
+                className="py-4 w-full bg-site-teal rounded-lg text-white text-3xl hover:bg-teal-600 transition-all duration-100"
                 arrow
                 onClick={async () => {
                   if (isLoggedIn) {
@@ -137,6 +141,10 @@ function CourseIntro({ course, bought }) {
             //   width: 570,
             //   height: 370,
             // }}
+            style={{
+              width: 450,
+              height: 450,
+            }}
           />
         </div>
         <Rodal
@@ -158,7 +166,7 @@ function CourseIntro({ course, bought }) {
             <div className="flex flex-col h-full justify-center items-center">
               <div className="w-full font-bold flex justify-around text-green-900">
                 <span>{course.title}</span>
-                <span>{course.price} تومان</span>
+                <span>{formatNumberWithCommas(course.price)} تومان</span>
               </div>
             </div>
             {fetchingUrlStatus === "pending" ? (
@@ -203,7 +211,7 @@ function CourseIntro({ course, bought }) {
             </span>
             <HDivider />
             <span className="font-bold text-lg leading-10 text-green-500">
-              {course.price} تومان
+              {formatNumberWithCommas(course.price)} تومان
             </span>
           </div>
           {bought ? (
@@ -211,7 +219,7 @@ function CourseIntro({ course, bought }) {
           ) : (
             <button
               id="buyButtonDown"
-              className="text-lg leading-8 bg-teal-600 hover:bg-teal-700 px-8 py-3 text-white rounded-lg transition-all duration-100"
+              className="text-lg leading-8 bg-site-teal hover:bg-teal-600 px-8 py-3 text-white rounded-lg transition-all duration-100"
               arrow
               onClick={async () => {
                 if (isLoggedIn) {

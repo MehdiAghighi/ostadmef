@@ -169,12 +169,12 @@ function Course(props) {
             course={{ id: course.id, title: course.title }}
             bought={bought}
           />
-          {/* <RelatedCourses course={{ id: course.slug }} /> */}
           {/* Ratings */}
           <CourseRatingsStars course={{ id: course.slug }} />
           {bought ? <RateCourse course={{ id: course.slug }} /> : null}
           <CourseRates course={{ id: course.slug }} />
-          <RelatedPosts course={{ id: course.slug }} />
+          <RelatedCourses course={{ id: course.slug }} />
+          {/* <RelatedPosts course={{ id: course.slug }} /> */}
         </>
       ) : (
         <NotFound />

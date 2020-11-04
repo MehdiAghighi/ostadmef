@@ -89,7 +89,7 @@ function Video(props) {
             {!video.video.video ? (
               <h2>شما این دوره را خریداری نکرده‌اید</h2>
             ) : (
-              <ShowVideo video={video.player_url} />
+              <ShowVideo video={video.player_url} id={video.video.id} />
             )}
           </div>
           <CourseSections

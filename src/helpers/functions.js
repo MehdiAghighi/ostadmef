@@ -46,3 +46,7 @@ export function stripHtml(html) {
   tmp.innerHTML = html
   return tmp.textContent || tmp.innerText || ""
 }
+
+export function formatNumberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+}

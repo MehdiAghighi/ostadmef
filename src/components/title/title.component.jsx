@@ -8,13 +8,13 @@ function Title(props) {
       <div className="z-10 text-blue-800 relative">
         {props.mainTitle ? (
           <h1
-            className={`title text-blue-800 text-3xl sm:text-5xl ${props.className}`}
+            className={`title text-blue-800 text-2xl sm:text-4xl ${props.className}`}
           >
             {props.children}
           </h1>
         ) : (
           <span
-            className={`title text-blue-800 text-3xl sm:text-5xl ${props.className}`}
+            className={`title text-blue-800 text-2xl sm:text-4xl ${props.className}`}
           >
             {props.children}
           </span>

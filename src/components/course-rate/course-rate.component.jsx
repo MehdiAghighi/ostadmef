@@ -46,7 +46,7 @@ function CourseRate({ rate }) {
                 {rate.user.first_name} {rate.user.last_name}
               </span>
               <StarRatings
-                rating={rate.rating}
+                rating={parseFloat(rate.rating)}
                 starRatedColor="4FD1C5"
                 starHoverColor="4FD1C5"
                 starDimension="15px"

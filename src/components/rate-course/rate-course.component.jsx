@@ -62,14 +62,17 @@ function RateCourse({ course }) {
 
   return (
     <div className="container mx-auto">
-      <div className="bg-gray-300 rounded-lg py-3 px-4 shadow">
+      <div className="text-blue-800 text-xl sm:text-3xl font-bold mb-8">
+        <span>شما هم می‌توانید در مورد این دوره نظر دهید: </span>
+      </div>
+      <div className="bg-site-gray rounded-lg py-3 px-4 shadow">
         {isLoading ? (
           <CustomLoader />
         ) : (
           <div className="w-full grid grid-cols-7">
             <div className="col-span-5 py-2 my-4 px-4 border-l border-gray-700">
               <div className="">
-                <span className="font-bold text-lg">متن نظر: </span>
+                <span className="text-xl">متن نظر: </span>
                 <textarea
                   maxLength={5000}
                   rows={7}
@@ -80,11 +83,11 @@ function RateCourse({ course }) {
               </div>
             </div>
             <div className="col-span-2">
-              <div className="px-4 py-4 my-4 flex flex-col justify-between h-full">
-                <div className="font-bold text-lg">امتیاز شما: </div>
+              <div className="px-4 py-4 my-4 flex flex-col justify-around h-full">
+                <div className="text-xl">امتیاز شما: </div>
                 <div className="my-4 mx-auto flex justify-center">
                   <StarRatings
-                    rating={rating}
+                    rating={parseFloat(rating)}
                     starRatedColor="4FD1C5"
                     starHoverColor="4FD1C5"
                     starDimension="40px"
@@ -102,7 +105,7 @@ function RateCourse({ course }) {
                   className="py-4 w-full bg-teal-600 rounded-lg text-white text-xl hover:bg-teal-700 transition-all duration-100"
                   onClick={submitRate}
                 >
-                  {editMode ? "ویرایش بازخورد" : "ثبت یازخورد"}
+                  {editMode ? "ویرایش بازخورد" : "ثبت بازخورد"}
                 </button>
               </div>
             </div>

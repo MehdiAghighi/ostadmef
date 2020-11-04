@@ -23,3 +23,30 @@
   transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
+
+.circle-50 {
+  border-radius: 50%;
+  border: 5px solid transparent;
+  background: 
+    linear-gradient(#edf2f7, #edf2f7) padding-box, 
+    linear-gradient(var(--v), #38B2AC 50%, transparent 0) border-box,
+    linear-gradient(to right, #edf2f7 50%, #38B2AC 0) border-box;
+}
+
+.circle-100 {
+  border-radius:50%;
+  border:5px solid transparent;
+  background:
+    linear-gradient(#edf2f7,#edf2f7) padding-box,
+    linear-gradient(var(--v), #38B2AC 50%,transparent 0) border-box,
+    linear-gradient(to right, #edf2f7 50%,#38B2AC 0) border-box;
+}
+
+.circle-none {
+  border-radius:50%;
+  border:5px solid transparent;
+  background:
+    linear-gradient(#edf2f7,#edf2f7) padding-box,
+    linear-gradient(var(--v), #edf2f7 50%,transparent 0) border-box,
+    linear-gradient(to right, #edf2f7 50%,#edf2f7 0) border-box;
+}
