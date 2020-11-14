@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import Collapse from "@kunukn/react-collapse"
 
 import "./video-topic.style.scss"
@@ -9,23 +9,29 @@ import {
   KeyboardArrowUp,
   Clock,
   Checkmark,
+  EmojiFlirt,
+  EmojiSad,
+  EmojiHappy,
 } from "../icon/icon.component"
 import VideoLockStatus from "../video-lock-status/video-lock-status.component"
 import CondLink from "../cond-link/cond-link.component"
 import { useEffect } from "react"
 
-function VideoTopic({ topic, lock, active }) {
+function VideoTopic({ topic, lock, active, bought, admin }) {
   const [topicBased, setTopicBased] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    topic.videos.map((video ,index) => {
+    if (topic.order === 1) {
+      setIsOpen(true)
+    }
+    topic.videos.map((video, index) => {
       if (active === video.id) {
         setIsOpen(true)
       }
     })
     // setIsOpen(active === topic.)
-  }, [ topic.id, topic.videos ])
+  }, [topic.id, topic.videos, topic.order])
 
   return (
     <>
@@ -75,8 +81,8 @@ function VideoTopic({ topic, lock, active }) {
                     className={`${
                       video.is_finished
                         ? "circle-100"
-                        : video.progresses.length > 0
-                        ? video.progresses[0].percentage >= 50
+                        : video.last_progress
+                        ? video.last_progress.percentage >= 50
                           ? "circle-100"
                           : "circle-50"
                         : "circle-none"
@@ -85,17 +91,19 @@ function VideoTopic({ topic, lock, active }) {
                       "--v": `${
                         video.is_finished
                           ? "90deg"
-                          : video.progresses.length > 0
-                          ? video.progresses[0].percentage >= 50
-                            ? `${(18 / 5) * video.progresses[0].percentage - 90}deg`
-                            : `${(18 / 5) * video.progresses[0].percentage - 270}deg`
+                          : video.last_progress
+                          ? video.last_progress.percentage >= 50
+                            ? `${(18 / 5) * video.last_progress.percentage - 270}deg`
+                            : `${(18 / 5) * video.last_progress.percentage - 90}deg`
                           : ""
                       }`,
                     }}
                   >
                     <div
                       className={`border-2 ${
-                        lock ? "border-red-600" : "border-green-600"
+                        !bought && video.order != 1 && !admin
+                          ? "border-red-600"
+                          : "border-green-600"
                       } flex justify-center items-center rounded-full font-bold`}
                       style={{
                         width: 45,
@@ -104,20 +112,18 @@ function VideoTopic({ topic, lock, active }) {
                         paddingTop: 3,
                       }}
                     >
-                      {
-                        !video.is_finished
-                        ?
+                      {!video.is_finished ? (
                         video.order
-                        :
+                      ) : (
                         <Checkmark className="text-green-500 text-xs" />
-                      }
+                      )}
                       {/* {video.order} */}
                     </div>
                   </div>
                   <CondLink
-                    isLink={!lock}
+                    isLink={bought || video.order == 1 || admin}
                     to={`/video/${video.id}`}
-                    className="sm:mr-4 mr-2"
+                    className="sm:mr-4 mr-1"
                   >
                     <span
                       className={`text-base sm:text-lg ${
@@ -128,15 +134,61 @@ function VideoTopic({ topic, lock, active }) {
                     >
                       {video.title}
                     </span>
+                    {topic.order == 1 && video.order == 1 ? (
+                      <span className="text-teal-500 text-sm font-bold mx-2">
+                        (رایگان)
+                      </span>
+                    ) : null}
                   </CondLink>
                 </div>
                 <div className="mr-1 flex flex-row items-center">
-                  <span className="text-gray-600 sm:text-lg">
-                    {video.human_length}
-                  </span>
-                  <span className="text-xs sm:text-sm text-gray-600 mr-1 sm:mr-2">
-                    <Clock />
-                  </span>{" "}
+                  <div className="flex sm:flex-row flex-col-reverse items-end sm:items-center">
+                    {video.quiz ? (
+                      <div className="flex flex-row items-center">
+                        <span className="sm:font-bold sm:text-base text-sm flex flex-row items-center sm:my-0 my-2">
+                          آزمونک:{" "}
+                          {video.quiz ? (
+                            video.quiz.results.length > 0 ? (
+                              video.quiz.results[0].result.percentage < 50 ? (
+                                <EmojiSad className="text-xs text-red-600 mx-1" />
+                              ) : video.quiz.results[0].result.percentage >= 50 &&
+                                video.quiz.results[0].result.percentage != 100 ? (
+                                <EmojiFlirt className="text-xs text-blue-600 mx-1" />
+                              ) : video.quiz.results[0].result.percentage == 100 ? (
+                                <EmojiHappy className="text-xs text-green-600 mx-1" />
+                              ) : null
+                            ) : (
+                              <div
+                                className="w-6 bg-gray-500 rounded mx-2 inline-block"
+                                style={{
+                                  height: 5,
+                                }}
+                              ></div>
+                            )
+                          ) : null}
+                        </span>
+                        <div
+                          className="h-10 rounded mx-2 bg-gray-500 sm:block hidden"
+                          style={{
+                            width: 2,
+                          }}
+                        ></div>
+                      </div>
+                    ) : null}
+                    <div className="flex flex-row items-center">
+                      <span
+                        className="text-gray-600 text-sm sm:text-base"
+                        style={{
+                          minWidth: "4rem",
+                        }}
+                      >
+                        {video.human_length}
+                      </span>
+                    </div>
+                    <span className="text-xs sm:text-sm text-gray-600 mr-1 sm:mr-2 sm:block hidden">
+                      <Clock />
+                    </span>{" "}
+                  </div>
                 </div>
               </div>
             ))}

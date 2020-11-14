@@ -26,9 +26,9 @@ function CourseDescription({ data }) {
           }`}
           style={{
             bottom: 0,
-            background: "rgb(255,250,240)",
+            background: "rgb(251,248,246)",
             background:
-              "linear-gradient(0deg, rgba(255,250,240,.9) 0%, rgba(255,250,240,.5) 100%)",
+              "linear-gradient(0deg, rgba(251,248,246,.9) 0%, rgba(251,248,246,.5) 100%)",
           }}
         ></div>
       </div>

@@ -69,8 +69,8 @@ function RateCourse({ course }) {
         {isLoading ? (
           <CustomLoader />
         ) : (
-          <div className="w-full grid grid-cols-7">
-            <div className="col-span-5 py-2 my-4 px-4 border-l border-gray-700">
+          <div className="w-full grid grid-cols-7 grid-rows-2 sm:grid-rows-1">
+            <div className="col-span-7 sm:col-span-5 py-2 my-4 px-4 sm:border-l border-gray-700">
               <div className="">
                 <span className="text-xl">متن نظر: </span>
                 <textarea
@@ -82,7 +82,7 @@ function RateCourse({ course }) {
                 ></textarea>
               </div>
             </div>
-            <div className="col-span-2">
+            <div className="col-span-7 sm:col-span-2 row-start-2 sm:row-start-auto">
               <div className="px-4 py-4 my-4 flex flex-col justify-around h-full">
                 <div className="text-xl">امتیاز شما: </div>
                 <div className="my-4 mx-auto flex justify-center">
@@ -90,7 +90,7 @@ function RateCourse({ course }) {
                     rating={parseFloat(rating)}
                     starRatedColor="4FD1C5"
                     starHoverColor="4FD1C5"
-                    starDimension="40px"
+                    starDimension="28px"
                     starSpacing="0"
                     style={{
                       margin: "0 auto",

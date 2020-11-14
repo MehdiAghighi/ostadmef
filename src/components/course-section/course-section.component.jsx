@@ -1,5 +1,13 @@
 import React from "react"
-import { Clock, Lock, Unlock, Checkmark } from "../icon/icon.component"
+import {
+  Clock,
+  Lock,
+  Unlock,
+  Checkmark,
+  EmojiSad,
+  EmojiFlirt,
+  EmojiHappy,
+} from "../icon/icon.component"
 import { Link } from "react-router-dom"
 import CondLink from "../cond-link/cond-link.component"
 import VideoLockStatus from "../video-lock-status/video-lock-status.component"
@@ -36,7 +44,11 @@ function CourseSection({ video, title, active, lock }) {
         >
           <div
             className={`border-2 ${
-              lock ? "bg-red-700" : video.is_finished ? "border-green-700" : "bg-green-700" 
+              lock
+                ? "bg-red-700"
+                : video.is_finished
+                ? "border-green-700"
+                : "bg-green-700"
             } py-3 px-3 rounded-full text-white text-xs border border-gray-400`}
           >
             {lock ? (
@@ -61,10 +73,52 @@ function CourseSection({ video, title, active, lock }) {
           )}
         </span>
       </CondLink>
-      <span className="text-gray-600 flex flex-row">
-        {video.human_length}
-        <Clock className="text-xs mr-3" />
-      </span>
+      <div className="mr-1 flex flex-row items-center">
+        <div className="flex sm:flex-row flex-col-reverse items-end sm:items-center">
+          {video.quiz ? (
+            <>
+              <span className="font-bold flex flex-row sm:my-0 my-2">
+                آزمونک:{" "}
+                {video.quiz ? (
+                  video.quiz.results.length > 0 ? (
+                    video.quiz.results[0].result.percentage < 50 ? (
+                      <EmojiSad className="text-xs text-red-600 mx-1" />
+                    ) : video.quiz.results[0].result.percentage >= 50 &&
+                      video.quiz.results[0].result.percentage != 100 ? (
+                      <EmojiFlirt className="text-xs text-blue-600 mx-1" />
+                    ) : video.quiz.results[0].result.percentage == 100 ? (
+                      <EmojiHappy className="text-xs text-green-600 mx-1" />
+                    ) : null
+                  ) : (
+                    <div
+                      className="w-6 bg-gray-500 rounded mx-1 inline-block"
+                      style={{
+                        height: 5,
+                      }}
+                    ></div>
+                  )
+                ) : null}
+              </span>
+              <div
+                className="h-10 rounded mx-2 bg-gray-500 sm:block hidden"
+                style={{
+                  width: 2,
+                }}
+              ></div>
+            </>
+          ) : null}
+          <div className="flex flex-row items-center">
+            <span className="text-gray-600 text-sm sm:text-base" style={{
+              minWidth: "4rem"
+            }}>
+              {video.human_length}
+            </span>
+          </div>
+          <span className="text-xs sm:text-sm text-gray-600 mr-1 sm:mr-2 sm:block hidden">
+            <Clock />
+          </span>{" "}
+        </div>
+      </div>
     </div>
   )
 }

@@ -8,4 +8,10 @@
     //       display: none;
     //   }
   }
+  .videoBox:hover .p-button {
+    opacity: 100% !important;
+  }
+  .videoBox:hover .v-overlay {
+    opacity: 50% !important;
+  }
 }

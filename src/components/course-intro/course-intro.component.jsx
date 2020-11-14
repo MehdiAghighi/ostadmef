@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react"
 // import Title from "../title/title.component";
 // import { Link } from "react-router-dom";
-import { Clock } from "../icon/icon.component"
+import { Clock, Play, Pause } from "../icon/icon.component"
 import Button from "../button/button.component"
 import HDivider from "../h-divider/h-divider.component"
 
@@ -21,6 +21,8 @@ import API from "../../helpers/api"
 import CustomLoader from "../custom-loader/custom-loader.component"
 import { toast } from "react-toastify"
 import CourseDescription from "../course-description/course-description.component"
+import { useRef } from "react"
+import ReactPlayer from "react-player"
 
 function CourseIntro({ course, bought }) {
   const [buyModalOpen, setBuyModalOpen] = useState(false)
@@ -29,6 +31,10 @@ function CourseIntro({ course, bought }) {
 
   const { isLoggedIn } = useAuthState()
   const authDispatch = useAuthDispatch()
+
+  const videoRef = useRef(null)
+
+  const [videoPlaying, setVideoPlaying] = useState(false)
 
   const fetchPaymentUrl = useCallback(async () => {
     setFetchingUrlStatus("pending")
@@ -64,7 +70,7 @@ function CourseIntro({ course, bought }) {
     <>
       <div className="course-intro pt-10 container mx-auto flex flex-col-reverse xl:flex-row justify-between index-intro items-center">
         <div
-          className="xl:pt-6 lg:pt-8 pt-10 xl:pb-3 lg:pb-6 pb-8 lg:w-3/5 xl:w-8/12 px-2 mb-6 xl:mt-0 mt-10"
+          className="xl:pt-6 lg:pt-8 pt-10 xl:pb-3 lg:pb-6 pb-8 w-full sm:w-9/12 lg:w-3/5 xl:w-8/12 px-2 mb-6 xl:mt-0 mt-10"
           style={{
             // flexBasis: "50%",
             borderRadius: 8,
@@ -133,19 +139,70 @@ function CourseIntro({ course, bought }) {
           </div>
         </div>
         <div className="w-full mx-auto md:lg-6">
-          <img
-            src={`${course.pic.url}`}
-            alt={course.title}
-            className="mx-auto"
-            // style={{
-            //   width: 570,
-            //   height: 370,
-            // }}
-            style={{
-              width: 450,
-              height: 450,
-            }}
-          />
+          {!course.teaser ? (
+            <img
+              src={`${course.pic.url}`}
+              alt={course.title}
+              className="mx-auto"
+              // style={{
+              //   width: 570,
+              //   height: 370,
+              // }}
+              style={{
+                width: 450,
+                height: 450,
+              }}
+            />
+          ) : (
+            <div
+              className="relative mx-auto videoBox w-full md:w-9/12"
+              style={
+                {
+                  // width: "85%",
+                  // height: 315,
+                }
+              }
+            >
+              <div
+                className={`absolute w-full h-full bg-black z-10 transition-all duration-100 v-overlay ${
+                  !videoPlaying ? "opacity-50" : "opacity-0"
+                }`}
+                style={{
+                  top: 0,
+                  left: 0,
+                  // width: "85%",
+                  // height: 400,
+                }}
+              ></div>
+              <div
+                className={`absolute py-5 px-5 bg-white text-orange-white rounded-full z-20 transition-all duration-100 p-button ${
+                  videoPlaying ? "opacity-0" : ""
+                }`}
+                style={{
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+                onClick={() => {
+                  setVideoPlaying((state) => !state)
+                }}
+              >
+                {videoPlaying ? (
+                  <Pause className="text-2xl text-orange-500" />
+                ) : (
+                  <Play className="text-2xl text-orange-500" />
+                )}
+              </div>
+
+              <ReactPlayer
+                playing={videoPlaying}
+                width="100%"
+                height="auto"
+                className="mx-auto shadow-lg"
+                url={course.teaser}
+              />
+            </div>
+          )}
         </div>
         <Rodal
           visible={buyModalOpen}

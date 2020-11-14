@@ -131,6 +131,7 @@ module.exports = {
         teal: "#38B2AC",
         orange: "#FBF8F6",
         gray: "#EDF2F7",
+        brown: "#F6F4F5",
       },
     },
     spacing: {

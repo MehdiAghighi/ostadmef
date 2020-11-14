@@ -32,7 +32,11 @@ function CourseRates({ course }) {
         <span></span>
       ) : (
         rates.map((rate, index) => (
+          rate.description
+          ?
           <CourseRate rate={rate} />
+          :
+          null
         ))
       )}
     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { Helmet } from "react-helmet"
 import { toast } from "react-toastify"
 
@@ -18,6 +18,7 @@ function Video(props) {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    setIsLoading(true)
     API.get(`/video/admin/${slug}`)
       .then((resp) => {
         return resp.data
@@ -31,12 +32,7 @@ function Video(props) {
         if (video.get_data) {
           setShouldGetData(true)
         }
-        if (video.video.order != 1) {
-          return API.get(`/course/admin/invoice/check/${video.video.course.id}`)
-        } else {
-          setIsLoading(false)
-          return null
-        }
+        return API.get(`/course/admin/invoice/check/${video.video.course.id}`)
       })
       .then((resp) => {
         if (resp) {
@@ -45,11 +41,12 @@ function Video(props) {
         }
       })
       .catch((err) => {
+        setVideo({})
         if (err.response) {
-          toast.error(err.response.data.message)
           setIsLoading(false)
         } else {
           toast.error("مشکلی در ارتباط با سرور پیش آمده است")
+          setIsLoading(false)
         }
       })
   }, [slug])
@@ -66,30 +63,32 @@ function Video(props) {
               name="description"
               content="لینوم یک پلتفرم آموزشی میکرولرنینگ است که با تکیه بر ویدئو های کپسولی و فشرده ، یادگیری دروس دانشگاهی را در سریع ترین زمان ممکن به ارمغان می آورد."
             />
-            {/* <script
-              type="text/javascript"
-              charset="utf-8"
-              async=""
-              src="//ssl.p.jwpcdn.com/player/v/8.17.7/jwpsrv.js"
-            ></script>
-            <script
-              charset="utf-8"
-              src="//ssl.p.jwpcdn.com/player/v/8.17.7/jwplayer.core.controls.js"
-            ></script>
-            <script
-              charset="utf-8"
-              src="//ssl.p.jwpcdn.com/player/v/8.17.7/provider.hlsjs.js"
-            ></script>
-            <script
-              charset="utf-8"
-              src="//ssl.p.jwpcdn.com/player/v/8.17.7/provider.cast.js"
-            ></script> */}
           </Helmet>
           <div className="container mx-auto">
             {!video.video.video ? (
               <h2>شما این دوره را خریداری نکرده‌اید</h2>
             ) : (
-              <ShowVideo video={video.player_url} id={video.video.id} />
+              <>
+                <div className="flex flex-row justify-between items-center">
+                  <h2 className="text-blue-900 text-2xl mt-12 mb-8 font-bold">
+                    {video.video.title}
+                  </h2>
+                  {video.video.quiz ? (
+                    <Link
+                      to={`/quiz/${video.video.quiz.id}`}
+                      className="bg-white text-blue-900 hover:bg-blue-900 hover:text-white rounded border border-blue-900 py-3 px-6 transition-all duration-75"
+                    >
+                      رفتن به کوییز
+                    </Link>
+                  ) : null}
+                </div>
+                <ShowVideo
+                  video={video.player_url}
+                  id={video.video.id}
+                  length={video.video.length}
+                  progress={video.video.progresses}
+                />
+              </>
             )}
           </div>
           <CourseSections

@@ -8,6 +8,7 @@ import { ArrowLeft, Clock } from "../icon/icon.component"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import Loader from "react-loader-spinner"
 import ImageLoader from "../image-loader/image-loader.component"
+import { formatNumberWithCommas } from "../../helpers/functions"
 
 function CourseCard({ course, full, lazy }) {
   return (
@@ -55,7 +56,7 @@ function CourseCard({ course, full, lazy }) {
         <CardFooter>
           <div className="flex flex-row justify-between items-center">
             <span className="text-xl text-green-500 leading-tight">
-              {course.price} تومان
+              {formatNumberWithCommas(course.price)} تومان
             </span>
             <ArrowLeft
               to={`/course/${course.slug}`}

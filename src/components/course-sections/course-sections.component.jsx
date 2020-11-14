@@ -51,7 +51,9 @@ function CourseSections({ course, bought, activeId }) {
                       active={activeId}
                       topic={topic}
                       key={index}
+                      bought={bought}
                       lock={topic.is_free != true && !bought && user.role != 0}
+                      admin={user.role == 0}
                     />
                   ))}
                 </div>

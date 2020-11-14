@@ -28,7 +28,7 @@ function CourseRatingsStars({ course }) {
         {isLoading ? (
           <CustomLoader />
         ) : (
-          <div className="w-full mb-4 mt-8 grid grid-cols-4">
+          <div className="w-full mb-4 md:mt-8 grid lg:grid-cols-4 md:grid-cols-3 grid-rows-2 md:grid-rows-1 sm:grid-cols-3 grid-cols-2">
             <div>
               <div className="flex flex-row items-center mx-2 my-1">
                 <span className="text-xl mx-1 pt-1 w-10">
@@ -41,7 +41,7 @@ function CourseRatingsStars({ course }) {
                 >
                   <Ratings
                     rating={5}
-                    widgetDimensions="30px"
+                    widgetDimensions="24px"
                     widgetSpacings="0px"
                     style={{ direction: "ltr" }}
                   >
@@ -64,7 +64,7 @@ function CourseRatingsStars({ course }) {
                 >
                   <Ratings
                     rating={4}
-                    widgetDimensions="30px"
+                    widgetDimensions="24px"
                     widgetSpacings="0px"
                     style={{ direction: "ltr" }}
                   >
@@ -87,7 +87,7 @@ function CourseRatingsStars({ course }) {
                 >
                   <Ratings
                     rating={3}
-                    widgetDimensions="30px"
+                    widgetDimensions="24px"
                     widgetSpacings="0px"
                     style={{ direction: "ltr" }}
                   >
@@ -110,7 +110,7 @@ function CourseRatingsStars({ course }) {
                 >
                   <Ratings
                     rating={2}
-                    widgetDimensions="30px"
+                    widgetDimensions="24px"
                     widgetSpacings="0px"
                     style={{ direction: "ltr" }}
                   >
@@ -133,7 +133,7 @@ function CourseRatingsStars({ course }) {
                 >
                   <Ratings
                     rating={1}
-                    widgetDimensions="30px"
+                    widgetDimensions="24px"
                     widgetSpacings="0px"
                     style={{ direction: "ltr" }}
                   >
@@ -147,7 +147,7 @@ function CourseRatingsStars({ course }) {
               </div>
             </div>
             <div
-              className="col-span-2"
+              className="lg:col-span-2 md:col-span-1 sm:col-span-2 col-span-1"
               style={{
                 direction: "ltr",
               }}
@@ -193,32 +193,28 @@ function CourseRatingsStars({ course }) {
                 ></div>
               </div>
             </div>
-            <div className="text-center text-teal-600 flex flex-col py-2">
-              <span className="text-6xl font-bold">
-                {
-                  ratings.average 
-                  ?
-                  parseFloat(ratings.average).toFixed(1)
-                  :
-                  <>--</>
-                }
-              </span>
-              <div
-                style={{
-                  direction: "ltr",
-                }}
-              >
-                <Ratings
-                  rating={ratings.average ? parseFloat(ratings.average) : 5}
-                  widgetDimensions="30px"
-                  widgetSpacings="0px"
+            <div className="text-left md:text-center items-center text-teal-600 flex flex-row-reverse md:flex-col py-2 col-span-2 row-start-1 md:row-start-auto sm:col-span-3 md:col-span-1">
+              <div className="flex flex-col justify-start items-center text-center">
+                <span className="text-6xl font-bold">
+                  {ratings.average ? parseFloat(ratings.average).toFixed(1) : <>--</>}
+                </span>
+                <div
+                  style={{
+                    direction: "ltr",
+                  }}
                 >
-                  <Ratings.Widget widgetRatedColor="4FD1C5" />
-                  <Ratings.Widget widgetRatedColor="4FD1C5" />
-                  <Ratings.Widget widgetRatedColor="4FD1C5" />
-                  <Ratings.Widget widgetRatedColor="4FD1C5" />
-                  <Ratings.Widget widgetRatedColor="4FD1C5" />
-                </Ratings>
+                  <Ratings
+                    rating={ratings.average ? parseFloat(ratings.average) : 5}
+                    widgetDimensions="30px"
+                    widgetSpacings="0px"
+                  >
+                    <Ratings.Widget widgetRatedColor="4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="4FD1C5" />
+                  </Ratings>
+                </div>
               </div>
               <span className="text-xl font-bold mt-2 text-blue-800">
                 امتیاز دوره

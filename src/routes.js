@@ -4,6 +4,7 @@ import Post from "./pages/post/post.component"
 import Course from "./pages/course/course.component"
 import Courses from "./pages/courses/courses.component"
 import Video from "./pages/video/video.component"
+import { QuizWrapper } from "./pages/quiz/quiz.component"
 import Payment from "./pages/payment/payment.component"
 import Logout from "./pages/logout/logout.component"
 import ProfileCourses from "./pages/profile-courses/profile-courses.component"
@@ -47,6 +48,10 @@ const routes = [
   {
     path: "/video/:slug",
     component: Video,
+  },
+  {
+    path: "/quiz/:slug",
+    component: QuizWrapper,
   },
   {
     path: "/payment",

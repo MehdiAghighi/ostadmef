@@ -139,7 +139,7 @@ function Course(props) {
               href={`${process.env.REACT_APP_URL}/course/${course.slug}`}
             />
             <meta name="keywords" value={keywords.toString()} />
-            <meta name="description" value={description} />
+            <meta name="description" value={course.short_description} />
             <meta name="twitter:card" content="summary" />
             <meta
               name="twitter:title"
