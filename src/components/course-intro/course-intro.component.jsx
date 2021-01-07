@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react"
-// import Title from "../title/title.component";
-// import { Link } from "react-router-dom";
 import { Clock, Play, Pause } from "../icon/icon.component"
 import Button from "../button/button.component"
 import HDivider from "../h-divider/h-divider.component"
@@ -9,10 +7,8 @@ import "./course-intro.style.scss"
 
 import Rodal from "rodal"
 
-import { nl2br, formatNumberWithCommas } from "../../helpers/functions"
+import { formatNumberWithCommas } from "../../helpers/functions"
 
-// import Main from "../../assets/images/Main.png";
-// import DecoratedImage from "../decorated-image/decorated-image.component";
 import TeacherCard from "../teacher-card/teacher-card.component"
 import CourseTitle from "../course-title/course-title.component"
 import { useAuthState, useAuthDispatch } from "../../contexts/auth-context"
@@ -23,28 +19,47 @@ import { toast } from "react-toastify"
 import CourseDescription from "../course-description/course-description.component"
 import { useRef } from "react"
 import ReactPlayer from "react-player"
+import CourseSections from "../course-sections/course-sections.component"
+import { Link } from "react-router-dom"
+import Loader from "react-loader-spinner"
 
 function CourseIntro({ course, bought }) {
   const [buyModalOpen, setBuyModalOpen] = useState(false)
-  const [fetchingUrlStatus, setFetchingUrlStatus] = useState(false)
+  const [paymentStatus, setPaymentStatus] = useState(false)
+
   const [paymentLink, setPaymentLink] = useState("")
+  const [invoice, setInvoice] = useState(null)
+
+  const [discountInput, setDiscountInput] = useState("")
+  const [discountValue, setDiscountValue] = useState("")
+  const [discount, setDiscount] = useState({})
+
+  const [referralDiscount, setReferralDiscount] = useState(0)
+
+  const [discountDescriptions, setDiscountDescriptions] = useState([])
+  
+  const [ finalDiscount, setFinalDiscount ] = useState(0)
+
+  const [lastPrice, setLastPrice] = useState(0)
 
   const { isLoggedIn } = useAuthState()
   const authDispatch = useAuthDispatch()
 
-  const videoRef = useRef(null)
-
   const [videoPlaying, setVideoPlaying] = useState(false)
 
-  const fetchPaymentUrl = useCallback(async () => {
-    setFetchingUrlStatus("pending")
+  const generateInvoice = useCallback(async () => {
+    setPaymentStatus("pending")
     API.get(`/course/admin/invoice/${course.slug}`)
       .then((resp) => {
-        setPaymentLink(resp.data.payment_url)
-        setFetchingUrlStatus("success")
+        setInvoice(resp.data.invoice)
+        if (resp.data.discount && resp.data.discount > 0) {
+          setReferralDiscount(resp.data.discount)
+        }
+        setDiscountDescriptions(resp.data.discount_descriptions)
+        setPaymentStatus("success")
       })
       .catch((err) => {
-        setFetchingUrlStatus("error")
+        setPaymentStatus("error")
         if (err.response) {
           if (err.response.status == 401) {
             // toast.error("لطفا ابتدا وارد سایت شوید")
@@ -55,17 +70,87 @@ function CourseIntro({ course, bought }) {
           toast.error("مشکلی در ارتباط با سرور پیش آمده است")
         }
       })
+  }, [course.slug])
+
+  const redirectToPayment = useCallback(async () => {
+    setPaymentStatus("redirecting")
+    if (invoice) {
+      API.post(`/course/admin/invoice/payment_url/${invoice.id}`, {
+        discount: discount.reward ? discount.code : null
+      })
+        .then((resp) => {
+          setPaymentStatus("success")
+          if (resp.data.payment_url) {
+            window.location.href = resp.data.payment_url
+          }
+        })
+        .catch((err) => {
+          setPaymentStatus("error")
+          if (err.response) {
+            if (err.response.status == 401) {
+              // toast.error("لطفا ابتدا وارد سایت شوید")
+            } else {
+              toast.error(err.response.data.message)
+            }
+          } else {
+            toast.error("مشکلی در ارتباط با سرور پیش آمده است")
+          }
+        })
+    }
   })
+
+  const submitDiscountCode = useCallback(async () => {
+    setDiscountInput("loading")
+    API.get(`course/admin/invoice/discount/${discountValue}`)
+      .then((resp) => {
+        setDiscount(resp.data.code)
+        setDiscountInput("verified")
+      })
+      .catch((err) => {
+        setDiscountInput("input")
+        if (err.response) {
+          toast.error("کد تخفیف مورد نظر صحیح نیست.")
+        }
+      })
+  }, [discountValue])
 
   useEffect(() => {
     if (!bought) {
       if (paymentLink === "") {
         if (buyModalOpen) {
-          fetchPaymentUrl()
+          generateInvoice()
         }
       }
     }
   }, [bought, buyModalOpen])
+
+  useEffect(() => {
+    if (course.price) {
+      let downTo = 0
+
+      if (finalDiscount) {
+        downTo += finalDiscount
+      }
+
+      setLastPrice(course.price - downTo)
+    }
+  }, [finalDiscount, course.price])
+
+  useEffect(() => {
+    let fd = 0;
+    if (discount.reward) {
+      let codeDiscount = parseInt((parseInt(discount.reward) / 100) * course.price) < discount.max ? parseInt((parseInt(discount.reward) / 100) * course.price) : discount.max
+      fd += codeDiscount
+    }
+
+    if (referralDiscount) {
+      fd += referralDiscount
+    }
+
+    setFinalDiscount(fd)
+
+  }, [discount, referralDiscount])
+
   return (
     <>
       <div className="course-intro pt-10 container mx-auto flex flex-col-reverse xl:flex-row justify-between index-intro items-center">
@@ -190,7 +275,12 @@ function CourseIntro({ course, bought }) {
                 {videoPlaying ? (
                   <Pause className="text-2xl text-orange-500" />
                 ) : (
-                  <Play className="text-2xl text-orange-500" />
+                  <Play
+                    className="text-2xl text-orange-500"
+                    style={{
+                      marginLeft: 5,
+                    }}
+                  />
                 )}
               </div>
 
@@ -207,12 +297,11 @@ function CourseIntro({ course, bought }) {
         <Rodal
           visible={buyModalOpen}
           onClose={() => setBuyModalOpen(false)}
-          customStyles={
-            {
-              // height: "100vh",
-              // width: "100vw",
-            }
-          }
+          customStyles={{
+            borderRadius: 10,
+          }}
+          height="420"
+          width="400"
           animation="slideUp"
           duration={500}
         >
@@ -220,19 +309,99 @@ function CourseIntro({ course, bought }) {
             <div className="mx-auto font-bold text-3xl text-center text-green-600">
               خرید دوره
             </div>
-            <div className="flex flex-col h-full justify-center items-center">
-              <div className="w-full font-bold flex justify-around text-green-900">
+            <div className="flex flex-col h-32 justify-center items-center">
+              <div className="w-full font-bold flex justify-around text-green-900 border border-blue-700 py-4 px-4 rounded-lg">
                 <span>{course.title}</span>
                 <span>{formatNumberWithCommas(course.price)} تومان</span>
               </div>
             </div>
-            {fetchingUrlStatus === "pending" ? (
+            <div className="pb-3 pt-2 mb-1">
+              {!discountInput ? (
+                <span
+                  className="text-blue-500 border-b border-blue-500 pb-1"
+                  onClick={() => {
+                    setDiscountInput("input")
+                  }}
+                >
+                  کد تخفیف دارید؟
+                </span>
+              ) : discountInput === "input" ? (
+                <div className="flex flex-col justify-between mt-2">
+                  <span className="pb-2">کد تخفیف:</span>
+                  <div className="flex flex-row justify-between">
+                    <input
+                      className="outline-none border border-orange-500 rounded-lg py-2 px-3"
+                      value={discountValue}
+                      onChange={(e) => setDiscountValue(e.target.value)}
+                      style={{
+                        direction: "ltr",
+                        fontFamily: "sans",
+                      }}
+                    />
+                    <button
+                      className=" py-2 px-3 bg-orange-500 rounded-lg text-white"
+                      onClick={submitDiscountCode}
+                    >
+                      اعمال تخفیف
+                    </button>
+                  </div>
+                </div>
+              ) : discountInput === "loading" ? (
+                <div className="w-full text-center flex justify-center mb-2">
+                  <Loader type="ThreeDots" height="50" width="50" />
+                </div>
+              ) : discountInput === "verified" ? (
+                <div className="flex flex-col2">
+                  {discount.reward ? (
+                    <span className="text-teal-600 leading-8 text-sm">
+                      {discount.reward}% درصد تخفیف با سقف{" "}
+                      {formatNumberWithCommas(discount.max)} تومان اعمال شد.
+                    </span>
+                  ) : null}
+                </div>
+              ) : null}
+            </div>
+            <div className="">
+              {discountDescriptions.map((description, index) => (
+                <span className="text-teal-600 leading-8 text-sm">
+                  {description}
+                </span>
+              ))}
+            </div>
+            <div className="mb-6 mt-1 text-green-600">
+              {/* <div className="flex flex-row justify-between my-1">
+                <span>موجودی کیف پول</span>
+                <span>{formatNumberWithCommas(0)}</span>
+              </div>
+              <hr /> */}
+              <div className="flex flex-row justify-between my-1">
+                <span>تخفیف</span>
+                <span>
+                  {/* {discount.reward
+                    ? (parseInt(discount.reward) / 100) * course.price > discount.max
+                      ? formatNumberWithCommas(discount.max)
+                      : formatNumberWithCommas(
+                          (parseInt(discount.reward) / 100) * course.price
+                        )
+                    : formatNumberWithCommas(0)} */}
+                  {finalDiscount
+                    ? formatNumberWithCommas(finalDiscount)
+                    : finalDiscount}
+                </span>
+              </div>
+              <hr />
+              <div className="flex flex-row justify-between my-1">
+                <span>مبلغ قابل پرداخت</span>
+                <span>{formatNumberWithCommas(lastPrice)}</span>
+              </div>
+            </div>
+            {paymentStatus === "pending" ? (
               <div className="mt-8">
                 <CustomLoader />
               </div>
-            ) : fetchingUrlStatus === "success" ? (
-              paymentLink !== "" ? (
-                <a href={paymentLink} id="payLink">
+            ) : paymentStatus === "success" ? (
+              invoice ? (
+                <div onClick={redirectToPayment} id="payLink">
                   <Button
                     id="payButton"
                     className="mx-auto w-2/3 font-bold leading-8 py-2 px-4"
@@ -240,8 +409,12 @@ function CourseIntro({ course, bought }) {
                   >
                     انتقال به درگاه پرداخت
                   </Button>
-                </a>
+                </div>
               ) : null
+            ) : paymentStatus === "redirecting" ? (
+              <span className="text-teal-500 mx-auto text-center font-bold">
+                در حال انتقال به درگاه پرداخت ...
+              </span>
             ) : (
               <span className="text-red-500 mx-auto text-center font-bold">
                 مشکلی پیش آمده
@@ -253,14 +426,22 @@ function CourseIntro({ course, bought }) {
       <div className="w-full">
         <CourseDescription data={course.description} />
       </div>
-      <div className="container mx-auto mt-3">
+      <div className="mb-12">
+        <CourseSections
+          course={{ id: course.id, title: course.title }}
+          bought={bought}
+        />
+      </div>
+      <div className="container mx-auto mt-12">
         <div className="bg-gray-200 rounded-lg lg:px-8 px-4 py-3 flex md:flex-row flex-col justify-between items-center">
           <div className="flex sm:flex-row flex-col flex-wrap justify-start items-center h-full">
             <span className="text-lg leading-10">{course.title}</span>
             <HDivider />
-            <span className="font-bold leading-10">
-              {course.user.first_name} {course.user.last_name}
-            </span>
+            <Link to={`/teacher/${course.user.username}`}>
+              <span className="font-bold leading-10">
+                {course.user.first_name} {course.user.last_name}
+              </span>
+            </Link>
             <HDivider />
             <span className="font-bold leading-10">
               <Clock className="text-xs ml-1" />

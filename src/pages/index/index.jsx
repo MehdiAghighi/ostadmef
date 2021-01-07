@@ -7,8 +7,12 @@ import IndexIntro from "../../components/index-intro/index-intro.component"
 import TopCourses from "../../components/top-courses/top-courses.component"
 import WhyLinom from "../../components/why-linom/why-linom.component"
 import { objectToSchema } from "../../helpers/functions"
+import { useQueryParams, withDefault, BooleanParam } from "use-query-params"
+import { toast } from "react-toastify"
+import { useEffect } from "react"
 
 function Index(props) {
+
   return (
     <div>
       <script

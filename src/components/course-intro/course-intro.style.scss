@@ -9,9 +9,9 @@
     //   }
   }
   .videoBox:hover .p-button {
-    opacity: 100% !important;
+    opacity: 1 !important;
   }
   .videoBox:hover .v-overlay {
-    opacity: 50% !important;
+    opacity: .5 !important;
   }
 }

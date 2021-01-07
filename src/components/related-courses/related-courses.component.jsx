@@ -15,7 +15,7 @@ function RelatedCourses({ course }) {
       setRelatedCourses(resp.data.courses)
       setIsLoading(false)
     })
-  }, [course])
+  }, [course.id])
   return (
     <div>
       <div className="container mx-auto">
@@ -30,7 +30,7 @@ function RelatedCourses({ course }) {
           ) : (
             <div className="flex lg:flex-row flex-col lg:justify-around justify-center items-center">
               {relatedCourses.map((course, index) => (
-                <div key={index}>
+                <div key={index} className="my-2">
                   <CourseCard course={course} lazy={false} />
                 </div>
               ))}

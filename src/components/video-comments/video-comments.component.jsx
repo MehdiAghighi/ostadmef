@@ -50,7 +50,20 @@ function VideoComments({ video, bought }) {
 
   return (
     <div className="container mx-auto">
-      <Title>نظرات</Title>
+      {
+        bought || user.role == 0
+        ?
+        <Title>پرسش و پاسخ</Title>
+        :
+        !isLoading
+        ?
+          comments.length > 0
+          ?
+          <Title>پرسش و پاسخ</Title>:
+          null
+        :
+        null
+      }
       {!bought && user.role !== 0 ? null : (
         <div>
           <div className="bg-gray-300 rounded-lg py-3 px-4 shadow mt-6">

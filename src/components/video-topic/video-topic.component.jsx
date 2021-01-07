@@ -22,7 +22,7 @@ function VideoTopic({ topic, lock, active, bought, admin }) {
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    if (topic.order === 1) {
+    if (topic.order == 1) {
       setIsOpen(true)
     }
     topic.videos.map((video, index) => {
@@ -36,9 +36,10 @@ function VideoTopic({ topic, lock, active, bought, admin }) {
   return (
     <>
       <div
-        className={`w-full bg-white rounded-lg py-2 px-4 text-xl my-1 border ${
+        className={`w-full bg-white rounded-lg py-2 px-4 text-xl my-1 border cursor-pointer ${
           lock ? "border-red-600" : "border-green-600"
         }`}
+        onClick={() => setIsOpen((state) => !isOpen)}
       >
         <div className="w-full flex flex-row justify-between items-center">
           <div className="flex flex-row items-center">
@@ -58,7 +59,6 @@ function VideoTopic({ topic, lock, active, bought, admin }) {
                 className={`text-xl font-light ${
                   lock ? "text-red-600" : "text-green-600"
                 }`}
-                onClick={() => setIsOpen((state) => !isOpen)}
               />
             ) : (
               <KeyboardArrowUp
@@ -101,7 +101,7 @@ function VideoTopic({ topic, lock, active, bought, admin }) {
                   >
                     <div
                       className={`border-2 ${
-                        !bought && video.order != 1 && !admin
+                        !bought && topic.is_free == false && !admin
                           ? "border-red-600"
                           : "border-green-600"
                       } flex justify-center items-center rounded-full font-bold`}
@@ -121,7 +121,7 @@ function VideoTopic({ topic, lock, active, bought, admin }) {
                     </div>
                   </div>
                   <CondLink
-                    isLink={bought || video.order == 1 || admin}
+                    isLink={bought || topic.is_free == true || admin}
                     to={`/video/${video.id}`}
                     className="sm:mr-4 mr-1"
                   >
@@ -134,15 +134,10 @@ function VideoTopic({ topic, lock, active, bought, admin }) {
                     >
                       {video.title}
                     </span>
-                    {topic.order == 1 && video.order == 1 ? (
-                      <span className="text-teal-500 text-sm font-bold mx-2">
-                        (رایگان)
-                      </span>
-                    ) : null}
                   </CondLink>
                 </div>
                 <div className="mr-1 flex flex-row items-center">
-                  <div className="flex sm:flex-row flex-col-reverse items-end sm:items-center">
+                  <div className="flex sm:flex-row flex-col-reverse items-end sm:items-center ml-6">
                     {video.quiz ? (
                       <div className="flex flex-row items-center">
                         <span className="sm:font-bold sm:text-base text-sm flex flex-row items-center sm:my-0 my-2">

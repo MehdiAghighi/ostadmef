@@ -1,10 +1,13 @@
 import React from "react"
-import { useQuizDispatch, sendAnswers, useQuizState } from "../../contexts/quiz-context"
+import {
+  useQuizDispatch,
+  sendAnswers,
+  useQuizState,
+} from "../../contexts/quiz-context"
 import Loader from "react-loader-spinner"
 import { useState } from "react"
 
 function QuizStep(props) {
-  
   const quizDispatch = useQuizDispatch()
 
   const handleChange = (e) => {
@@ -12,15 +15,16 @@ function QuizStep(props) {
 
     quizDispatch({
       type: "CHANGE_INPUT",
-      payload: [{
-        name: target.name,
-        value: target.value,
-      }],
+      payload: [
+        {
+          name: target.name,
+          value: target.value,
+        },
+      ],
     })
 
     props.handleChange(e)
   }
-
 
   return (
     <div>
@@ -34,22 +38,42 @@ function QuizStep(props) {
         }}
       />
       <span className="text-lg">{props.question.title}</span>
-      <div className="flex flex-col mt-5">
+      <div>
+        {props.question.description ? (
+          <div
+            className="my-1 bg-white rounded py-2 px-3"
+            dangerouslySetInnerHTML={{
+              __html: props.question.description ? props.question.description : "",
+            }}
+          ></div>
+        ) : null}
+      </div>
+      <div className="flex flex-col mt-3">
         {props.question.options.map((option, index) => (
-          <div className="my-3 flex flex-row items-center">
-            <input
-              type="radio"
-              id={option.id}
-              name={props.question.id}
-              onChange={(e) => handleChange(e)}
-              className="mx-2 h-4 w-4"
-              value={option.id}
-              checked={props.getState(props.question.id) == option.id}
-            />
-            <label htmlFor={option.id}>
-              <span className="ml-2">{index + 1})</span> {option.title}
-            </label>
-          </div>
+          <>
+            <div className="my-3 flex flex-row items-center">
+              <input
+                type="radio"
+                id={option.id}
+                name={props.question.id}
+                onChange={(e) => handleChange(e)}
+                className="mx-2 h-4 w-4"
+                value={option.id}
+                checked={props.getState(props.question.id) == option.id}
+              />
+              <label htmlFor={option.id}>
+                <span className="ml-2">{index + 1})</span> {option.title}
+              </label>
+            </div>
+            {option.description ? (
+              <div
+                className="my-1 bg-white rounded py-2 px-3"
+                dangerouslySetInnerHTML={{
+                  __html: option.description ? option.description : "",
+                }}
+              ></div>
+            ) : null}
+          </>
         ))}
       </div>
       <div className="mt-8 flex flex-row justify-between">

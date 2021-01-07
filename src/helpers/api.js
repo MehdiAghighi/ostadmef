@@ -20,6 +20,10 @@ API.interceptors.request.use(function (config) {
   if (utm_source) {
     config.headers.utm_source = utm_source
   }
+  const referral = getCookie("referral")
+  if (referral) {
+    config.headers.referral = referral
+  }
 
   config.headers.Accept = "application/json"
   return config

@@ -65,12 +65,14 @@ function RateCourse({ course }) {
       <div className="text-blue-800 text-xl sm:text-3xl font-bold mb-8">
         <span>شما هم می‌توانید در مورد این دوره نظر دهید: </span>
       </div>
-      <div className="bg-site-gray rounded-lg py-3 px-4 shadow">
+      <div
+        className="rounded-lg py-3 px-4 shadow bg-site-gray"
+      >
         {isLoading ? (
           <CustomLoader />
         ) : (
           <div className="w-full grid grid-cols-7 grid-rows-2 sm:grid-rows-1">
-            <div className="col-span-7 sm:col-span-5 py-2 my-4 px-4 sm:border-l border-gray-700">
+            <div className="col-span-7 sm:col-span-5 py-2 mt-4 px-4 sm:border-l border-gray-700">
               <div className="">
                 <span className="text-xl">متن نظر: </span>
                 <textarea

@@ -32,17 +32,14 @@ function Video(props) {
         if (video.get_data) {
           setShouldGetData(true)
         }
-        return API.get(`/course/admin/invoice/check/${video.video.course.id}`)
-      })
-      .then((resp) => {
-        if (resp) {
-          setBought(resp.data.invoice)
-          setIsLoading(false)
-        }
+        // return API.get(`/course/admin/invoice/check/${video.video.course.id}`)
       })
       .catch((err) => {
         setVideo({})
         if (err.response) {
+          if (err.response.data) {
+            toast.error(err.response.data.message)
+          }
           setIsLoading(false)
         } else {
           toast.error("مشکلی در ارتباط با سرور پیش آمده است")
@@ -50,6 +47,21 @@ function Video(props) {
         }
       })
   }, [slug])
+  useEffect(() => {
+    if (video.video) {
+      API.get(`/course/admin/invoice/check/${video.video.course.id}`)
+        .then((resp) => {
+          if (resp) {
+            setBought(resp.data.invoice)
+            setIsLoading(false)
+          }
+        })
+        .catch((err) => {
+          setBought(false)
+          setIsLoading(false)
+        })
+    }
+  }, [video])
   return isLoading ? (
     <CustomLoader />
   ) : !shouldGetData ? (

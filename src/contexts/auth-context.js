@@ -35,8 +35,9 @@ function authReducer(state, action) {
     case "LOGIN": {
       return {
         ...state,
-        user: action.payload,
-        isLoggedIn: true,
+        user: action.payload.user,
+        isLoggedIn: action.payload.isLoggedIn,
+        isLoading: action.payload.isLoading,
       }
     }
     case "UPDATE": {
@@ -85,6 +86,7 @@ function AuthProvider({ children }) {
     authModalOpen: false,
     user: {},
     isLoggedIn: false,
+    isLoading: true,
   })
   return (
     <AuthStateContext.Provider value={state}>
@@ -130,18 +132,12 @@ async function fetchUser(dispatch) {
     } else {
       toast.error("دریافت اطلاعات کاربر موفقیت‌آمیز نبود")
     }
+    dispatch({ type: "LOGIN", payload: { user: null, isLoading: false, isLoggedIn: false } })
     return
   })
   if (data) {
-    dispatch({ type: "LOGIN", payload: data.data })
+    dispatch({ type: "LOGIN", payload: { user: data.data, isLoading: false, isLoggedIn: true } })
     window.dataLayer.push({
-      // user: {
-      //   id: data.data.id,
-      //   first_name: data.data.first_name,
-      //   last_name: data.data.last_name,
-      //   phone: data.data.phone,
-      //   university: data.data.university,
-      // },
       linom_user: data.data.phone,
     })
   }

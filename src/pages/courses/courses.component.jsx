@@ -243,7 +243,7 @@ function Courses(props) {
             ))}
           </div>
           {courses.prev_page_url || courses.next_page_url ? (
-            <ul className="pagination mx-auto flex flex-row justify-center">
+            <ul className="pagination mx-auto flex flex-row justify-center mt-6">
               {courses.prev_page_url && (
                 <li className="py-2 px-4 bg-white border border-orange-500 mx-1 rounded">
                   <Link to={`?page=${courses.current_page - 1}`}>قبلی</Link>

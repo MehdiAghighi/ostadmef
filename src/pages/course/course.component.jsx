@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import { Helmet } from "react-helmet"
 
 import CourseIntro from "../../components/course-intro/course-intro.component"
@@ -16,6 +16,10 @@ import CourseRatingsStars from "../../components/course-ratings-stars/course-rat
 import RateCourse from "../../components/rate-course/rate-course.component"
 import CourseRates from "../../components/course-rates/course-rates.component"
 
+import SupportImg from "../../assets/images/support.jpg"
+import CashbackImg from "../../assets/images/cashback.jpg"
+import { useAuthState } from "../../contexts/auth-context"
+
 function Course(props) {
   let { slug } = useParams()
   const [course, setCourse] = useState({})
@@ -24,6 +28,17 @@ function Course(props) {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(0)
   const [keywords, setKeyWords] = useState([])
+
+  const { isLoggedIn } = useAuthState()
+  const history = useHistory()
+
+  const goToInvite = () => {
+    if (isLoggedIn) {
+      history.push("/profile/campaign")
+    } else {
+      toast.error("شما وارد نشده‌اید.")
+    }
+  }
 
   useEffect(() => {
     setIsLoading(true)
@@ -165,15 +180,26 @@ function Course(props) {
           </Helmet>
           <CourseIntro course={course} bought={bought} />
           {/* <CourseInfo course={course} /> */}
-          <CourseSections
-            course={{ id: course.id, title: course.title }}
-            bought={bought}
-          />
           {/* Ratings */}
+          <RelatedCourses course={{ id: course.slug }} />
+          <div className="container mx-auto">
+            <div className="my-2 flex md:flex-row flex-col justify-center items-center">
+              <img
+                src={SupportImg}
+                className="sm:w-1/2 w-full xl:mx-3 mx-1 md:my-0 my-1 rounded-lg shadow-md cursor-pointer"
+                onClick={() => window.Raychat ? window.Raychat.open() : null}
+              />
+              <img
+                src={CashbackImg}
+                className="sm:w-1/2 w-full xl:mx-3 mx-1 md:my-0 my-1 rounded-lg shadow-md cursor-pointer"
+                onClick={goToInvite}
+              />
+            </div>
+          </div>
           <CourseRatingsStars course={{ id: course.slug }} />
           {bought ? <RateCourse course={{ id: course.slug }} /> : null}
           <CourseRates course={{ id: course.slug }} />
-          <RelatedCourses course={{ id: course.slug }} />
+
           {/* <RelatedPosts course={{ id: course.slug }} /> */}
         </>
       ) : (

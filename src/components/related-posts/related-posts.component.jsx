@@ -14,7 +14,7 @@ function RelatedPosts({ course }) {
       setRelatedPosts(resp.data.posts)
       setIsLoading(false)
     })
-  }, [course])
+  }, [course.id])
   return (
     <div>
       <div className="container mx-auto mt-8">

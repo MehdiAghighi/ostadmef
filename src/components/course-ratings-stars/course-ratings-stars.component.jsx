@@ -22,7 +22,7 @@ function CourseRatingsStars({ course }) {
       .catch((err) => console.log(err))
   }, [course.id])
   return (
-    <div className="w-full py-2 bg-yellow-100 relative mb-16 mt-10">
+    <div className="w-full py-2 bg-site-orange relative mb-16 mt-10">
       <div className="container mx-auto relative">
         <Title>بازخورد خریداران</Title>
         {isLoading ? (
@@ -122,7 +122,9 @@ function CourseRatingsStars({ course }) {
                   </Ratings>
                 </div>
               </div>
-              <div className="flex flex-row items-center mx-2 my-1">
+              <div className="flex flex-row items-center mx-2 my-1" style={{
+                marginTop: 7
+              }}>
                 <span className="text-xl mx-1 pt-1 w-10">
                   {parseFloat(ratings.percentages[1]).toFixed(0)}%
                 </span>

@@ -135,7 +135,25 @@ function Quiz(props) {
                 </div>
                 <div className="flex flex-col h-full justify-center items-center">
                   <div className="w-full font-bold flex justify-around text-green-900 text-3xl">
-                    {result ? result.percentage : <CustomLoader />}%
+                    {result ? (
+                      <div
+                        className={`h-24 w-24 text-center mx-auto flex flex-col justify-center items-center my-2 ${
+                          result.percentage >= 50 ? "circle-100" : "circle-50"
+                        } border-8`}
+                        style={{
+                          "--v":
+                            result.percentage >= 50
+                              ? `${(18 / 5) * result.percentage - 270}deg`
+                              : `${(18 / 5) * result.percentage - 90}deg`,
+                        }}
+                      >
+                        <span className="text-gray-700 text-xl">
+                          {result.percentage}%
+                        </span>
+                      </div>
+                    ) : (
+                      <CustomLoader />
+                    )}
                   </div>
                 </div>
                 <div className="flex flex-row justify-center">

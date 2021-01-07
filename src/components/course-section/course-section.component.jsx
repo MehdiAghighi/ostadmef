@@ -24,32 +24,28 @@ function CourseSection({ video, title, active, lock }) {
           className={`${
             video.is_finished
               ? "circle-100"
-              : video.progresses.length > 0
-              ? video.progresses[0].percentage >= 50
+              : video.last_progress
+              ? video.last_progress.percentage >= 50
                 ? "circle-100"
                 : "circle-50"
               : "circle-none"
-          } ml-3`}
+          }`}
           style={{
             "--v": `${
               video.is_finished
                 ? "90deg"
-                : video.progresses.length > 0
-                ? video.progresses[0].percentage >= 50
-                  ? `${(18 / 5) * video.progresses[0].percentage - 90}deg`
-                  : `${(18 / 5) * video.progresses[0].percentage - 270}deg`
+                : video.last_progress
+                ? video.last_progress.percentage >= 50
+                  ? `${(18 / 5) * video.last_progress.percentage - 270}deg`
+                  : `${(18 / 5) * video.last_progress.percentage - 90}deg`
                 : ""
             }`,
           }}
         >
           <div
             className={`border-2 ${
-              lock
-                ? "bg-red-700"
-                : video.is_finished
-                ? "border-green-700"
-                : "bg-green-700"
-            } py-3 px-3 rounded-full text-white text-xs border border-gray-400`}
+              lock ? "border-red-500" : video.is_finished ? "" : "border-green-500"
+            } py-3 px-3 rounded-full text-gray-600 text-xs border-2`}
           >
             {lock ? (
               <Lock />
@@ -61,7 +57,7 @@ function CourseSection({ video, title, active, lock }) {
           </div>
         </div>
         <span
-          className={`text-lg font-bold ${!lock && "cursor-pointer"} ${
+          className={`text-lg font-bold mr-3 ${!lock && "cursor-pointer"} ${
             active ? "text-orange-500" : ""
           } transition-all duration-100 ${!lock && "hover:text-orange-500"} ${
             lock && "text-gray-600"
@@ -77,40 +73,45 @@ function CourseSection({ video, title, active, lock }) {
         <div className="flex sm:flex-row flex-col-reverse items-end sm:items-center">
           {video.quiz ? (
             <>
-              <span className="font-bold flex flex-row sm:my-0 my-2">
-                آزمونک:{" "}
-                {video.quiz ? (
-                  video.quiz.results.length > 0 ? (
-                    video.quiz.results[0].result.percentage < 50 ? (
-                      <EmojiSad className="text-xs text-red-600 mx-1" />
-                    ) : video.quiz.results[0].result.percentage >= 50 &&
-                      video.quiz.results[0].result.percentage != 100 ? (
-                      <EmojiFlirt className="text-xs text-blue-600 mx-1" />
-                    ) : video.quiz.results[0].result.percentage == 100 ? (
-                      <EmojiHappy className="text-xs text-green-600 mx-1" />
-                    ) : null
-                  ) : (
-                    <div
-                      className="w-6 bg-gray-500 rounded mx-1 inline-block"
-                      style={{
-                        height: 5,
-                      }}
-                    ></div>
-                  )
-                ) : null}
-              </span>
-              <div
-                className="h-10 rounded mx-2 bg-gray-500 sm:block hidden"
-                style={{
-                  width: 2,
-                }}
-              ></div>
+              <div className="flex flex-row items-center">
+                <span className="sm:font-bold sm:text-base text-sm flex flex-row items-center sm:my-0 my-2">
+                  آزمونک:{" "}
+                  {video.quiz ? (
+                    video.quiz.results.length > 0 ? (
+                      video.quiz.results[0].result.percentage < 50 ? (
+                        <EmojiSad className="text-xs text-red-600 mx-1" />
+                      ) : video.quiz.results[0].result.percentage >= 50 &&
+                        video.quiz.results[0].result.percentage != 100 ? (
+                        <EmojiFlirt className="text-xs text-blue-600 mx-1" />
+                      ) : video.quiz.results[0].result.percentage == 100 ? (
+                        <EmojiHappy className="text-xs text-green-600 mx-1" />
+                      ) : null
+                    ) : (
+                      <div
+                        className="w-6 bg-gray-500 rounded mx-1 inline-block"
+                        style={{
+                          height: 5,
+                        }}
+                      ></div>
+                    )
+                  ) : null}
+                </span>
+                <div
+                  className="h-10 rounded mx-2 bg-gray-500 sm:block hidden"
+                  style={{
+                    width: 2,
+                  }}
+                ></div>
+              </div>
             </>
           ) : null}
           <div className="flex flex-row items-center">
-            <span className="text-gray-600 text-sm sm:text-base" style={{
-              minWidth: "4rem"
-            }}>
+            <span
+              className="text-gray-600 text-sm sm:text-base"
+              style={{
+                minWidth: "4rem",
+              }}
+            >
               {video.human_length}
             </span>
           </div>
