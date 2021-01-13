@@ -21,10 +21,6 @@ function Footer(props) {
              </div>
              <FooterLinks />
              <div className="flex flex-row flex-wrap justify-center w-2/12 sm:w-2/12">
-               <img
-                 src="https://cdn.zarinpal.com/badges/trustLogo/1.svg"
-                 alt="زرین‌پال"
-               />
                <a target="_blank" rel="origin" href="https://trustseal.enamad.ir/?id=184063&amp;Code=cnrrvO3lpoxhl6M4LfSM"><img src="https://Trustseal.eNamad.ir/logo.aspx?id=184063&amp;Code=cnrrvO3lpoxhl6M4LfSM" alt="" className="cursor-pointer" id="cnrrvO3lpoxhl6M4LfSM" /></a>
              </div>
            </div>

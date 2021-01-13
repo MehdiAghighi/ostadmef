@@ -27,8 +27,8 @@ function Login(props) {
         onClose={() => setAuthModalOpen({ type: "TOGGLE_MODAL" })}
         className="w-screen h-screen"
         customStyles={{
-          height: "100vh",
-          width: "100vw",
+          // height: "100vh",
+          // width: "100vw",
         }}
         animation="slideUp"
         duration={500}

@@ -26,6 +26,13 @@ function siteReducer(state, action) {
         sidebarOpen: false,
       }
     }
+    case "TOGGLE_BUY_MODAL":
+      return {
+        ...state,
+        buyModalOpen: action.payload.open
+          ? true
+          : action.payload.open,
+      }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`)
     }
@@ -34,6 +41,7 @@ function siteReducer(state, action) {
 function SiteProvider({ children }) {
   const [state, dispatch] = React.useReducer(siteReducer, {
     sidebarOpen: false,
+    buyModalOpen: false,
   })
   return (
     <SiteStateContext.Provider value={state}>

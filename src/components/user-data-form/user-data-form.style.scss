@@ -2,4 +2,9 @@
   .rodal-close {
     display: none;
   }
+  .border-r {
+    .select__control {
+      border-color: red;
+    }
+  }
 }

@@ -9,6 +9,7 @@ function Logout(props) {
   useEffect(() => {
     setCookie("token", "", -30, "linom.ir")
     setCookie("token", "", -30, "localhost")
+    setCookie("token", "", -30, "sanctum.test")
     authDispatch({ type: "LOGOUT" })
   }, [authDispatch])
   return <Redirect to="/" push={true} />

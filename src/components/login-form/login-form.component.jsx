@@ -18,6 +18,7 @@ import {
 import { setCookie, getCookie } from "../../helpers/functions"
 import { useCallback } from "react"
 import { useHistory } from "react-router-dom"
+import { useSiteDispatch } from "../../contexts/site-context"
 
 const duration = 500
 
@@ -43,6 +44,7 @@ const transitionStyles2 = {
 function LoginForm(props) {
   const { afterLogin } = useAuthState()
   const authDispatch = useAuthDispatch()
+  const siteDispatch = useSiteDispatch()
   const toggleModal = () => authDispatch({ type: "TOGGLE_MODAL" })
   const history = useHistory()
 
@@ -162,17 +164,9 @@ function LoginForm(props) {
             if (afterLogin.action == "TOGGLE_MODAL") {
               toggleModal({ type: "TOGGLE_MODAL" })
             }
-            if (afterLogin.action == "FETCH_N_REDIRECT") {
-              switch (afterLogin.url) {
-                default: {
-                  const payLink = await fetchPaymentUrl()
-                  if (payLink) {
-                    window.location.href = payLink
-                  } else {
-                    history.go(0)
-                  }
-                }
-              }
+            if (afterLogin.action == "OPEN_BUY_MODAL") {
+              toggleModal({ type: "TOGGLE_MODAL" })
+              siteDispatch({ type: "TOGGLE_BUY_MODAL", payload: { open: true } })
             }
             authDispatch({
               type: "CHANGE_AFTER_LOGIN",

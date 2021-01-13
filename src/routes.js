@@ -70,7 +70,7 @@ const routes = [
   {
     path: "/payment",
     component: Payment,
-    protected: true,
+    protected: false,
   },
   {
     path: "/logout",

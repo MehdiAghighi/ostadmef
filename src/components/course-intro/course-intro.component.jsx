@@ -13,7 +13,7 @@ import TeacherCard from "../teacher-card/teacher-card.component"
 import CourseTitle from "../course-title/course-title.component"
 import { useAuthState, useAuthDispatch } from "../../contexts/auth-context"
 
-import API from "../../helpers/api"
+import API, { request } from "../../helpers/api"
 import CustomLoader from "../custom-loader/custom-loader.component"
 import { toast } from "react-toastify"
 import CourseDescription from "../course-description/course-description.component"
@@ -22,9 +22,19 @@ import ReactPlayer from "react-player"
 import CourseSections from "../course-sections/course-sections.component"
 import { Link } from "react-router-dom"
 import Loader from "react-loader-spinner"
+import { useSiteState, useSiteDispatch } from "../../contexts/site-context"
+import { useQueryParams, StringParam, withDefault } from "use-query-params"
 
 function CourseIntro({ course, bought }) {
-  const [buyModalOpen, setBuyModalOpen] = useState(false)
+  const { buyModalOpen } = useSiteState()
+  const siteDispatch = useSiteDispatch()
+  const setBuyModalOpen = (e) => siteDispatch({ type: "TOGGLE_BUY_MODAL", payload: { open: e } })
+  
+  const [query, setQuery] = useQueryParams({
+    action: withDefault(StringParam, null, true),
+  })
+  const { action } = query
+
   const [paymentStatus, setPaymentStatus] = useState(false)
 
   const [paymentLink, setPaymentLink] = useState("")
@@ -40,15 +50,19 @@ function CourseIntro({ course, bought }) {
   
   const [ finalDiscount, setFinalDiscount ] = useState(0)
 
+  const [isWalletBalanceLoading, setIsWalletBalanceLoading] = useState(false)
+  const [walletBalance, setWalletBalance] = useState(0)
+
   const [lastPrice, setLastPrice] = useState(0)
 
-  const { isLoggedIn } = useAuthState()
+  const { isLoggedIn, user } = useAuthState()
   const authDispatch = useAuthDispatch()
 
   const [videoPlaying, setVideoPlaying] = useState(false)
 
   const generateInvoice = useCallback(async () => {
     setPaymentStatus("pending")
+    await getUserWalletBalance()
     API.get(`/course/admin/invoice/${course.slug}`)
       .then((resp) => {
         setInvoice(resp.data.invoice)
@@ -99,6 +113,14 @@ function CourseIntro({ course, bought }) {
     }
   })
 
+  const getUserWalletBalance = async () => {
+    setIsWalletBalanceLoading(true)
+    request(`/user/profile/wallet-balance`, (res) => {
+      setWalletBalance(res.data.balance)
+      setIsWalletBalanceLoading(false)
+    })
+  }
+
   const submitDiscountCode = useCallback(async () => {
     setDiscountInput("loading")
     API.get(`course/admin/invoice/discount/${discountValue}`)
@@ -131,10 +153,14 @@ function CourseIntro({ course, bought }) {
       if (finalDiscount) {
         downTo += finalDiscount
       }
+      if (walletBalance) {
+        // console.log(walletBalance)
+        downTo += parseInt(walletBalance)
+      }
 
-      setLastPrice(course.price - downTo)
+      setLastPrice(course.price - downTo > 0 ? course.price - downTo : 0)
     }
-  }, [finalDiscount, course.price])
+  }, [finalDiscount, walletBalance, course.price])
 
   useEffect(() => {
     let fd = 0;
@@ -150,6 +176,27 @@ function CourseIntro({ course, bought }) {
     setFinalDiscount(fd)
 
   }, [discount, referralDiscount])
+
+  useEffect(() => {
+    if (action == "buy") {
+      if (isLoggedIn) {
+        setBuyModalOpen(true)
+      } else {
+        // await fetchPaymentUrl()
+        toast.warning("لطفا اول شماره تلفن خود را ثبت کنید.")
+        authDispatch({
+          type: "CHANGE_AFTER_LOGIN",
+          payload: {
+            action: "OPEN_BUY_MODAL",
+            getDataFrom: `/course/admin/invoice/${course.slug}`,
+            buttonText: "ورود",
+            payload: { courseId: course.id },
+          },
+        })
+        authDispatch({ type: "TOGGLE_MODAL" })
+      }
+    }
+  }, [action, isLoggedIn, course])
 
   return (
     <>
@@ -205,12 +252,13 @@ function CourseIntro({ course, bought }) {
                     setBuyModalOpen(true)
                   } else {
                     // await fetchPaymentUrl()
+                    toast.warning("لطفا اول شماره تلفن خود را ثبت کنید.")
                     authDispatch({
                       type: "CHANGE_AFTER_LOGIN",
                       payload: {
-                        action: "FETCH_N_REDIRECT",
+                        action: "OPEN_BUY_MODAL",
                         getDataFrom: `/course/admin/invoice/${course.slug}`,
-                        buttonText: "ورود و انتقال به درگاه پرداخت",
+                        buttonText: "ورود",
                         payload: { courseId: course.id },
                       },
                     })
@@ -391,6 +439,11 @@ function CourseIntro({ course, bought }) {
               </div>
               <hr />
               <div className="flex flex-row justify-between my-1">
+                <span>موجودی کیف پول</span>
+                <span>{formatNumberWithCommas(walletBalance)}</span>
+              </div>
+              <hr />
+              <div className="flex flex-row justify-between my-1">
                 <span>مبلغ قابل پرداخت</span>
                 <span>{formatNumberWithCommas(lastPrice)}</span>
               </div>
@@ -464,12 +517,13 @@ function CourseIntro({ course, bought }) {
                   setBuyModalOpen(true)
                 } else {
                   // await fetchPaymentUrl()
+                  toast.warning("لطفا اول شماره تلفن خود را ثبت کنید.")
                   authDispatch({
                     type: "CHANGE_AFTER_LOGIN",
                     payload: {
-                      action: "FETCH_N_REDIRECT",
+                      action: "OPEN_BUY_MODAL",
                       getDataFrom: `/course/admin/invoice/${course.slug}`,
-                      buttonText: "ورود و انتقال به درگاه پرداخت",
+                      buttonText: "ورود",
                       payload: { courseId: course.id },
                     },
                   })

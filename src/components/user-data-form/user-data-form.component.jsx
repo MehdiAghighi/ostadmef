@@ -21,8 +21,119 @@ import {
 import { NavLink } from "react-router-dom"
 import Title from "../title/title.component"
 import CustomLoader from "../custom-loader/custom-loader.component"
+import Select from "react-select"
 
-function UserDataForm({ justEmail, afterSubmit }) {
+const options = [
+  { value: "", label: "لطفا دانشگاه خود را انتخاب کنید ..." },
+  { value: "دانشگاه صنعتی شاهرود", label: "دانشگاه صنعتی شاهرود" },
+  { value: "دانشگاه صنعتی مالک اشتر", label: "دانشگاه صنعتی مالک اشتر" },
+  { value: "دانشگاه گیلان", label: "دانشگاه گیلان" },
+  { value: "دانشگاه صنعتی قوچان", label: "دانشگاه صنعتی قوچان" },
+  { value: "دانشگاه  ارومیه", label: "دانشگاه  ارومیه" },
+  { value: "دانشگاه شهید چمران", label: "دانشگاه شهید چمران" },
+  { value: "دانشگاه صنعتی جندی شاپور", label: "دانشگاه صنعتی جندی شاپور" },
+  { value: "دانشگاه سمنان", label: "دانشگاه سمنان" },
+  {
+    value: "پردیس دانشگاه ارومیه(محل تحصیل دانشکده فنی خوی)",
+    label: "پردیس دانشگاه ارومیه(محل تحصیل دانشکده فنی خوی)",
+  },
+  { value: "دانشگاه علم و فناوری مازندران", label: "دانشگاه علم و فناوری مازندران" },
+  { value: "دانشگاه شهید بهشتی", label: "دانشگاه شهید بهشتی" },
+  { value: "دانشگاه محقق اردبیلی", label: "دانشگاه محقق اردبیلی" },
+  { value: "دانشگاه بیرجند", label: "دانشگاه بیرجند" },
+  { value: "دانشگاه رازی کرمانشاه", label: "دانشگاه رازی کرمانشاه" },
+  { value: "دانشگاه شهید مدنی آذربایجان", label: "دانشگاه شهید مدنی آذربایجان" },
+  { value: "دانشگاه صنعتی امیر کبیر", label: "دانشگاه صنعتی امیر کبیر" },
+  { value: "دانشگاه علم و صنعت", label: "دانشگاه علم و صنعت" },
+  { value: "دانشگاه صنعتی اصفهان", label: "دانشگاه صنعتی اصفهان" },
+  { value: "دانشگاه صنعتی خواجه نصیر", label: "دانشگاه صنعتی خواجه نصیر" },
+  { value: "دانشگاه حکیم سبزواری", label: "دانشگاه حکیم سبزواری" },
+  {
+    value: "پردیس دانشگاه صنعتی امیرکبیر(محل تحصیل دانشگاه امیرکبیر)",
+    label: "پردیس دانشگاه صنعتی امیرکبیر(محل تحصیل دانشگاه امیرکبیر)",
+  },
+  {
+    value: "پردیس دانشگاه کردستان(محل تحصیل دانشکده فنی و مهندسی بیجار)",
+    label: "پردیس دانشگاه کردستان(محل تحصیل دانشکده فنی و مهندسی بیجار)",
+  },
+  { value: "دانشگاه صنعتی اراک", label: "دانشگاه صنعتی اراک" },
+  { value: "دانشگاه کاشان", label: "دانشگاه کاشان" },
+  { value: "دانشگاه خوارزمی", label: "دانشگاه خوارزمی" },
+  {
+    value: "پردیس دانشگاه تبریز(محل تحصیل آموزشکده فنی و مهندسی مرند)",
+    label: "پردیس دانشگاه تبریز(محل تحصیل آموزشکده فنی و مهندسی مرند)",
+  },
+  {
+    value: "دانشگاه تبریز(محل تحصیل دانشکده فنی میانه)",
+    label: "دانشگاه تبریز(محل تحصیل دانشکده فنی میانه)",
+  },
+  { value: "دانشگاه یاسوج", label: "دانشگاه یاسوج" },
+  {
+    value: "پردیس دانشگاه یاسوج(محل تحصیل دانشکده نفت و گاز گچساران)",
+    label: "پردیس دانشگاه یاسوج(محل تحصیل دانشکده نفت و گاز گچساران)",
+  },
+  { value: "دانشگاه شیراز", label: "دانشگاه شیراز" },
+  { value: "دانشگاه تهران", label: "دانشگاه تهران" },
+  { value: "دانشگاه اصفهان", label: "دانشگاه اصفهان" },
+  {
+    value: "پردیس دانشگاه تهران(محل تحصیل دانشکده فنی کاسپین گیلان)",
+    label: "پردیس دانشگاه تهران(محل تحصیل دانشکده فنی کاسپین گیلان)",
+  },
+  {
+    value: "پردیس دانشگاه تهران(محل تحصیل پردیس فارابی قم)",
+    label: "پردیس دانشگاه تهران(محل تحصیل پردیس فارابی قم)",
+  },
+  {
+    value: "پردیس دانشگاه تهران(محل تحصیل دانشکده فنی فون واقع در فومن گیلان)",
+    label: "پردیس دانشگاه تهران(محل تحصیل دانشکده فنی فون واقع در فومن گیلان)",
+  },
+  {
+    value: "پردیس دانشگاه تهران(محل تحصیل دانشکده فنی کاسپین  رضوان شهر گیلان)",
+    label: "پردیس دانشگاه تهران(محل تحصیل دانشکده فنی کاسپین  رضوان شهر گیلان)",
+  },
+  { value: "دانشگاه بین المللی امام خمینی", label: "دانشگاه بین المللی امام خمینی" },
+  { value: "دانشگاه تبریز", label: "دانشگاه تبریز" },
+  { value: "دانشگاه صنعتی شیراز", label: "دانشگاه صنعتی شیراز" },
+  { value: "دانشگاه فردوسی مشهد", label: "دانشگاه فردوسی مشهد" },
+  {
+    value: "پردیس دانشگاه صنعتی شریف(محل تحصیل تهران)",
+    label: "پردیس دانشگاه صنعتی شریف(محل تحصیل تهران)",
+  },
+  { value: "دانشگاه صنعتی شریف", label: "دانشگاه صنعتی شریف" },
+  { value: "دانشگاه صنعتی نوشیروانی بابل", label: "دانشگاه صنعتی نوشیروانی بابل" },
+  { value: "دانشگاه ولیعصر رفسنجان", label: "دانشگاه ولیعصر رفسنجان" },
+  { value: "دانشگاه ملایر", label: "دانشگاه ملایر" },
+  { value: "دانشگاه صنعتی سهند", label: "دانشگاه صنعتی سهند" },
+  { value: "دانشگاه یزد", label: "دانشگاه یزد" },
+  { value: "دانشگاه تربت حیدریه", label: "دانشگاه تربت حیدریه" },
+  {
+    value: "پردیس دانشگاه بوعلی سینا(محل تحصیل دانشکده فنی تویسرکان)",
+    label: "پردیس دانشگاه بوعلی سینا(محل تحصیل دانشکده فنی تویسرکان)",
+  },
+  { value: "دانشگاه قم", label: "دانشگاه قم" },
+  { value: "دانشگاه آزاد علوم تحقیقات", label: "دانشگاه آزاد علوم تحقیقات" },
+  { value: "دانشگاه آزاد واحد ساری", label: "دانشگاه آزاد واحد ساری" },
+  { value: "دانشگاه آزاد واحد بوشهر", label: "دانشگاه آزاد واحد بوشهر" },
+  { value: "دانشگاه آزاد کرمانشاه", label: "دانشگاه آزاد کرمانشاه" },
+  { value: "دانشگاه آزاد تهران مرکز", label: "دانشگاه آزاد تهران مرکز" },
+  { value: "دانشگاه آزاد تهران جنوب", label: "دانشگاه آزاد تهران جنوب" },
+  { value: "دانشگاه آزاد تهران شمال", label: "دانشگاه آزاد تهران شمال" },
+  { value: "دانشگاه آزاد قزوین", label: "دانشگاه آزاد قزوین" },
+  { value: "دانشگاه آزاد تبریز", label: "دانشگاه آزاد تبریز" },
+
+  { value: "دانشگاه آزاد کرج", label: "دانشگاه آزاد کرج" },
+  { value: "دانشگاه آزاد نجف آباد", label: "دانشگاه آزاد نجف آباد" },
+  {
+    value: "دانشگاه آزاد اصفهان ( خوراسگان)",
+    label: "دانشگاه آزاد اصفهان ( خوراسگان)",
+  },
+  { value: "دانشگاه آزاد مشهد", label: "دانشگاه آزاد مشهد" },
+  { value: "دانشگاه آزاد یزد", label: "دانشگاه آزاد یزد" },
+  { value: "دانشگاه آزاد شیراز", label: "دانشگاه آزاد شیراز" },
+  { value: "دیگر", label: "دیگر" },
+]
+
+function UserDataForm({ justEmail, afterSubmit, courseId }) {
   const { userDataModalOpen, isLoggedIn } = useAuthState()
   const authDispatch = useAuthDispatch()
 
@@ -51,7 +162,6 @@ function UserDataForm({ justEmail, afterSubmit }) {
       setIsLoading(false)
     }
   }, [isLoggedIn])
-
   return (
     <div className="user-data-form">
       <Rodal
@@ -129,6 +239,7 @@ function UserDataForm({ justEmail, afterSubmit }) {
                           } else {
                             const fd = new FormData()
                             fd.append("email", values.email)
+                            fd.append("course_id", courseId)
                             API.post("/newsletter/admin", fd)
                             localStorage.setItem("GetEmail", 1)
                           }
@@ -185,32 +296,17 @@ function UserDataForm({ justEmail, afterSubmit }) {
                                 </div>
                               )}
                             </div>
-                            <div className="flex flex-col sm:flex-row justify-between w-full">
-                              <div className="flex flex-col">
-                                <label htmlFor="email" className="my-2">
-                                  ایمیل
-                                </label>
-                                <Field
-                                  name="email"
-                                  type="text"
-                                  id="email"
-                                  placeholder="لطفا ایمیل را وارد کنید ..."
-                                  className={`z-10 my-1 py-2 px-10 text-center border-2 rounded-lg focus:outline-none focus:bg-gray-200 ${
-                                    formik.touched.email && formik.errors.email
-                                      ? "border-red-500"
-                                      : " border-purple-700"
-                                  }`}
-                                />
-                                <div className="my-1 text-red-500">
-                                  <ErrorMessage name="email" />
-                                </div>
-                              </div>
+                            <div className="flex flex-col justify-between w-full">
                               {!justEmail && (
-                                <div className="flex flex-col">
+                                <div className="flex flex-col w-full">
                                   <label htmlFor="university" className="my-2">
                                     دانشگاه
                                   </label>
-                                  <Field
+                                  {/* <Field
+                                    value={formik.values.university}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    as="select"
                                     name="university"
                                     type="text"
                                     id="university"
@@ -221,12 +317,64 @@ function UserDataForm({ justEmail, afterSubmit }) {
                                         ? "border-red-500"
                                         : " border-purple-700"
                                     }`}
+                                  >
+                                    <option value="تهران" label="دانشگاه تهران" />
+                                  </Field> */}
+                                  <Select
+                                    className={
+                                      formik.touched.university &&
+                                      formik.errors.university
+                                        ? "border-r"
+                                        : ""
+                                    }
+                                    classNamePrefix="select"
+                                    defaultValue={options[0]}
+                                    isDisabled={false}
+                                    isLoading={false}
+                                    isClearable={true}
+                                    isRtl={true}
+                                    isSearchable={true}
+                                    name="university"
+                                    options={options}
+                                    placeholder="لطفا دانشگاه خود را انتخاب کنید"
+                                    // onChange={formik.handleChange}
+                                    // onBlur={formik.handleBlur}
+                                    onChange={(options) =>
+                                      {
+                                          formik.setValues({
+                                            ...formik.values,
+                                            university: options ? options.value : "",
+                                          })
+                                      }
+                                    }
+                                    // onBlur={() =>
+                                    //   // formik.setFieldTouched("university", true)
+                                    // }
                                   />
                                   <div className="my-1 text-red-500">
                                     <ErrorMessage name="university" />
                                   </div>
                                 </div>
                               )}
+                              <div className="flex flex-col">
+                                <label htmlFor="email" className="my-2">
+                                  ایمیل
+                                </label>
+                                <Field
+                                  name="email"
+                                  type="text"
+                                  id="email"
+                                  placeholder="لطفا ایمیل را وارد کنید ..."
+                                  className={`my-1 py-2 px-10 text-center border-2 rounded-lg focus:outline-none focus:bg-gray-200 sm:w-1/2 w-full mx-auto ${
+                                    formik.touched.email && formik.errors.email
+                                      ? "border-red-500"
+                                      : " border-purple-700"
+                                  }`}
+                                />
+                                <div className="my-1 text-red-500">
+                                  <ErrorMessage name="email" />
+                                </div>
+                              </div>
                             </div>
                             <Button
                               type="submit"
@@ -236,7 +384,7 @@ function UserDataForm({ justEmail, afterSubmit }) {
                                   : "bg-orange-500"
                               }
                               btnTextClass="text-white"
-                              className={`font-bold leading-loose px-6 py-1 relative z-20 ${
+                              className={`font-bold leading-loose px-6 py-1 relative ${
                                 formik.isSubmitting ? " cursor-not-allowed" : ""
                               }`}
                               disabled={formik.isSubmitting}
@@ -269,5 +417,6 @@ function UserDataForm({ justEmail, afterSubmit }) {
 
 UserDataForm.defaultProps = {
   justEmail: false,
+  courseId: null
 }
 export default UserDataForm

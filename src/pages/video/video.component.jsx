@@ -92,6 +92,13 @@ function Video(props) {
                     >
                       رفتن به کوییز
                     </Link>
+                  ) : !bought ? (
+                    <Link
+                      to={`/course/${video.video.course.slug}?action=buy`}
+                      className="bg-white text-blue-900 hover:bg-blue-900 hover:text-white rounded border border-blue-900 py-3 px-6 transition-all duration-75"
+                    >
+                      خرید دوره
+                    </Link>
                   ) : null}
                 </div>
                 <ShowVideo
@@ -119,7 +126,11 @@ function Video(props) {
       </div>
     )
   ) : (
-    <UserDataForm justEmail={video.get_email} afterSubmit={setShouldGetData} />
+    <UserDataForm
+      justEmail={video.get_email}
+      courseId={video.video.course.id}
+      afterSubmit={setShouldGetData}
+    />
   )
 }
 
