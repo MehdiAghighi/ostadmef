@@ -9,10 +9,47 @@ import { LazyLoadImage } from "react-lazy-load-image-component"
 import Loader from "react-loader-spinner"
 import ImageLoader from "../image-loader/image-loader.component"
 import { formatNumberWithCommas } from "../../helpers/functions"
+import { useHistory } from "react-router-dom"
 
 function CourseCard({ course, full, lazy }) {
+  let history = useHistory();
+  const handleGoToCoursePage = () => {
+    window.dataLayer = window.dataLayer || [];  
+    window.dataLayer.push({ ecommerce: null });
+    window.dataLayer.push({
+      'event': 'productClick',
+      'ecommerce': {
+        'click': {
+          'products': [{
+            'name': course.title,
+            'id': course.id,
+            'price': course.price,
+            'brand': "Linom"
+          }]
+          }
+        }
+    });
+    window.dataLayer.push({ ecommerce: null });
+    window.dataLayer.push({
+      'event': 'checkout',
+      'ecommerce': {
+        'checkout': {
+          'actionField': {'step': 1},
+          'products': [{
+            'name': course.title,
+            'id': course.id,
+            'price': course.price,
+            'brand': "Linom"
+          }]
+        }
+      }
+    });
+    if(window.location.pathname !== `/course/${course.slug}`)
+      history.push(`/course/${course.slug}`)
+  };
+
   return (
-    <div className="card">
+    <div className="card" onClick={handleGoToCoursePage}>
       <Card>
         <CardImage to={`/course/${course.slug}`}>
           {lazy ? (

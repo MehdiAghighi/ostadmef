@@ -20,6 +20,50 @@ function Payment(props) {
       `/course/admin/invoice/verify?transaction_id=${transaction_id}`,
       (resp) => {
         setTransaction(resp.data.transaction)
+        if(resp.data.transaction.is_paid === true) {
+          window.dataLayer = window.dataLayer || [];  
+          window.dataLayer.push({ ecommerce: null });
+          window.dataLayer.push({
+            'ecommerce': {
+              'purchase': {
+                'actionField': {
+                  'id': `${resp.data.transaction.transaction_id}`,
+                  'affiliation': 'Linom Online Store',
+                  'revenue': resp.data.transaction.paid_amount,
+                  'tax':'0',
+                  'shipping': '0',
+                  'coupon': ''
+                },
+                'products': [{
+                  'name': resp.data.transaction.invoice.course.title,
+                  'id': `${resp.data.transaction.invoice.course.id}`,
+                  'price': resp.data.transaction.paid_amount,
+                  'brand': 'Linom',
+                  'quantity': 1
+                }]
+              }
+            }
+          });
+          window.dataLayer.push({event: 'transactionCompleted'});
+          window.dataLayer.push({ ecommerce: null });
+          window.dataLayer.push({
+            'event': 'checkout',
+            'ecommerce': {
+              'checkout': {
+                'actionField': {'step': 4},
+                'products': [{
+                  'name': resp.data.transaction.invoice.course.title,
+                  'id': `${resp.data.transaction.invoice.course.id}`,
+                  'price': resp.data.transaction.paid_amount,
+                  'brand': 'Linom',
+                  'quantity': 1
+                }]
+              }
+            }
+          });
+        } else {
+          window.dataLayer.push({event: 'transactionNotCompleted'});
+        }
         setIsLoading(false)
       }
     )
