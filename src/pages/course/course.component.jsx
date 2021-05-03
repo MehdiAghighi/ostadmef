@@ -55,6 +55,51 @@ function Course(props) {
           keywordsArr.map((item, index) => arr.push(item["title"]))
           setKeyWords(arr)
         }
+        window.dataLayer = window.dataLayer || [];  
+        window.dataLayer.push({ ecommerce: null });
+        window.dataLayer.push({
+          'ecommerce': {
+            'impressions': [{
+              'name': course.title,
+              'id': course.id,
+              'price': course.price,
+              'brand': "Linom",
+              'category': course.main_category.title
+            }]
+          }
+        });
+        window.dataLayer.push({event: 'productImpression'});
+        window.dataLayer.push({ ecommerce: null });
+        window.dataLayer.push({
+          'ecommerce': {
+            'detail': {
+              'products': [{
+                'name': course.title,
+                'id': course.id,
+                'price': course.price,
+                'brand': "Linom",
+                'category': course.main_category.title
+              }]
+            }
+           }
+        });
+        window.dataLayer.push({event: 'productDetailView'});
+        window.dataLayer.push({ ecommerce: null });
+        window.dataLayer.push({
+          'event': 'checkout',
+          'ecommerce': {
+            'checkout': {
+              'actionField': {'step': 2},
+              'products': [{
+                'name': course.title,
+                'id': course.id,
+                'price': course.price,
+                'brand': "Linom",
+                'category': course.main_category.title
+              }]
+            }
+          }
+        });
         return API.get(`/course/admin/invoice/check/${course.id}`)
       })
       .then((resp) => {

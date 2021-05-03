@@ -198,6 +198,28 @@ function CourseIntro({ course, bought }) {
     }
   }, [action, isLoggedIn, course])
 
+  const handleOpenBuyModal = () => {
+    window.dataLayer = window.dataLayer || [];  
+    window.dataLayer.push({ ecommerce: null });
+    window.dataLayer.push({
+      'event': 'checkout',
+      'ecommerce': {
+        'checkout': {
+          'actionField': {'step': 3},
+          'products': [{
+            'name': course.title,
+            'id': course.id,
+            'price': course.price,
+            'brand': "Linom",
+            'category': course.main_category.title,
+            'quantity': 1
+          }]
+        }
+      }
+    });
+    setBuyModalOpen(true)
+  }
+
   return (
     <>
       <div className="course-intro pt-10 container mx-auto flex flex-col-reverse xl:flex-row justify-between index-intro items-center">
@@ -249,7 +271,7 @@ function CourseIntro({ course, bought }) {
                 arrow
                 onClick={async () => {
                   if (isLoggedIn) {
-                    setBuyModalOpen(true)
+                    handleOpenBuyModal()
                   } else {
                     // await fetchPaymentUrl()
                     toast.warning("لطفا اول شماره تلفن خود را ثبت کنید.")
