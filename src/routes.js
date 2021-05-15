@@ -16,6 +16,7 @@ import FAQ from "./pages/faq/faq.component"
 import Rights from "./pages/rights/rights.component"
 import Contact from "./pages/contact/contact.component"
 import Teacher from "./pages/teacher/teacher.component"
+import Work from "./pages/work/work.component"
 
 const routes = [
   {
@@ -85,6 +86,11 @@ const routes = [
   {
     path: "/story",
     component: Story,
+    protected: false,
+  },
+  {
+    path: "/work",
+    component: Work,
     protected: false,
   },
   {

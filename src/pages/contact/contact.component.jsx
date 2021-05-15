@@ -44,10 +44,7 @@ function Contact(props) {
         <link rel="canonical" href={`${process.env.REACT_APP_URL}/contact`} />
         <meta name="description" content="راه‌های برقراری ارتباط با لینوم" />
         <meta name="twitter:card" content="summary" />
-        <meta
-          name="twitter:title"
-          content="تماس با ما | لینوم"
-        />
+        <meta name="twitter:title" content="تماس با ما | لینوم" />
         <meta name="twitter:description" content="راه‌های برقراری ارتباط با لینوم" />
         <meta
           property="twitter:image"
@@ -82,9 +79,9 @@ function Contact(props) {
           <br />
           <a
             className="text-blue-500 hover:text-purple-700 transition-all duration-150"
-            href="mailto:linominfo@yahoo.com"
+            href="mailto:info@linom.ir"
           >
-            ایمیل : linominfo@yahoo.com
+            ایمیل : info@linom.ir
           </a>
         </p>
       </div>

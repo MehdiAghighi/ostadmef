@@ -47,8 +47,8 @@ function CourseRate({ rate }) {
               </span>
               <StarRatings
                 rating={parseFloat(rate.rating)}
-                starRatedColor="4FD1C5"
-                starHoverColor="4FD1C5"
+                starRatedColor="#4FD1C5"
+                starHoverColor="#4FD1C5"
                 starDimension="15px"
                 starSpacing="0"
                 style={{

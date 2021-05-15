@@ -28,7 +28,7 @@ function DesktopNav(props) {
         <div className="flex flex-row justify-center items-center">
           <DesktopNavLink to="/">خانه</DesktopNavLink>
           <DesktopNavLink to="/courses">دوره‌ها</DesktopNavLink>
-          <DesktopNavLink to="/story">درباره‌ما</DesktopNavLink>
+          <DesktopNavLink to="/work">همکاری با ما</DesktopNavLink>
           <DesktopNavLink to="/blog">بلاگ</DesktopNavLink>
         </div>
         <div>

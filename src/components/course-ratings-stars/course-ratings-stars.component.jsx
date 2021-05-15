@@ -45,11 +45,11 @@ function CourseRatingsStars({ course }) {
                     widgetSpacings="0px"
                     style={{ direction: "ltr" }}
                   >
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
                   </Ratings>
                 </div>
               </div>
@@ -68,11 +68,11 @@ function CourseRatingsStars({ course }) {
                     widgetSpacings="0px"
                     style={{ direction: "ltr" }}
                   >
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
                   </Ratings>
                 </div>
               </div>
@@ -91,11 +91,11 @@ function CourseRatingsStars({ course }) {
                     widgetSpacings="0px"
                     style={{ direction: "ltr" }}
                   >
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
                   </Ratings>
                 </div>
               </div>
@@ -114,17 +114,20 @@ function CourseRatingsStars({ course }) {
                     widgetSpacings="0px"
                     style={{ direction: "ltr" }}
                   >
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
                   </Ratings>
                 </div>
               </div>
-              <div className="flex flex-row items-center mx-2 my-1" style={{
-                marginTop: 7
-              }}>
+              <div
+                className="flex flex-row items-center mx-2 my-1"
+                style={{
+                  marginTop: 7,
+                }}
+              >
                 <span className="text-xl mx-1 pt-1 w-10">
                   {parseFloat(ratings.percentages[1]).toFixed(0)}%
                 </span>
@@ -139,11 +142,11 @@ function CourseRatingsStars({ course }) {
                     widgetSpacings="0px"
                     style={{ direction: "ltr" }}
                   >
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
                   </Ratings>
                 </div>
               </div>
@@ -198,7 +201,11 @@ function CourseRatingsStars({ course }) {
             <div className="text-left md:text-center items-center text-teal-600 flex flex-row-reverse md:flex-col py-2 col-span-2 row-start-1 md:row-start-auto sm:col-span-3 md:col-span-1">
               <div className="flex flex-col justify-start items-center text-center">
                 <span className="text-6xl font-bold">
-                  {ratings.average ? parseFloat(ratings.average).toFixed(1) : <>--</>}
+                  {ratings.average ? (
+                    parseFloat(ratings.average).toFixed(1)
+                  ) : (
+                    <>--</>
+                  )}
                 </span>
                 <div
                   style={{
@@ -210,11 +217,11 @@ function CourseRatingsStars({ course }) {
                     widgetDimensions="30px"
                     widgetSpacings="0px"
                   >
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
-                    <Ratings.Widget widgetRatedColor="4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
+                    <Ratings.Widget widgetRatedColor="#4FD1C5" />
                   </Ratings>
                 </div>
               </div>

@@ -34,8 +34,8 @@ function MobileSidebar({ isOpen }) {
           <MobileNavLink to="/courses" exact>
             دوره‌ها
           </MobileNavLink>
-          <MobileNavLink to="/story" exact>
-            درباره‌ما
+          <MobileNavLink to="/work" exact>
+            همکاری با ما
           </MobileNavLink>
           <MobileNavLink to="/blog" exact>
             بلاگ

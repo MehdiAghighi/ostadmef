@@ -66,18 +66,24 @@ function ShowVideo(props) {
 
   return (
     <div className="">
-      <ReactJWPlayer
+      {/* <ReactJWPlayer
         playerId={props.video}
-        playerScript="https://cdn.jwplayer.com/libraries/xaT3zPgu.js"
+        playerScript="https://cdn.jwplayer.com/libraries/khFxmJ8O.js"
         playlist={playlist}
         onOneHundredPercent={onOneHundredPercent}
         onNinetyFivePercent={onNinetyFivePercent}
         onTime={onTime}
         onPlay={onPlay}
         onReady={() => setReady(true)}
-      />
+      /> */}
+      <div
+        dangerouslySetInnerHTML={{
+          __html:
+            `<style> .r1_iframe_embed { position: relative; overflow: hidden; width: 100%; height: auto; padding-top: 56.25%; } .r1_iframe_embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; } </style> <div class="r1_iframe_embed"> <iframe src="${props.video}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe> </div>`,
+        }}
+      ></div>
       {!ready ? <CustomLoader /> : null}
-      <div id="myplayer" />
+      {/* <div id="myplayer" /> */}
     </div>
   )
 }

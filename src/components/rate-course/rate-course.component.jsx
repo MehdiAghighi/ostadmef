@@ -90,8 +90,8 @@ function RateCourse({ course }) {
                 <div className="my-4 mx-auto flex justify-center">
                   <StarRatings
                     rating={parseFloat(rating)}
-                    starRatedColor="4FD1C5"
-                    starHoverColor="4FD1C5"
+                    starRatedColor="#4FD1C5"
+                    starHoverColor="#4FD1C5"
                     starDimension="28px"
                     starSpacing="0"
                     style={{
